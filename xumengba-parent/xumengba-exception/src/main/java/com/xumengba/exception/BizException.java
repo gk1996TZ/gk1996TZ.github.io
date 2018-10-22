@@ -16,7 +16,11 @@ public class BizException extends RuntimeException {
 	public StatusCode getStatusCode() {
 		return statusCode;
 	}
+	
+	
+	
 
+	//这是异常
 	@Override
 	public String getLocalizedMessage() {
 		return super.getLocalizedMessage();
