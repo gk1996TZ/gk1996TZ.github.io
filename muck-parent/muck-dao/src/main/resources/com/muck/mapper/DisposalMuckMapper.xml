@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.DisposalMuckMapper">
+	<resultMap id="DisposalMuckTurnoverResultMap" type="com.muck.domain.DisposalMuckTurnover">
+		<!-- 映射DisposalMuckTurnover的基本信息 -->
+	    <id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+	    <result column="disposal_id" property="disposalId" jdbcType="BIGINT" />
+	    <result column="muck_turnover_message" property="muckTurnoverMessage" jdbcType="VARCHAR" />
+	    <result column="muck_transport_person" property="muckTransportPerson" jdbcType="VARCHAR" />
+	    <result column="muck_turnover_time" property="muckTurnoverTime" jdbcType="TIMESTAMP" />
+	    <result column="guard_person" property="guardPerson" jdbcType="VARCHAR" />
+	    <result column="memo" property="memo" jdbcType="VARCHAR" />
+	    <result column="deleted" property="deleted" jdbcType="BIT" />
+	    <result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+	    <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+	    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 根据id查询处置场渣土进出数据 -->
+	<select id="selectById" parameterType="long" resultMap="DisposalMuckTurnoverResultMap">
+		select
+			id,disposal_id,muck_turnover_message,muck_transport_person,muck_turnover_time,
+			guard_person,memo,deleted,operator_id,operator_name,created_time,updated_time
+		from
+			t_disposal_muck_turnover
+		<where>
+			disposal_id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+		</where>
+	</select>
+
+	  <!-- 添加处置场渣土进出数据 -->
+	  <insert id="insert" parameterType="com.muck.domain.DisposalMuckTurnover" >
+	    insert into t_disposal_muck_turnover
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        id,
+	      </if>
+	      <if test="disposalId != null" >
+	        disposal_id,
+	      </if>
+	      <if test="muckTurnoverMessage != null" >
+	        muck_turnover_message,
+	      </if>
+	      <if test="muckTransportPerson != null" >
+	        muck_transport_person,
+	      </if>
+	      <if test="muckTurnoverTime != null" >
+	        muck_turnover_time,
+	      </if>
+	      <if test="guardPerson != null" >
+	        guard_person,
+	      </if>
+	      <if test="memo != null" >
+	        memo,
+	      </if>
+	      <if test="deleted != null" >
+	        deleted,
+	      </if>
+	      <if test="operatorId != null" >
+	        operator_id,
+	      </if>
+	      <if test="operatorName != null" >
+	        operator_name,
+	      </if>
+	      <if test="createdTime != null" >
+	        created_time,
+	      </if>
+	      <if test="updatedTime != null" >
+	        updated_time,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="id != null" >
+	        #{id,jdbcType=BIGINT},
+	      </if>
+	      <if test="disposalId != null" >
+	        #{disposalId,jdbcType=BIGINT},
+	      </if>
+	      <if test="muckTurnoverMessage != null" >
+	        #{muckTurnoverMessage,jdbcType=VARCHAR},
+	      </if>
+	      <if test="muckTransportPerson != null" >
+	        #{muckTransportPerson,jdbcType=VARCHAR},
+	      </if>
+	      <if test="muckTurnoverTime != null" >
+	        #{muckTurnoverTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="guardPerson != null" >
+	        #{guardPerson,jdbcType=VARCHAR},
+	      </if>
+	      <if test="memo != null" >
+	        #{memo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="deleted != null" >
+	        #{deleted,jdbcType=BIT},
+	      </if>
+	      <if test="operatorId != null" >
+	        #{operatorId,jdbcType=BIGINT},
+	      </if>
+	      <if test="operatorName != null" >
+	        #{operatorName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createdTime != null" >
+	        #{createdTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="updatedTime != null" >
+	        #{updatedTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </trim>
+	  </insert>
+
+	<!-- 根据id删除处置场进出渣土数据 -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_disposal_muck_turnover
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_disposal_muck_turnover
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	  <!-- 根据id修改处置场进出渣土信息 -->
+	  <update id="update" parameterType="com.muck.domain.DisposalMuckTurnover" >
+	    update t_disposal_muck_turnover
+	    <set >
+	      <if test="disposalId != null" >
+	        disposal_id = #{disposalId,jdbcType=BIGINT},
+	      </if>
+	      <if test="muckTurnoverMessage != null" >
+	        muck_turnover_message = #{muckTurnoverMessage,jdbcType=VARCHAR},
+	      </if>
+	      <if test="muckTransportPerson != null" >
+	        muck_transport_person = #{muckTransportPerson,jdbcType=VARCHAR},
+	      </if>
+	      <if test="muckTurnoverTime != null" >
+	        muck_turnover_time = #{muckTurnoverTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="guardPerson != null" >
+	        guard_person = #{guardPerson,jdbcType=VARCHAR},
+	      </if>
+	      <if test="memo != null" >
+	        memo = #{memo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="deleted != null" >
+	        deleted = #{deleted,jdbcType=BIT},
+	      </if>
+	      <if test="operatorId != null" >
+	        operator_id = #{operatorId,jdbcType=BIGINT},
+	      </if>
+	      <if test="operatorName != null" >
+	        operator_name = #{operatorName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createdTime != null" >
+	        created_time = #{createdTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="updatedTime != null" >
+	        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+	      </if>
+	    </set>
+	    where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	  </update>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="DisposalMuckTurnoverResultMap">
+		${sql}
+	</select>
+	
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="DisposalMuckTurnoverResultMap">
+		${sql}
+	</select>
+	<!-- 查询指定条数的最新的处置场渣土进出数据记录 -->
+	<select id="queryDisposalMuckTurnover" resultMap="DisposalMuckTurnoverResultMap">
+	    select
+			id,disposal_id,muck_turnover_message,muck_transport_person,muck_turnover_time,
+			guard_person,memo,deleted,operator_id,operator_name,created_time,updated_time
+		from
+			t_disposal_muck_turnover
+		<where>
+			deleted = 1 
+			<if test="id != null">
+			    and disposal_id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			order by muck_turnover_time disc
+			<if test="count != null">
+			    limit 0,#{count}
+			</if>
+		</where>
+	</select>
+</mapper>

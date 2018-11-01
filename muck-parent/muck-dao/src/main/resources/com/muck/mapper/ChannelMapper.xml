@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.ChannelMapper">
+
+	<resultMap id="ChannelResultMap" type="com.muck.domain.Channel">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+		<result column="channel_code" property="channelCode" jdbcType="VARCHAR" />
+		<result column="channel_status" property="channelStatus" jdbcType="VARCHAR" />
+		<result column="channel_type" property="channelType" jdbcType="VARCHAR" />
+		<result column="channel_camera_type" property="channelCameraType" jdbcType="VARCHAR" />
+		<result column="channel_latitude" property="channelLatitude" jdbcType="DOUBLE" />
+		<result column="channel_longitude" property="channelLongitude" jdbcType="DOUBLE" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="channel_alarm_type" property="channelAlarmType" jdbcType="VARCHAR" />
+		<result column="channel_alarm_level" property="channelAlarmLevel" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<!-- 批量添加通道 -->
+	<insert id="insertBatch">
+		insert into t_channel
+		(channel_name, channel_code,
+		channel_status, channel_type, channel_camera_type,
+		memo,
+		channel_alarm_type, channel_alarm_level, deleted,
+		is_syn_dahua,device_code
+		)
+		values
+		<foreach collection="channels" item="channel" separator=",">
+			(
+			#{channel.channelName,jdbcType=VARCHAR}, #{channel.channelCode,jdbcType=VARCHAR},
+			#{channel.channelStatus,jdbcType=VARCHAR}, #{channel.channelType,jdbcType=VARCHAR},
+			#{channel.channelCameraType,jdbcType=VARCHAR},
+			#{channel.memo,jdbcType=VARCHAR},
+			#{channel.channelAlarmType,jdbcType=VARCHAR}, #{channel.channelAlarmLevel,jdbcType=VARCHAR},
+			#{channel.deleted,jdbcType=TINYINT},
+			#{channel.isSynDaHua,jdbcType=TINYINT},#{channel.device.deviceCode,jdbcType=VARCHAR})
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		channel_name = values(channel_name),
+		channel_code = values(channel_code),
+		channel_status = values(channel_status),
+		channel_type = values(channel_type),
+		channel_camera_type = values(channel_camera_type),
+		memo = values(memo),
+		channel_alarm_type = values(channel_alarm_type),
+		channel_alarm_level = values(channel_alarm_level),
+		deleted = values(deleted),
+		is_syn_dahua = values(is_syn_dahua),
+		device_code = values(device_code)
+	</insert>
+
+	<!-- 批量删除(大华的数据) -->
+	<update id="deleteBatchDaHuaSynData">
+		update
+		t_channel
+		set
+		deleted = 0
+		where
+		is_syn_dahua = 1
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_channel
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+
+	<resultMap id="IndexDeviceGPSDataResultMap" type="com.muck.response.IndexDeviceGPSData">
+		<result column="channel_longitude" property="longitude" jdbcType="DOUBLE" />
+		<result column="channel_latitude" property="latitude" jdbcType="DOUBLE" />
+		<result column="channel_code" property="channelCode" jdbcType="VARCHAR" />
+		<result column="device_status" property="deviceStatus" jdbcType="VARCHAR" />
+		<result column="device_type" property="deviceType" jdbcType="INTEGER" />
+	</resultMap>
+
+	<!-- 查询所有的通道 -->
+	<select id="selectAllChannels" resultMap="IndexDeviceGPSDataResultMap">
+		SELECT
+		tc.channel_code,
+		tc.channel_latitude,
+		tc.channel_longitude,
+		td.device_status,
+		td.device_type
+		FROM
+		t_channel tc , t_device td
+		WHERE
+		tc.device_code = td.device_code and
+		tc.channel_latitude is not null and
+		tc.channel_longitude is not null
+	</select>
+
+	<!-- 根据通道号查询通道类别 -->
+	<select id="selectChaneelType" parameterType="STRING" resultType="INT">
+		SELECT
+		d.device_type
+		from
+		t_channel c
+		left join t_device_channel dc on c.channel_code=dc.channel_code
+		left join t_device d on d.device_code=dc.device_code
+		where c.channel_code=#{channelCode,jdbcType=VARCHAR}
+	</select>
+	
+	
+	<resultMap id="ChannelInforResultMap1" type="com.muck.domain.ChannelInfo">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_name" property="Name" jdbcType="VARCHAR" />
+		<result column="site_address" property="projectAddress" jdbcType="VARCHAR" />
+		<result column="build_unit" property="buildUnit" jdbcType="VARCHAR" />
+		<result column="build_unit_manager" property="buildUnitManager" jdbcType="VARCHAR" />
+		<result column="build_unit_manager_phone" property="buildUnitManagerPhone" jdbcType="VARCHAR" />
+		<result column="construction_unit" property="constructionUnit" jdbcType="VARCHAR" />
+		<result column="construction_unit_manager" property="constructionUnitManager" jdbcType="VARCHAR" />
+		<result column="construction_unit_manager_phone" property="buildUnitManagerPhone" jdbcType="VARCHAR" />
+		<result column="supervision_unit" property="supervisionUnit" jdbcType="VARCHAR" />
+		<result column="supervision_unit_manager" property="supervisionUnitManager" jdbcType="VARCHAR" />
+		<result column="supervision_unit_manager_phone" property="supervisionUnitManagerPhone" jdbcType="VARCHAR" />
+		<result column="video_surveillance" property="videoSurveillance" jdbcType="VARCHAR" />
+		<result column="video_surveillance_manager" property="videoSurveillanceManager" jdbcType="VARCHAR" />
+		<result column="video_surveillance_manager_phone" property="videoSurveillanceManagerPhone" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectSiteInfoByChannelCode" parameterType="string" resultMap="ChannelInforResultMap1">
+		select
+		s.site_name,s.site_address,b.build_unit,b.build_unit_manager,b.build_unit_manager_phone,b.construction_unit,
+		b.construction_unit_manager,b.construction_unit_manager_phone,b.supervision_unit,b.supervision_unit_manager,
+		supervision_unit_manager_phone,b.video_surveillance,b.video_surveillance_manager,b.video_surveillance_manager_phone
+		from
+		t_site s left join t_biz_site_project_info b
+		on s.site_id=b.site_id
+		where s.site_id=#{channelCode,jdbcType=VARCHAR}
+	</select>
+
+
+	<resultMap type="com.muck.domain.ChannelInfo" id="ChannelInforResultMap2">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="disposal_name" property="Name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectDisposalInfoByChannelCode" parameterType="string" resultMap="ChannelInforResultMap2">
+		select
+		disposal_name
+		from
+		t_disposal
+		where disposal_id=#{channelCode,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="ChannelResultMap">
+		${sql}
+	</select>
+		<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="ChannelResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	
+	<select id="selectDeviceCodeByCode" parameterType="string" resultType="string">
+	    select device_code from t_channel where channel_code = #{channelCode}
+	</select>
+	<update id="updateChannelStatusByChannelCode">
+	    update t_channel set channel_status = #{channelStatus} where channel_code = #{channelCode}
+	</update>
+</mapper>
+	

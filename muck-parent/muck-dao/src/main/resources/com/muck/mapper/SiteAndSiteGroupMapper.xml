@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SiteAndSiteGroupMapper">
+
+	<!-- 添加工地和工地组关系 -->
+	<insert id="insert">
+		insert into t_site_sitegroup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="siteId != null">
+				site_id,
+			</if>
+			<if test="siteGroupId != null">
+				site_group_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="siteId != null">
+				#{siteId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="siteGroupId != null">
+				#{siteGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据工作组id删除工作组与工地的关系 -->
+	<delete id="deleteBySiteGroupId" parameterType="string">
+		delete
+		from 
+			t_site_sitegroup
+		where
+			site_group_id = #{siteGroupId,typeHandler=com.muck.handler.IdTypeHandler} 	
+	</delete>
+	
+	<!-- 根据工地id从工作组中删除 -->
+	<delete id="deleteSiteFromGroup">
+		delete
+		from 
+			t_site_sitegroup
+		where
+			site_group_id = #{siteGroupId,typeHandler=com.muck.handler.IdTypeHandler} and
+			site_id =  #{siteId,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<resultMap id="SimpleSiteResultMap" type="com.muck.domain.Site">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="site_name" property="siteName" jdbcType="VARCHAR" />
+		<result column="site_address" property="siteAddress" jdbcType="VARCHAR" />
+		<result column="area_id" property="area.id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="area.areaName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 根据工地组id查询此工地组下面所有的工地 -->
+	<select id="selectSitesBySiteGroupId" parameterType="string" resultMap="SimpleSiteResultMap">
+		SELECT
+			ts.id,
+			ts.site_name,
+			ts.site_address,
+			ts.area_id,
+			ts.area_name
+		FROM
+			t_site ts , t_site_sitegroup tssg
+		where
+			ts.id = tssg.site_id AND
+			tssg.site_group_id = #{siteGroupId,typeHandler=com.muck.handler.IdTypeHandler} and
+			tssg.deleted = 1
+	</select>
+
+</mapper>

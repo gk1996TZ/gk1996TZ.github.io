@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.GpsDataMapper">
+	<resultMap id="GpsDataResultMap" type="com.muck.domain.GpsData">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="vehicle_no" property="vehicleNo" jdbcType="VARCHAR" />
+		<result column="vehicle_color" property="vehicleColor" jdbcType="INTEGER" />
+		<result column="longitude" property="longitude" jdbcType="BIGINT" />
+		<result column="latitude" property="latitude" jdbcType="BIGINT" />
+		<result column="location" property="location" jdbcType="VARCHAR" />
+		<result column="speed" property="speed" jdbcType="DOUBLE" />
+		<result column="mileage" property="mileage" jdbcType="VARCHAR" />
+		<result column="direction" property="direction" jdbcType="VARCHAR" />
+		<result column="gps_time" property="gpsTime" jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 根据id查询车辆gps信息 -->
+	<select id="selectById" parameterType="long" resultMap="GpsDataResultMap">
+		select
+		id, vehicle_no, vehicle_color, longitude, latitude, location, speed, mileage, gps_time,
+		deleted, created_time,direction
+		from
+		t_biz_gps_data
+		<where>
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+		</where>
+	</select>
+
+	<!-- 根据车牌号查询车辆gps信息 -->
+	<select id="selectByVehicleNo" parameterType="long" resultMap="GpsDataResultMap">
+		select
+		id, vehicle_no, vehicle_color, longitude, latitude, location, speed, mileage, gps_time,
+		deleted, created_time,direction
+		from
+		t_biz_gps_data
+		<where>
+			vehicle_no = #{vehicle_no}
+		</where>
+	</select>
+	<!-- 添加车辆gps -->
+	<insert id="insert" parameterType="com.muck.domain.GpsData">
+		insert into t_biz_gps_data
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="vehicleNo != null">
+				vehicle_no,
+			</if>
+			<if test="vehicleColor != null">
+				vehicle_color,
+			</if>
+			<if test="longitude != null">
+				longitude,
+			</if>
+			<if test="latitude != null">
+				latitude,
+			</if>
+			<if test="location != null">
+				location,
+			</if>
+			<if test="speed != null">
+				speed,
+			</if>
+			<if test="mileage != null">
+				mileage,
+			</if>
+			<if test="gpsTime != null">
+				gps_time,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="direction != null">
+				direction,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="vehicleNo != null">
+				#{vehicleNo,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleColor != null">
+				#{vehicleColor,jdbcType=INTEGER},
+			</if>
+			<if test="longitude != null">
+				#{longitude,jdbcType=BIGINT},
+			</if>
+			<if test="latitude != null">
+				#{latitude,jdbcType=BIGINT},
+			</if>
+			<if test="location != null">
+				#{location,jdbcType=VARCHAR},
+			</if>
+			<if test="speed != null">
+				#{speed,jdbcType=DOUBLE},
+			</if>
+			<if test="mileage != null">
+				#{mileage,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsTime != null">
+				#{gpsTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="direction != null">
+				#{direction,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id逻辑删除车辆gps数据 -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_biz_gps_data
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id真实删除车辆gps数据 -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_biz_gps_data
+		where
+		id=#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+
+
+	<!-- 根据id修改车辆gps -->
+	<update id="update" parameterType="com.muck.domain.GpsData">
+		update t_biz_gps_data
+		<set>
+			<if test="record.id != null">
+				id = #{record.id,jdbcType=BIGINT},
+			</if>
+			<if test="record.vehicleNo != null">
+				vehicle_no = #{record.vehicleNo,jdbcType=VARCHAR},
+			</if>
+			<if test="record.vehicleColor != null">
+				vehicle_color = #{record.vehicleColor,jdbcType=INTEGER},
+			</if>
+			<if test="record.longitude != null">
+				longitude = #{record.longitude,jdbcType=BIGINT},
+			</if>
+			<if test="record.latitude != null">
+				latitude = #{record.latitude,jdbcType=BIGINT},
+			</if>
+			<if test="record.location != null">
+				location = #{record.location,jdbcType=VARCHAR},
+			</if>
+			<if test="record.speed != null">
+				speed = #{record.speed,jdbcType=DOUBLE},
+			</if>
+			<if test="record.mileage != null">
+				mileage = #{record.mileage,jdbcType=BIGINT},
+			</if>
+			<if test="record.gpsTime != null">
+				gps_time = #{record.gpsTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.deleted != null">
+				deleted = #{record.deleted,jdbcType=TINYINT},
+			</if>
+			<if test="record.createdTime != null">
+				created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="GpsDataResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="GpsDataResultMap">
+		${sql}
+	</select>
+
+	<!-- 删除指定月份的之外的数据 -->
+	<delete id="deleteBatchGPSData" parameterType="integer">
+		<![CDATA[
+			DELETE FROM
+				t_biz_gps_data
+			WHERE
+				gps_time < DATE_SUB(NOW(),INTERVAL #{month,jdbcType=INTEGER} MONTH)
+		]]>
+	</delete>
+	
+	<!-- 批量保存车辆的轨迹数据 -->
+	<insert id="insertAll" parameterType="list">
+		insert into t_biz_gps_data(vehicle_no, vehicle_color, longitude, latitude, location, 
+      		   speed, mileage, gps_time, deleted, created_time,direction)
+		values
+		<foreach collection="list" item="gpsData" index="index" separator=",">
+			(
+				#{gpsData.vehicleNo,jdbcType=VARCHAR}, 
+				#{gpsData.vehicleColor,jdbcType=INTEGER}, 
+      			#{gpsData.longitude,jdbcType=BIGINT}, 
+      			#{gpsData.latitude,jdbcType=BIGINT}, 
+      			#{gpsData.location,jdbcType=VARCHAR}, 
+      			#{gpsData.speed,jdbcType=DOUBLE}, 
+      			#{gpsData.mileage,jdbcType=VARCHAR}, 
+      			#{gpsData.gpsTime,jdbcType=TIMESTAMP}, 
+      			1,
+      			now(),
+      			#{gpsData.direction,jdbcType=VARCHAR}
+			)		
+		</foreach>
+	</insert>
+	
+	<!-- 根据车牌号查询车辆详情(是查询最后一次车辆的状态)
+	<select id="selectCarGPSDataInfo" resultType="com.muck.response.CarGPSDataInfoResponse">
+		SELECT
+			(SELECT t_company.company_name FROM t_car LEFT JOIN t_company ON t_car.company_id = t_company.id where t_car.car_code = #{carCode,jdbcType=VARCHAR} and t_car.car_card_color= #{carColor,jdbcType=VARCHAR})  as companyName,
+			(
+			 SELECT
+				GROUP_CONCAT(cardriver.driver_name)
+			 FROM
+				t_car_driver cardriver
+			 LEFT JOIN t_car ON cardriver.car_code = t_car.car_code
+			 WHERE
+				t_car.car_code = #{carCode,jdbcType=VARCHAR}
+				AND t_car.car_card_color= #{carColor,jdbcType=VARCHAR}
+			) as carDriver,
+			(
+			SELECT
+				GROUP_CONCAT(cardriver.driver_phone)
+			FROM
+				t_car_driver cardriver
+			LEFT JOIN t_car ON cardriver.car_code = t_car.car_code
+			WHERE
+				t_car.car_code = #{carCode,jdbcType=VARCHAR}
+				AND t_car.car_card_color= #{carColor,jdbcType=VARCHAR}
+			) as carDriverPhone,
+			vehicle_no as carCode,
+			speed,
+			location,
+			direction,
+			gps_time as gpsTime,
+			longitude,
+			latitude
+		FROM
+			t_biz_gps_data
+		WHERE
+			vehicle_no = #{carCode,jdbcType=VARCHAR}
+			and vehicle_color= #{carColor,jdbcType=VARCHAR}
+		ORDER BY
+			gps_time DESC
+		LIMIT 1
+	</select> -->
+	
+	<!-- 根据车牌号查询车辆详情(是查询最后一次车辆的状态) -->
+	<select id="selectCarGPSDataInfo" resultType="com.muck.response.CarGPSDataInfoResponse">
+		SELECT
+			(
+				SELECT 
+					company_name 
+				FROM 
+					t_car 
+				where 
+					t_car.car_code = #{carCode,jdbcType=VARCHAR} 
+					and t_car.car_card_color= #{carColor,jdbcType=VARCHAR}
+			)  as companyName,
+			vehicle_no as carCode,
+			speed,
+			location,
+			direction,
+			gps_time as gpsTime,
+			longitude,
+			latitude
+		FROM
+			t_biz_gps_data
+		WHERE
+			vehicle_no = #{carCode,jdbcType=VARCHAR}
+			and vehicle_color= #{carColor,jdbcType=VARCHAR}
+		ORDER BY
+			gps_time DESC
+		LIMIT 1
+	</select>
+	
+	
+	
+</mapper>

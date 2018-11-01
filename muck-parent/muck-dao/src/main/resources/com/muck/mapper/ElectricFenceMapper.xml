@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.ElectricFenceMapper">
+	<resultMap type="com.muck.domain.ElectricFence" id="ElectricFenceResultMap">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="electric_fence_name" property="electricFenceName"
+			jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="electric_fence_coordinate" property="electricFenceCoordinate"
+			jdbcType="VARCHAR" />
+		<result column="electric_fence_isbanning" property="electricFenceIsbanning"
+			jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 添加电子围栏 -->
+	<insert id="insert" parameterType="com.muck.domain.ElectricFence">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_electric_fence
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="electricFenceName != null">
+				electric_fence_name,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="electricFenceCoordinate != null">
+				electric_fence_coordinate,
+			</if>
+			<if test="electricFenceIsbanning !=null">
+				electric_fence_isbanning,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			</trim>
+			<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="id != null">
+					#{id,jdbcType=BIGINT},
+				</if>
+				<if test="electricFenceName != null">
+					#{electricFenceName,jdbcType=VARCHAR},
+				</if>
+				<if test="memo != null">
+					#{memo,jdbcType=VARCHAR},
+				</if>
+				<if test="createdTime != null">
+					#{createdTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="electricFenceCoordinate != null">
+					#{electricFenceCoordinate,jdbcType=VARCHAR},
+				</if>
+				<if test="electricFenceIsbanning !=null">
+					#{electricFenceIsbanning,jdbcType=TINYINT},
+				</if>
+				<if test="updatedTime != null">
+					#{updatedTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="deleted != null">
+					#{deleted,jdbcType=TINYINT},
+				</if>
+			</trim>
+		
+	</insert>
+
+	<!-- 根据id修改电子围栏 -->
+	<update id="updateById" parameterType="com.muck.domain.ElectricFence">
+		update t_electric_fence
+		<set>
+			<if test="electricFenceName != null">
+				eletric_fence_name=#{electricFenceName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo=#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time=#{guardPerson,jdbcType=TIMESTAMP},
+			</if>
+			<if test="electricFenceCoordinate != null">
+				electric_fence_coordinate=#{electricFenceCoordinate,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted=#{deleted,jdbcType=BIT},
+			</if>
+			<if test="updatedTime != null">
+				updated_time=#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="electricFenceIsbanning !=null">
+				electric_fence_isbanning=
+				#{electricFenceIsbanning,jdbcType=TINYINT}
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询所有电子围栏 -->
+	<select id="selectAll" resultMap="ElectricFenceResultMap">
+		select
+		id,electric_fence_name,created_time,memo,
+		electric_fence_coordinate,electric_fence_isbanning,updated_time
+		from
+		t_electric_fence
+		where deleted=1
+	</select>
+
+	<!-- 根据id查询电子围栏 -->
+	<select id="selectById" parameterType="string" resultMap="ElectricFenceResultMap">
+		select
+		id,electric_fence_name,created_time,memo,
+		electric_fence_coordinate,electric_fence_isbanning,updated_time
+		from
+		t_electric_fence
+		where
+		id=#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		deleted=1
+	</select>
+
+	<!-- 根据电子围栏名称查询 -->
+	<select id="selectByName" parameterType="string" resultMap="ElectricFenceResultMap">
+		select
+		id,electric_fence_name,created_time,memo,
+		electric_fence_coordinate,electric_fence_isbanning,updated_time
+		from
+		t_electric_fence
+		where
+		electric_fence_name=#{electricFenceName,jdbcType=VARCHAR} and
+		deleted=1
+	</select>
+
+	<!-- 根据id逻辑删除 -->
+	<update id="deleteById" parameterType="long">
+		update t_electric_fence
+		set
+		deleted=0
+		where
+		id=#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_electric_fence
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+
+</mapper>

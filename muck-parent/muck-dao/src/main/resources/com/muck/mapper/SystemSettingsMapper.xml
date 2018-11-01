@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.muck.mapper.SystemSettingsMapper">
+	<resultMap id="SystemSetResultMap" type="com.muck.domain.SystemSettings">
+		<id column="id" typeHandler="com.muck.handler.IdTypeHandler" property="id" />
+		<result column="sys_company_logo" jdbcType="VARCHAR" property="sysCompanyLogo" />
+		<result column="sys_ip" jdbcType="VARCHAR" property="sysIp" />
+		<result column="sys_port" jdbcType="INTEGER" property="sysPort" />
+		<result column="sys_copyright" jdbcType="VARCHAR" property="sysCopyright" />
+		<result column="sys_video_rotation_time" property="sysVideoRotationTime" jdbcType="INTEGER" />
+    	<result column="sys_device_anomaly_detection_time" property="sysDeviceAnomalyDetectionTime" jdbcType="INTEGER" />
+		<result column="memo" jdbcType="VARCHAR" property="memo" />
+		<result column="deleted" jdbcType="TINYINT" property="deleted" />
+		<result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+		<result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+		<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+		<result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+	</resultMap>
+	
+	<!-- 根据id查询系统设置 -->
+	<select id="query" parameterType="string" resultMap="SystemSetResultMap">
+		select
+			id , 
+			sys_company_logo,
+			sys_ip,
+			sys_port,
+			sys_copyright,
+			sys_video_rotation_time,
+			sys_device_anomaly_detection_time,
+			memo,
+			deleted,
+			operator_id,
+			operator_name,
+			created_time,
+			updated_time
+		from 
+			t_system_settings
+	</select>
+	
+	<!-- 设置系统设置信息 -->
+	<insert id="insert" parameterType="com.muck.domain.SystemSettings">
+	   	<selectKey resultType="long" keyProperty="idRaw">
+          SELECT LAST_INSERT_ID()
+        </selectKey>
+	    insert into t_system_settings
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+	      <if test="id != null">
+	        id,
+	      </if>
+	      <if test="sysCompanyLogo != null">
+	        sys_company_logo,
+	      </if>
+	      <if test="sysIp != null">
+	        sys_ip,
+	      </if>
+	      <if test="sysPort != null">
+	        sys_port,
+	      </if>
+	      <if test="sysCopyright != null">
+	        sys_copyright,
+	      </if>
+	      <if test="memo != null">
+	        memo,
+	      </if>
+	      <if test="deleted != null">
+	        deleted,
+	      </if>
+	      <if test="operatorId != null">
+	        operator_id,
+	      </if>
+	      <if test="operatorName != null">
+	        operator_name,
+	      </if>
+	      <if test="createdTime != null">
+	        created_time,
+	      </if>
+	      <if test="updatedTime != null">
+	        updated_time,
+	      </if>
+	      <if test="sysVideoRotationTime != null">
+	        sys_video_rotation_time,
+	      </if>
+	      <if test="sysDeviceAnomalyDetectionTime != null">
+	        sys_device_anomaly_detection_time,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides=",">
+	      <if test="id != null">
+	        #{id,typeHandler=com.muck.handler.IdTypeHandler},
+	      </if>
+	      <if test="sysCompanyLogo != null">
+	        #{sysCompanyLogo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="sysIp != null">
+	        #{sysIp,jdbcType=VARCHAR},
+	      </if>
+	      <if test="sysPort != null">
+	        #{sysPort,jdbcType=INTEGER},
+	      </if>
+	      <if test="sysCopyright != null">
+	        #{sysCopyright,jdbcType=VARCHAR},
+	      </if>
+	      <if test="memo != null">
+	        #{memo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="deleted != null">
+	        #{deleted,jdbcType=TINYINT},
+	      </if>
+	      <if test="operatorId != null">
+	        #{operatorId,jdbcType=BIGINT},
+	      </if>
+	      <if test="operatorName != null">
+	        #{operatorName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createdTime != null">
+	        #{createdTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="updatedTime != null">
+	        #{updatedTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="sysVideoRotationTime != null">
+	        #{sysVideoRotationTime,jdbcType=INTEGER},
+	      </if>
+	      <if test="sysDeviceAnomalyDetectionTime != null">
+	        #{sysDeviceAnomalyDetectionTime,jdbcType=INTEGER},
+	      </if>
+	    </trim>
+	</insert>
+	
+	<!-- 根据id删除 -->
+	<delete id="deleteById" parameterType="java.lang.Long">
+		delete from t_system_settings
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_system_settings
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改 -->
+	<update id="updateById" parameterType="com.muck.domain.SystemSettings">
+	    update t_system_settings
+	    <set>
+	      <if test="sysCompanyLogo != null">
+	        sys_company_logo = #{sysCompanyLogo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="sysIp != null">
+	        sys_ip = #{sysIp,jdbcType=VARCHAR},
+	      </if>
+	      <if test="sysPort != null">
+	        sys_port = #{sysPort,jdbcType=INTEGER},
+	      </if>
+	      <if test="sysCopyright != null">
+	        sys_copyright = #{sysCopyright,jdbcType=VARCHAR},
+	      </if>
+	      <if test="memo != null">
+	        memo = #{memo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="deleted != null">
+	        deleted = #{deleted,jdbcType=TINYINT},
+	      </if>
+	      <if test="operatorId != null">
+	        operator_id = #{operatorId,jdbcType=BIGINT},
+	      </if>
+	      <if test="operatorName != null">
+	        operator_name = #{operatorName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createdTime != null">
+	        created_time = #{createdTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="updatedTime != null">
+	        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="sysVideoRotationTime != null">
+	        sys_video_rotation_time = #{sysVideoRotationTime,jdbcType=INTEGER},
+	      </if>
+	      <if test="sysDeviceAnomalyDetectionTime != null">
+	        sys_device_anomaly_detection_time = #{sysDeviceAnomalyDetectionTime,jdbcType=INTEGER},
+	      </if>
+	    </set>
+	    where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	
+</mapper>

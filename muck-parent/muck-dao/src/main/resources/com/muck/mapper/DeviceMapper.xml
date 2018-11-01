@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.DeviceMapper">
+	<resultMap id="DeviceResultMap" type="com.muck.domain.Device">
+		
+		<!-- 映射基本信息 -->
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="device_code" property="deviceCode" jdbcType="VARCHAR" />
+		<result column="device_installed_time" property="deviceInstalledTime" jdbcType="TIMESTAMP" />
+		<result column="device_type" property="deviceType" jdbcType="INTEGER" />
+		<result column="device_direction" property="deviceDirection" jdbcType="INTEGER" />
+		<result column="device_made_time" property="deviceMadeTime" jdbcType="TIMESTAMP" />
+		<result column="device_factory_name" property="deviceFactoryName" jdbcType="VARCHAR" />
+		<result column="is_running" property="isRunning" jdbcType="TINYINT" />
+		<result column="device_longitude" property="deviceLongitude" jdbcType="DECIMAL" />
+		<result column="device_latitude" property="deviceLatitude" jdbcType="DECIMAL" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="device_installed_user" property="deviceInstalledUser" jdbcType="VARCHAR" />
+		<result column="device_installed_user_phone" property="deviceInstalledUserPhone" jdbcType="VARCHAR" />
+		
+		<!-- 新增字段 -->
+		<result column="device_register_code" property="deviceRegisterCode" jdbcType="VARCHAR" />
+		<result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+		<result column="device_ip" property="deviceIp" jdbcType="VARCHAR" />
+		<result column="device_port" property="devicePort" jdbcType="VARCHAR" />
+		<result column="device_login_name" property="deviceLoginName" jdbcType="VARCHAR" />
+		<result column="device_login_password" property="deviceLoginPassword" jdbcType="VARCHAR" />
+		<result column="device_type_dahua" property="deviceTypeDaHua" jdbcType="VARCHAR" />
+		<result column="device_status" property="deviceStatus" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="device_real_type" property="deviceRealType" jdbcType="INTEGER" />
+		<result column="device_server_type" property="deviceServerType" jdbcType="INTEGER" />
+		<result column="device_channel_nums" property="deviceChannelNums" jdbcType="INTEGER" />
+		<result column="device_register_id" property="deviceRegisterId" jdbcType="VARCHAR" />
+		
+		<!-- 映射区域信息 -->
+		<association property="area" javaType="com.muck.domain.Area">
+			<id column="device_area_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_area_name" property="areaName"/>
+		</association>
+		
+		<!-- 映射企业信息 -->
+		<association property="company" javaType="com.muck.domain.Company">
+			<id column="device_company_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_company_name" property="companyName"/>
+		</association>
+	
+		<!-- 映射车辆信息 -->
+		<association property="car" javaType="com.muck.domain.Car">
+			<id column="car_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_car_code" property="carCode"/>
+		</association>
+		
+		<!-- 映射工地信息 -->
+		<association property="site" javaType="com.muck.domain.Site">
+			<id column="device_site_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_site_name" property="siteName"/>
+		</association>
+		
+		<!-- 映射处置场信息 -->
+		<association property="disposal" javaType="com.muck.domain.Disposal">
+			<id column="device_disposal_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_disposal_name" property="disposalName"/>
+		</association>
+		
+		<!-- 映射设备管理员信息 -->
+		<association property="manager" javaType="com.muck.domain.Manager">
+			<id column="device_manager_id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+			<result column="device_manager_name" property="managerName"/>
+			<result column="device_manager_phone" property="managerPhone"/>
+		</association>
+		
+		<!-- 映射设备通道信息 -->
+		<collection property="channels" javaType="com.muck.domain.Channel">
+		    <result column = "channel_name" property="channelName"/>
+		    <result column = "channel_code" property="channelCode"/>
+		</collection>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		device.id, 
+		device.device_code, 
+		device.device_name, 
+		device.device_direction, 
+		device.device_installed_time, 
+		device.device_type, 
+	    device.device_made_time, 
+	    device.device_area_id, 
+	    device.device_area_code, 
+	    device.device_area_name, 
+	    device.device_site_id, 
+	    device.device_site_name, 
+	    device_disposal_id, 
+	    device.device_disposal_name, 
+	    device.device_register_id, 
+	    device.device_register_code, 
+	    device.device_channel_nums, 
+	    device.device_server_type, 
+	    device.device_real_type, 
+	    device.device_address, 
+	    device.device_company_id, 
+	    device.device_company_name, 
+	    device.device_factory_name, 
+	    device.device_car_id, 
+	    device.device_car_code, 
+	    device.device_ip, 
+	    device_port, 
+	    device.device_login_name, 
+	    device.device_login_password, 
+	    device.device_type_dahua, 
+	    device.device_manager_id, 
+	    device.device_manager_name, 
+	    device.device_manager_phone, 
+	    device.is_running, 
+	    device.device_status, 
+	    device.device_longitude, 
+	    device.device_latitude, 
+	    device.deleted, 
+	    device.is_syn_dahua, 
+	    device.memo, 
+	    device.operator_id, 
+	    device.operator_name, 
+	    device.created_time, 
+	    device.updated_time, 
+	    device.device_installed_user, 
+	    device.device_installed_user_phone,
+		channel.channel_name,channel.channel_code,channel.channel_status,channel.channel_type,channel.channel_camera_type,channel.channel_latitude,channel.channel_longitude,
+		channel.memo,channel.channel_alarm_type,channel.channel_alarm_level,channel.is_syn_dahua
+	</sql>
+	
+	<!-- 根据id查询设备
+	<select id="selectById" parameterType="string" resultMap="DeviceResultMap" >
+		select
+			<include refid="Base_Column_List" />
+		from 
+			t_device device,t_device_channel device_channel,t_channel channel
+		where
+			device.id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			device.device_code = device_channel.device_code and
+			device_channel.channel_code = channel.channel_code and
+			device.deleted = 1
+	</select>	 -->
+	
+	<!-- 根据id查询设备 -->
+	<select id="selectById" parameterType="string" resultMap="DeviceResultMap" >
+		select
+			<include refid="Base_Column_List" />
+		from 
+			t_device device
+		left join t_device_channel device_channel on device.device_code = device_channel.device_code
+		left join t_channel channel on device_channel.channel_code = channel.channel_code
+		where
+			device.id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and 
+			device.deleted = 1
+	</select>	 
+	
+	<!-- 根据编号查询设备	 -->
+	<select id="queryByDeviceCode" parameterType="string" resultMap="DeviceResultMap" >
+		select
+			<include refid="Base_Column_List" />
+		from 
+			t_device device,t_device_channel device_channel,t_channel channel
+		<where>
+			device.device_code = device_channel.device_code and
+			device_channel.channel_code = channel.channel_code and
+			device.deleted = 1 
+			<if test="deviceCode != null">
+			    and  device.device_code = #{deviceCode,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 	添加设备 		-->
+	<insert id="insert" parameterType="com.muck.domain.Device">
+		insert into t_device
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="deviceCode != null">
+				device_code,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="deviceDirection != null">
+				device_direction,
+			</if>
+			<if test="deviceInstalledTime != null">
+				device_installed_time,
+			</if>
+			<if test="deviceType != null">
+				device_type,
+			</if>
+			<if test="deviceMadeTime != null">
+				device_made_time,
+			</if>
+			<if test="area != null">
+				device_area_id,
+			</if>
+			<if test="area != null">
+				device_area_name,
+			</if>
+			<if test="site != null">
+				device_site_id,
+			</if>
+			<if test="site != null">
+				device_site_name,
+			</if>
+			<if test="disposal != null">
+				device_disposal_id,
+			</if>
+			<if test="disposal != null">
+				device_disposal_name,
+			</if>
+			<if test="deviceRegisterId != null">
+				device_register_id,
+			</if>
+			<if test="deviceRegisterCode!=null">
+			    device_register_code,
+			</if>
+			<if test="deviceChannelNums != null">
+				device_channel_nums,
+			</if>
+			<if test="deviceServerType != null">
+				device_server_type,
+			</if>
+			<if test="deviceRealType != null">
+				device_real_type,
+			</if>
+			<if test="deviceAddress != null">
+				device_address,
+			</if>
+			<if test="company != null">
+				device_company_id,
+			</if>
+			<if test="company != null">
+				device_company_name,
+			</if>
+			<if test="deviceFactoryName != null">
+				device_factory_name,
+			</if>
+			<if test="car != null">
+				device_car_id,
+			</if>
+			<if test="car != null">
+				device_car_code,
+			</if>
+			<if test="manager != null">
+				device_manager_id,
+			</if>
+			<if test="manager != null">
+				device_manager_name,
+			</if>
+			<if test="manager != null">
+				device_manager_phone,
+			</if>
+			<if test="isRunning != null">
+				is_running,
+			</if>
+			<if test="deviceLongitude != null">
+				device_longitude,
+			</if>
+			<if test="deviceLatitude != null">
+				device_latitude,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="isSynDaHua != null">
+				is_syn_dahua,
+			</if>
+			<if test="deviceIp != null">
+				device_ip,
+			</if>
+			<if test="devicePort != null">
+				device_port,
+			</if>
+			<if test="deviceLoginName != null">
+				device_login_name,
+			</if>
+			<if test="deviceLoginPassword != null">
+				device_login_password,
+			</if>
+			<if test="deviceTypeDaHua != null">
+				device_type_dahua,
+			</if>
+			<if test="deviceStatus != null">
+				device_status,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deviceInstalledUser != null">
+				device_installed_user,
+			</if>
+			<if test="deviceInstalledUserPhone != null">
+				device_installed_user_phone,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deviceCode != null">
+				#{deviceCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceDirection != null">
+				#{deviceDirection,jdbcType=INTEGER},
+			</if>
+			<if test="deviceInstalledTime != null">
+				#{deviceInstalledTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deviceType != null">
+				#{deviceType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceMadeTime != null">
+				#{deviceMadeTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="area != null">
+				#{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="area != null">
+				#{area.areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				#{site.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="site != null">
+				#{site.siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposal != null">
+				#{disposal.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="disposal != null">
+				#{disposal.disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceRegisterId != null">
+				#{deviceRegisterId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceRegisterCode != null">
+				#{deviceRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceChannelNums != null">
+				#{deviceChannelNums,jdbcType=INTEGER},
+			</if>
+			<if test="deviceServerType != null">
+				#{deviceServerType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceRealType != null">
+				#{deviceRealType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceAddress != null">
+				#{deviceAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				#{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="company != null">
+				#{company.companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceFactoryName != null">
+				#{deviceFactoryName,jdbcType=VARCHAR},
+			</if>
+			<if test="car != null">
+				#{car.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="car != null">
+				#{car.carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="manager != null">
+				#{manager.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="manager != null">
+				#{manager.managerName,jdbcType=VARCHAR},
+			</if>
+			<if test="manager != null">
+				#{manager.managerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="isRunning != null">
+				#{isRunning,jdbcType=TINYINT},
+			</if>
+			<if test="deviceLongitude != null">
+				#{deviceLongitude,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceLatitude != null">
+				#{deviceLatitude,jdbcType=DECIMAL},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isSynDaHua != null">
+				#{isSynDaHua,jdbcType=TINYINT},
+			</if>
+			<if test="deviceIp != null">
+				#{deviceIp,jdbcType=VARCHAR},
+			</if>
+			<if test="devicePort != null">
+				#{devicePort,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceLoginName != null">
+				#{deviceLoginName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceLoginPassword != null">
+				#{deviceLoginPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceTypeDaHua != null">
+				#{deviceTypeDaHua,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceStatus != null">
+				#{deviceStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceInstalledUser != null">
+				#{deviceInstalledUser,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceInstalledUserPhone != null">
+				#{deviceInstalledUserPhone,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 批量添加设备 -->
+	<insert id="insertBatch">
+		 insert into t_device (device_code, device_name, 
+		      device_direction, device_installed_time, 
+		      device_type, device_made_time, device_area_id, device_area_code,
+		      device_area_name, device_company_id, device_company_name, 
+		      device_factory_name, device_car_id, device_car_code, 
+		      device_ip, device_port, device_login_name, 
+		      device_login_password, device_type_dahua, device_manager_id, 
+		      device_manager_name, device_manager_phone, 
+		      is_running, device_status, device_longitude, 
+		      device_latitude, deleted, is_syn_dahua,operator_id, 
+		      operator_name, created_time, updated_time
+	      )
+	     values 
+	     <foreach collection="devices" item="device" separator=",">  
+		    ( #{device.deviceCode,jdbcType=VARCHAR}, #{device.deviceName,jdbcType=VARCHAR}, 
+		      #{device.deviceDirection,jdbcType=INTEGER}, #{device.deviceInstalledTime,jdbcType=TIMESTAMP}, 
+		      #{device.deviceType,jdbcType=INTEGER}, #{device.deviceMadeTime,jdbcType=TIMESTAMP}, 
+		      #{device.area.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+		      #{device.area.areaCode,jdbcType=VARCHAR},
+		      #{device.area.areaName,jdbcType=VARCHAR}, 
+		      #{device.company.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+		      #{device.company.companyName,jdbcType=VARCHAR}, 
+		      #{device.deviceFactoryName,jdbcType=VARCHAR}, 
+		      #{device.car.id,typeHandler=com.muck.handler.IdTypeHandler},
+		      #{device.car.carCode,jdbcType=VARCHAR},
+		      #{device.deviceIp,jdbcType=VARCHAR}, #{device.devicePort,jdbcType=VARCHAR}, #{device.deviceLoginName,jdbcType=VARCHAR}, 
+		      #{device.deviceLoginPassword,jdbcType=VARCHAR}, #{device.deviceTypeDaHua,jdbcType=VARCHAR}, 
+		      #{device.manager.id,typeHandler=com.muck.handler.IdTypeHandler},
+		      #{device.manager.managerName,jdbcType=VARCHAR},
+		      #{device.manager.managerPhone,jdbcType=VARCHAR},
+		      #{device.isRunning,jdbcType=TINYINT}, #{device.deviceStatus,jdbcType=VARCHAR}, #{device.deviceLongitude,jdbcType=DECIMAL}, 
+		      #{device.deviceLatitude,jdbcType=DECIMAL}, #{device.deleted,jdbcType=TINYINT}, #{device.isSynDaHua,jdbcType=TINYINT}, 
+		      #{device.operatorId,jdbcType=BIGINT}, 
+		      #{device.operatorName,jdbcType=VARCHAR}, #{device.createdTime,jdbcType=TIMESTAMP}, #{device.updatedTime,jdbcType=TIMESTAMP}
+		      )
+       	 </foreach>
+       	 ON DUPLICATE KEY UPDATE
+       	 device_code = values(device_code),
+       	 device_name = values(device_name),
+       	 device_direction = values(device_direction),
+       	 device_installed_time = values(device_installed_time),
+       	 device_type = values(device_type), 
+       	 device_made_time = values(device_made_time), 
+       	 device_area_id = values(device_area_id),
+       	 device_area_name = values(device_area_name),
+       	 device_area_code = values(device_area_code),
+		 device_factory_name = values(device_factory_name), 
+		 device_ip = values(device_ip), 
+		 device_port = values(device_port), 
+		 device_login_name = values(device_login_name), 
+		 device_login_password = values(device_login_password), 
+		 device_type_dahua = values(device_type_dahua), 
+		 device_manager_name = values(device_manager_name), 
+		 device_manager_phone = values(device_manager_phone), 
+		 is_running = values(is_running), 
+		 device_status = values(device_status), 
+		 device_longitude = values(device_longitude), 
+		 device_latitude = values(device_latitude), 
+		 deleted = values(deleted), 
+		 is_syn_dahua = values(is_syn_dahua),
+		 operator_id = values(operator_id), 
+		 operator_name = values(operator_name), 
+		 created_time = values(created_time), 
+		 updated_time = values(updated_time)
+	</insert>
+	
+	<!-- 根据id删除设备(逻辑删除) -->
+	<update id="deleteById" parameterType="long">
+		update
+			t_device
+		set
+			deleted = 0
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}	
+	</update>
+	
+	<!-- 批量删除大华的那边同步的数据(逻辑删除) -->
+	<update id="deleteBatchDaHuaSynData">
+		update
+			t_device
+		set
+			deleted = 0
+		where
+			is_syn_dahua = 1
+	</update>
+
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_device
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<!-- 根据id修改设备 -->
+	<update id="updateById" parameterType="com.muck.domain.Device">
+		update t_device
+		<set>
+			<if test="deviceCode != null">
+				device_code = #{deviceCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name = #{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceDirection != null">
+				device_direction = #{deviceDirection,jdbcType=INTEGER},
+			</if>
+			<if test="deviceInstalledTime != null">
+				device_installed_time = #{deviceInstalledTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deviceType != null">
+				device_type = #{deviceType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceMadeTime != null">
+				device_made_time = #{deviceMadeTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="area != null">
+				device_area_id = #{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="area != null">
+				device_area_name = #{area.areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				device_company_id = #{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="company != null">
+				device_company_name = #{company.companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				device_site_id = #{site.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="site != null">
+				device_site_name = #{site.siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposal != null">
+				device_disposal_id = #{disposal.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="disposal != null">
+				device_disposal_name = #{disposal.disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceRegisterId != null">
+				device_register_id = #{deviceRegisterId,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceRegisterCode != null">
+				device_register_code = #{deviceRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceChannelNums != null">
+				device_channel_nums = #{deviceChannelNums,jdbcType=INTEGER},
+			</if>
+			<if test="deviceServerType != null">
+				device_server_type = #{deviceServerType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceRealType != null">
+				device_real_type = #{deviceRealType,jdbcType=INTEGER},
+			</if>
+			<if test="deviceFactoryName != null">
+				device_factory_name = #{deviceFactoryName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceAddress != null">
+				device_address = #{deviceAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="car != null">
+				device_car_id = #{car.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="car != null">
+				device_car_code = #{car.carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="manager != null">
+				device_manager_id = #{manager.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="manager != null">
+				device_manager_name = #{manager.managerName,jdbcType=VARCHAR},
+			</if>
+			<if test="manager != null">
+				device_manager_phone = #{manager.managerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="isRunning != null">
+				is_running = #{isRunning,jdbcType=TINYINT},
+			</if>
+			<if test="deviceLongitude != null">
+				device_longitude = #{deviceLongitude,jdbcType=DECIMAL},
+			</if>
+			<if test="deviceLatitude != null">
+				device_latitude = #{deviceLatitude,jdbcType=DECIMAL},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isSynDaHua != null">
+				is_syn_dahua = = #{isSynDaHua,jdbcType=TINYINT},
+			</if>
+			<if test="deviceIp != null">
+				device_ip = #{deviceIp,jdbcType=VARCHAR},
+			</if>
+			<if test="devicePort != null">
+				device_port = #{devicePort,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceLoginName != null">
+				device_login_name = #{deviceLoginName,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceLoginPassword != null">
+				device_login_password = #{deviceLoginPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceTypeDaHua != null">
+				device_type_dahua = #{deviceTypeDaHua,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceStatus != null">
+				device_status = #{deviceStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceInstalledUser != null">
+				device_installed_user = #{deviceInstalledUser,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceInstalledUserPhone != null">
+				device_installed_user_phone = #{deviceInstalledUserPhone,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="DeviceResultMap">
+		${sql}
+	</select>
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="DeviceResultMap">
+		${sql}
+	</select>
+	<!-- 根据工厂id查询设备编号 -->
+	<select id="queryDeviceCodeBySiteId" parameterType="string" resultType="string">
+	    select 
+	    	device_code
+	    from 
+	    	t_site_device
+	    <where>
+	        site_id = #{siteId,typeHandler=com.muck.handler.IdTypeHandler}
+	    </where>
+	</select>
+	<!-- 根据工厂id列表查询设备编号 -->
+	<select id="queryDeviceCodeBySiteIds" parameterType="string" resultType="string">
+	    select 
+	    	device_code
+	    from 
+	    	t_site_device
+	    <where>
+	        site_id in (#{siteIds})
+	    </where>
+	</select>
+	<!-- 根据处置场id查询设备编号 -->
+	<select id="queryDeviceCodeByDisposalId" parameterType="string" resultType="string">
+	    select 
+	    	device_code
+	    from 
+	    	t_disposal_device
+	    <where>
+	        disposal_id = #{disposalId,typeHandler=com.muck.handler.IdTypeHandler}
+	    </where>
+	</select>
+	<!-- 根据处置场id查询设备编号 -->
+	<select id="queryDeviceCodeByDisposalIds" parameterType="string" resultType="string">
+	    select 
+	    	device_code
+	    from 
+	    	t_disposal_device
+	    <where>
+	        disposal_id in #{disposalIds}
+	    </where>
+	</select>
+		
+	<!-- 根据区域id和企业id数组查询设备  -->
+	<select id="selectByCondition" resultMap="DeviceResultMap">
+		SELECT
+			td.id,td.device_code,td.device_name,td.device_ip,td.device_port,td.device_login_name,td.device_login_password,
+			td.device_status,
+			td.device_register_code,
+			td.device_installed_time,
+			td.device_type,td.device_made_time,td.device_factory_name,
+			td.is_running,td.device_longitude,td.device_latitude
+		FROM
+			t_device td
+		WHERE
+			td.device_code in(
+								SELECT
+									DISTINCT(tad.device_code)
+								FROM
+									t_area_device tad , t_company_device tcd 
+								WHERE
+									tad.device_code = tcd.device_code AND
+									tad.area_code = #{areaId,jdbcType=VARCHAR} AND
+									tcd.company_id in (
+										<foreach collection="companyIds" item="companyId" separator=",">
+											#{companyId,typeHandler=com.muck.handler.IdTypeHandler}
+										</foreach>
+									)
+				)
+	</select>
+	<!-- 通过通道号查询设备编号 -->
+	<select id="queryDeviceCodeByChannelCode" parameterType="string" resultType="string">
+	    select 
+	    	device_code
+	    from
+	    	t_device_channel
+	    where 
+	    	channel_code = #{channelCode}
+	</select>
+	
+	<!-- 前台 -->
+	
+	<resultMap id="FrontSimpleDeviceListResultMap" type="com.muck.response.SimpleDeviceListResponse">
+		
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="is_running" property="isRunning" jdbcType="TINYINT" />
+		<result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+		<result column="device_site_id" property="siteId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="device_site_name" property="siteName" jdbcType="VARCHAR"/>
+		<result column="device_disposal_id" property="disposalId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="device_disposal_name" property="disposalName" jdbcType="VARCHAR"/>
+		<result column="channel_latitude" property="latitude" jdbcType="DOUBLE"/>
+		<result column="channel_longitude" property="longitude" jdbcType="DOUBLE"/>
+		<result column="channel_code" property="channelCode" jdbcType="VARCHAR"/>
+		<result column="channel_code" property="channelCode" jdbcType="VARCHAR"/>
+		<result column="channel_latitude" property="latitude" jdbcType="DOUBLE"/>
+		<result column="channel_longitude" property="longitude" jdbcType="DOUBLE"/>
+		<result column="site_project_manager_one" property="constructionManager" jdbcType="VARCHAR"/>
+		<result column="site_project_manager_phone_one" property="constructionPhone" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 首页(根据工地id、处置场id、设备名称查询设备列表),返回最基本的信息 -->
+	<select id="selectDevicesByCondition" parameterType="com.muck.query.DeviceQueryForm" resultMap="FrontSimpleDeviceListResultMap">
+		select
+		    <if test="deviceType ==1">
+		    tbspi.construction_unit,
+		    tbspi.construction_unit_manager_phone,
+		    </if>
+			device.id,
+			device.is_running,
+			device.device_name,
+			device.device_site_id,
+			device.device_site_name,
+			device.device_disposal_id,
+			device.device_disposal_name,
+			device.device_register_code,
+			channel.channel_code,
+			channel.channel_latitude,
+			channel.channel_longitude
+		from
+			t_device device
+		left join t_device_channel device_channel on device.device_code = device_channel.device_code
+		left join t_channel channel on device_channel.channel_code = channel.channel_code
+		<if test="deviceType ==1">
+		left join t_site ts on ts.site_id=channel.channel_code 
+		left join t_biz_site_project_info tbspi on ts.site_register_code=tbspi.site_device_register_code
+		</if>
+		<where>
+			<if test="siteId != null and siteId != ''">
+				and device.device_site_id = #{siteId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			<if test="deviceName != null and deviceName != ''">
+				and device.device_name like CONCAT('%', #{deviceName,jdbcType=VARCHAR} ,'%')
+			</if>
+			<if test="disposalId != null and disposalId != ''">
+				and device.device_disposal_id = #{disposalId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			<if test="deviceType != null">
+				and device.device_type = #{deviceType,jdbcType=INTEGER}
+			</if>
+			and device.deleted = 1	
+		</where>
+	</select>
+	<!-- 根据设备id查询设备详情(包括两部分1、工地信息 2、设备信息) -->
+	<select id="selectDeviceAndSiteInfoById" parameterType="string" resultType="com.muck.response.SimpleDeviceAndSiteInfoResponse">
+		select 
+			ts.site_name as siteName,
+			td.device_area_name as areaName,
+			ts.site_address as siteAddress,
+			ts.company_name as companyName,
+			ts.site_project_manager_one as siteProjectManagerOne,
+			ts.site_project_manager_phone_one as siteProjectManagerPhoneOne,
+			ts.site_project_manager_two as siteProjectManagerTwo,
+			ts.site_project_manager_phone_two as siteProjectManagerPhoneTwo,
+			ts.site_cleaner_name as siteCleaner,
+			ts.site_cleaner_phone as siteCleanerPhone,
+			td.device_name as deviceName,
+			td.device_ip as deviceIP,
+			if(td.is_running = 1,'在线','离线') as statusName,
+			td.device_channel_nums as channelNums ,
+			if(td.device_type = 1 , '工地',if(td.device_type = 2 , '车辆' , '处置场')) as deviceTypeName,
+			if(td.device_factory_name = 1 , ' 大华' , '海康') as deviceFactoryName,
+			ts.site_process_memo as siteProcessMemo
+		from
+			t_device td
+		left join t_site ts on td.device_site_id = ts.id
+		where
+			td.id = #{deviceId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+	
+	<!-- 根据设备id查询设备详情(包括两部分1、处置场信息 2、设备信息) -->
+	<select id="selectDeviceAndDisposalInfoById" parameterType="string" resultType="com.muck.response.SimpleDeviceAndDisposalInfoResponse">
+		select 
+			tdis.disposal_name as disposalName,
+			td.device_area_name as areaName,
+			tdis.company_name as companyName,
+			tdis.disposal_principal_name1 as disposalProjectManagerOne,
+			tdis.disposal_principal_phone1 as disposalProjectManagerPhoneOne,
+			tdis.disposal_principal_name2 as disposalProjectManagerTwo,
+			tdis.disposal_principal_phone2 as disposalProjectManagerPhoneTwo,
+			td.device_name as deviceName,
+			td.device_ip as deviceIP,
+			if(td.is_running = 1,'在线','离线') as statusName,
+			td.device_channel_nums as channelNums ,
+			if(td.device_type = 1 , '工地',if(td.device_type = 2 , '车辆' , '处置场')) as deviceTypeName,
+			if(td.device_factory_name = 1 , ' 大华' , '海康') as deviceFactoryName,
+			tdis.memo as memo
+		from
+			t_device td
+		left join t_disposal tdis on td.device_disposal_id = tdis.id
+		where
+			td.id = #{deviceId,typeHandler=com.muck.handler.IdTypeHandler} and
+			td.deleted = 1
+	</select>
+	
+	<!-- 查询所有的设备号 -->
+	<select id="selectDeviceCodes" resultType="string">
+		select
+			device_code as deviceCode
+		from
+			t_device
+		where
+			deleted = 1	
+	</select>
+	
+	<!-- 将设备的工地信息维护到设备表中) -->
+	<update id="setDeviceAndSiteRelation">
+		UPDATE t_device 
+			INNER JOIN (SELECT
+			ts.id,
+			td.device_code,
+			ts.site_name,
+			ts.area_id
+		FROM
+			t_device td , t_device_channel tdc,t_site ts
+		WHERE
+			td.device_code = tdc.device_code AND
+			ts.site_id = tdc.channel_code) tmp ON tmp.device_code = t_device.device_code
+		SET
+			device_site_id = tmp.id,
+			device_site_name = tmp.site_name,
+			device_area_id = tmp.area_id
+	</update>
+	
+	<!-- 将设备的处置场信息维护到设备表中 -->
+	<update id="setDeviceAndDisposalRelation">
+		UPDATE t_device 
+			INNER JOIN (SELECT
+			tds.id,
+			tds.disposal_id,
+			tds.disposal_name,
+			td.device_code,
+			tds.area_id
+		FROM
+			t_device td , t_device_channel tdc, t_disposal tds
+		WHERE
+			td.device_code = tdc.device_code AND
+			tds.disposal_id = tdc.channel_code) tmp ON tmp.device_code = t_device.device_code
+		SET
+			t_device.device_disposal_id = tmp.id,
+			t_device.device_disposal_name = tmp.disposal_name,
+			t_device.device_area_id = tmp.area_id
+	</update>
+	
+	<resultMap id="SimpleDeviceTypeInfoResponseResultMap" type="com.muck.response.SimpleDeviceTypeInfoResponse">
+		<id column="id" property="deviceId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="device_register_id" property="deviceRegisterId" jdbcType="VARCHAR"/>
+		<result column="device_type" property="deviceType" jdbcType="INTEGER"/>
+		<result column="deviceTypeName" property="deviceTypeName" jdbcType="VARCHAR"/>
+		<result column="device_site_id" property="siteId"  typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="device_site_name" property="siteName" jdbcType="VARCHAR"/>
+		<result column="device_disposal_id" property="disposalId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="device_disposal_name" property="disposalName" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 根据设备的注册id查询设备的类型信息(是处置场，还是工地) -->
+	<select id="selectDeviceTypeByRegisterId" parameterType="string" resultMap="SimpleDeviceTypeInfoResponseResultMap">
+		select
+			id,
+			device_register_id,
+			device_type,
+			if(device_type = 1 , '工地',if(device_type = 2 , '车辆' , '处置场')) as deviceTypeName,
+			device_site_id,
+			device_site_name,
+			device_disposal_id,
+			device_disposal_name
+		from
+			t_device
+		where
+			device_register_id = #{registerId,jdbcType=VARCHAR} and
+			deleted = 1
+	</select>
+	
+	
+	<!-- 根据通道号查询设备的类型信息(是处置场，还是工地) -->
+	<select id="queryDeviceTypeByChannelCode" parameterType="string" resultMap="SimpleDeviceTypeInfoResponseResultMap">
+		select
+			device.id,
+			device.device_register_id,
+			device.device_type,
+			if(device.device_type = 1 , '工地',if(device.device_type = 2 , '车辆' , '处置场')) as deviceTypeName,
+			device.device_site_id,
+			device.device_site_name,
+			device.device_disposal_id,
+			device.device_disposal_name
+		from
+			t_device device join t_device_channel channel on device.device_code = channel.device_code
+		where
+			channel.channel_code = #{channelCode,jdbcType=VARCHAR} and
+			device.deleted = 1
+	</select>
+	
+	
+	<!-- 根据通道号查询设备的类型信息(是处置场，还是工地) -->
+	<select id="queryDeviceTypeByRegisterId" parameterType="string" resultMap="SimpleDeviceTypeInfoResponseResultMap">
+		select
+			device.id,
+			device.device_register_id,
+			device.device_type,
+			if(device.device_type = 1 , '工地',if(device.device_type = 2 , '车辆' , '处置场')) as deviceTypeName,
+			device.device_site_id,
+			device.device_site_name,
+			device.device_disposal_id,
+			device.device_disposal_name
+		from
+			t_device device
+		where
+			device.device_register_id = #{registerId,jdbcType=VARCHAR} and
+			device.deleted = 1
+	</select>
+	<update id="updateIsRunningByDeviceCode">
+	    update t_device set is_running = #{isRunning} where device_code = #{deviceCode} 
+	</update>
+</mapper>

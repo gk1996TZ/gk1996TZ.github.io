@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarDriverFamilyMemberMapper">
+	
+	<!-- 映射实体 -->
+	<resultMap id="CarDriverFamilyMemberResultMap" type="com.muck.domain.CarDriverFamilyMember">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="driver_id" property="carDriver.id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="driver_name" property="carDriver.driverName" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="relation" property="relation" jdbcType="VARCHAR" />
+		<result column="work_unit" property="workUnit" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="operator_model" property="operatorModel" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 添加车辆驾驶员家庭关系表	-->
+	<insert id="insert" parameterType="com.muck.domain.CarDriverFamilyMember">
+		insert into t_car_driver_family_member
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="carDriver != null">
+				driver_id,
+			</if>
+			<if test="carDriver != null">
+				driver_name,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="relation != null">
+				relation,
+			</if>
+			<if test="workUnit != null">
+				work_unit,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="operatorModel != null">
+				operator_model,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carDriver != null">
+				#{carDriver.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carDriver != null">
+				#{carDriver.driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="relation != null">
+				#{relation,jdbcType=VARCHAR},
+			</if>
+			<if test="workUnit != null">
+				#{workUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorModel != null">
+				#{operatorModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 批量插入驾驶员亲属数据 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_car_driver_family_member
+		(
+			id, 
+			driver_id, 
+			driver_name, 
+			driver_id_number, 
+			name, 
+			phone, 
+			relation, 
+			work_unit, 
+			memo, 
+			operator_model, 
+			deleted, 
+			operator_id, 
+			operator_name, 
+			created_time
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+				#{item.id,jdbcType=BIGINT}, 
+				#{item.carDriver.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{item.carDriver.driverName,jdbcType=VARCHAR}, 
+				#{item.carDriver.idNumber,jdbcType=VARCHAR}, 
+				#{item.name,jdbcType=VARCHAR}, 
+				#{item.phone,jdbcType=VARCHAR}, 
+				#{item.relation,jdbcType=VARCHAR}, 
+				#{item.workUnit,jdbcType=VARCHAR}, 
+				#{item.memo,jdbcType=VARCHAR}, 
+				#{item.operatorModel,jdbcType=VARCHAR}, 
+				#{item.deleted,jdbcType=TINYINT}, 
+				#{item.operatorId,jdbcType=BIGINT}, 
+				#{item.operatorName,jdbcType=VARCHAR}, 
+				#{item.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		driver_id = values(driver_id),
+		driver_name = values(driver_name), 
+		driver_id_number = values(driver_id_number),
+		name = values(name), 
+		phone = values(phone), 
+		relation = values(relation), 
+		work_unit = values(work_unit), 
+		memo = values(memo), 
+		operator_model = values(operator_model), 
+	   	deleted = values(deleted), 
+	   	operator_id = values(operator_id), 
+	   	operator_name = values(operator_name), 
+	   	created_time = values(created_time)
+	</insert>
+	
+	<!-- 设置维护驾驶员和家庭成员的的关系 -->
+	<update id="setCarDriverAndCarDriverFamilyMemberRelation">
+		UPDATE t_car_driver_family_member
+		INNER JOIN (SELECT id,id_number FROM
+		t_car_driver) car_driver ON car_driver.id_number =
+		t_car_driver_family_member.driver_id_number
+		SET t_car_driver_family_member.driver_id =
+		car_driver.id
+	</update>
+	
+	
+	<!-- 更新车辆驾驶员家庭关系表 -->
+	<update id="updateById" parameterType="com.muck.domain.CarDriverFamilyMember">
+		update t_car_driver_family_member
+		<set>
+			<if test="carDriver != null">
+				driver_id = #{carDriver.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carDriver != null">
+				driver_name = #{carDriver.driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="relation != null">
+				relation = #{relation,jdbcType=VARCHAR},
+			</if>
+			<if test="workUnit != null">
+				work_unit = #{workUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorModel != null">
+				operator_model = #{operatorModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 批量保存驾驶员家庭成员信息 -->
+	<insert id="insertBatch">
+		insert into t_car_driver_family_member
+		(
+			driver_id, 
+			driver_name, 
+			driver_id_number,
+			name, 
+			phone, 
+			relation, 
+			work_unit, 
+			memo, 
+			operator_model, 
+	    	deleted, 
+	    	operator_id, 
+	    	operator_name, 
+	    	created_time
+    	)
+		values
+		<foreach collection="members" item="member" separator=",">   
+			(
+				#{carDriver.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{carDriver.driverName,jdbcType=VARCHAR},
+				#{carDriver.idNumber,jdbcType=VARCHAR},
+				#{member.name,jdbcType=VARCHAR},
+				#{member.phone,jdbcType=VARCHAR},
+				#{member.relation,jdbcType=VARCHAR},
+				#{member.workUnit,jdbcType=VARCHAR},
+				#{member.memo,jdbcType=VARCHAR},
+				#{member.operatorModel,jdbcType=VARCHAR},
+				#{carDriver.deleted,jdbcType=TINYINT},
+				#{carDriver.operatorId,jdbcType=BIGINT},
+				#{carDriver.operatorName,jdbcType=VARCHAR},
+				#{carDriver.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		driver_id = values(driver_id),
+		driver_name = values(driver_name), 
+		driver_id_number = values(driver_id_number),
+		name = values(name), 
+		phone = values(phone), 
+		relation = values(relation), 
+		work_unit = values(work_unit), 
+		memo = values(memo), 
+		operator_model = values(operator_model), 
+	   	deleted = values(deleted), 
+	   	operator_id = values(operator_id), 
+	   	operator_name = values(operator_name), 
+	   	created_time = values(created_time)
+	</insert>
+	
+	<!-- 根据驾驶员id物理删除真正的驾驶员对应的家庭成员 -->
+	<delete id="deleteByCarDriverIdReal" parameterType="string">
+		delete from
+			t_car_driver_family_member
+		where
+			driver_id = #{carDriverId,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.ManagerPrivilegeGroupMapper">
+	
+	<!-- 根据用户ids删除此用户下面的权限 	-->
+	<delete id="deleteByManagerIds" parameterType="string">
+		delete from t_manager_privilegegroup where manager_id in
+		<foreach collection="array" item="managerId" open="("  separator="," close=")">  
+            #{managerId,typeHandler=com.muck.handler.IdTypeHandler}  
+        </foreach>  
+	</delete>
+	
+	<!-- 批量添加数据 -->
+	<insert id="insertBatch" parameterType="map">
+		insert into t_manager_privilegegroup(manager_id,privilege_group_id)
+		values
+		<foreach collection="managerIds" item="managerId" separator=",">
+			<foreach collection="privilegeGroupIds" item="pgId" separator=",">
+				(#{managerId,typeHandler=com.muck.handler.IdTypeHandler},
+  				 #{pgId,typeHandler=com.muck.handler.IdTypeHandler}
+  				)
+			</foreach>
+		</foreach>	
+	</insert>
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.LogMapper">
+	<resultMap id="LogResultMap" type="com.muck.domain.Log">
+		<id column="id" property="id" jdbcType="VARCHAR"/>
+		<result column="operator_type" property="operatorType" jdbcType="VARCHAR" />
+		<result column="operator_time" property="operatorTime" jdbcType="TIMESTAMP" />
+		<result column="operator_result" property="operatorResult" jdbcType="VARCHAR" />
+		<result column="operator_result_msg" property="operatorResultMsg" jdbcType="VARCHAR" />
+		<result column="operator_params" property="operatorParams" jdbcType="VARCHAR" />
+		<result column="operator_account" property="operatorAccount" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="operator_model" property="operatorModel" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="operator_phone" property="operatorPhone" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id, operator_type, operator_time, operator_result, operator_account, memo, operator_model,
+		deleted, operator_id, operator_name, operator_phone,created_time,operator_result_msg,operator_params
+	</sql>
+	
+	<!-- 添加日志	 -->
+	<insert id="insert" parameterType="com.muck.domain.Log">
+		insert into t_log
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="operatorType != null">
+				operator_type,
+			</if>
+			<if test="operatorTime != null">
+				operator_time,
+			</if>
+			<if test="operatorResult != null">
+				operator_result,
+			</if>
+			<if test="operatorAccount != null">
+				operator_account,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="operatorModel != null">
+				operator_model,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="operatorPhone != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="operatorResultMsg != null">
+				operator_result_msg,
+			</if>
+			<if test="operatorParams != null">
+				operator_params,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR },
+			</if>
+			<if test="operatorType != null">
+				#{operatorType,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorTime != null">
+				#{operatorTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatorResult != null">
+				#{operatorResult,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorAccount != null">
+				#{operatorAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorModel != null">
+				#{operatorModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorPhone != null">
+				#{operatorPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatorResultMsg != null">
+				#{operatorResultMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorParams != null">
+				#{operatorParams,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="LogResultMap">
+		${sql}
+	</select>
+	
+	<!-- 执行sql语句 -->
+	<insert id="executeSQL" parameterType="string">
+		${sql}
+	</insert>
+	
+	<!-- 查询出日志表名称 -->
+	<select id="selectTableName" parameterType="string" resultType="string">
+		${sql}
+	</select>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="LogResultMap">
+		${sql}
+	</select>
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+</mapper>

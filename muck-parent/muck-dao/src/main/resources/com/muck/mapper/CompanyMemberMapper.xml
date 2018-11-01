@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CompanyMemberMapper">
+
+	<resultMap id="CompanyMemberResultMap" type="com.muck.domain.CompanyMember">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="member_name" property="memberName" jdbcType="VARCHAR" />
+		<result column="member_sex" property="memberSex" jdbcType="VARCHAR" />
+		<result column="member_birth" property="memberBirth" jdbcType="TIMESTAMP" />
+		<result column="job_name" property="jobName" jdbcType="VARCHAR" />
+		<result column="graduate_info" property="graduateInfo"
+			jdbcType="VARCHAR" />
+		<result column="culture_degree" property="cultureDegree"
+			jdbcType="VARCHAR" />
+		<result column="commpany_manage_year" property="cultureDegree"
+			jdbcType="VARCHAR" />
+		<result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+		<result column="from_when_to_when" property="fromWhenToWhen"
+			jdbcType="VARCHAR" />
+		<result column="at_where_and_job" property="atWhereAndJob"
+			jdbcType="VARCHAR" />
+		<result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="member_type" property="memberType" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 根据id查询企业,返回的是一个实体对象 -->
+	<select id="selectById" parameterType="string" resultMap="CompanyMemberResultMap">
+		select
+		id,
+		member_name,
+		member_sex,
+		member_birth,
+		job_name,
+		graduate_info,
+		culture_degree,
+		company_manage_year,
+		phone_number,
+		from_when_to_when,
+		at_where_and_job,
+		deleted,
+		operator_id,
+		operator_name,
+		member_type,
+		created_time,
+		updated_time
+		from
+		t_company_member
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		deleted = 1
+	</select>
+
+
+	<!-- 添加企业 -->
+	<insert id="insert" parameterType="com.muck.domain.CompanyMember">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_company_member
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="memberName != null">
+				member_name,
+			</if>
+			<if test="memberSex != null">
+				member_sex,
+			</if>
+			<if test="memberBirth != null">
+				member_birth,
+			</if>
+			<if test="jobName != null">
+				job_name,
+			</if>
+			<if test="graduateInfo != null">
+				graduate_info,
+			</if>
+			<if test="cultureDegree != null">
+				culture_degree,
+			</if>
+			<if test="companyManageYear != null">
+				company_manage_year,
+			</if>
+			<if test="phoneNumber != null">
+				phone_number,
+			</if>
+			<if test="fromWhenToWhen != null">
+				from_when_to_when,
+			</if>
+			<if test="atWhereAndJob != null">
+				at_where_and_job,
+			</if>
+			<if test="imageUrl != null">
+				image_url,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="memberType != null">
+				member_type,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT}
+			</if>
+			<if test="memberName != null">
+				#{memberName,jdbcType=VARCHAR},
+			</if>
+			<if test="memberSex != null">
+				#{memberSex,jdbcType=VARCHAR},
+			</if>
+			<if test="memberBirth != null">
+				#{memberBirth,jdbcType=VARCHAR},
+			</if>
+			<if test="jobName != null">
+				#{jobName,jdbcType=VARCHAR},
+			</if>
+			<if test="graduateInfo != null">
+				#{graduateInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="cultureDegree != null">
+				#{cultureDegree,jdbcType=VARCHAR},
+			</if>
+			<if test="companyManageYear != null">
+				#{companyManageYear,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				#{phoneNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="fromWhenToWhen != null">
+				#{fromWhenToWhen,jdbcType=VARCHAR},
+			</if>
+			<if test="atWhereAndJob != null">
+				#{atWhereAndJob,jdbcType=VARCHAR},
+			</if>
+			<if test="imageUrl != null">
+				#{imageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="memberType != null">
+				#{memberType,jdbcType=INTEGER},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+		ON DUPLICATE KEY UPDATE
+		member_name=values(member_name),
+		member_sex=values(member_sex),
+		member_birth=values(member_birth),
+		job_name=values(job_name),
+		graduate_info=values(graduate_info),
+		culture_degree=values(culture_degree),
+		company_manage_year=values(company_manage_year),
+		from_when_to_when=values(from_when_to_when),
+		at_where_and_job=values(at_where_and_job),
+		image_url=values(image_url),
+		deleted=values(deleted),
+		operator_id=values(operator_id),
+		operator_name=values(operator_name),
+		member_type=values(member_type),
+		created_time=values(created_time),
+		updated_time=values(updated_time)
+	</insert>
+
+
+
+</mapper>

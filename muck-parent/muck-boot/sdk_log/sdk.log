@@ -1,0 +1,831 @@
+Begin Time:2018-07-16 18:04:16.194
+[2018-07-16 18:04:16.194][P:4332/T:7204][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-16 18:04:16.194][P:4332/T:7204][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-16 18:04:16.205][P:4332/T:7204][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=00000000021D0050, dwUserData=0000000000000000.]
+[2018-07-16 18:04:16.207][P:4332/T:7204][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=224279392.]
+Begin Time:2018-07-16 18:14:47.603
+[2018-07-16 18:14:47.604][P:5356/T:4876][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-16 18:14:47.604][P:5356/T:4876][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-16 18:14:47.614][P:5356/T:4876][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000002380050, dwUserData=0000000000000000.]
+[2018-07-16 18:14:47.615][P:5356/T:4876][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=267664656.]
+Begin Time:2018-07-17 11:45:01.244
+[2018-07-17 11:45:01.245][P:6564/T:6824][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-17 11:45:01.245][P:6564/T:6824][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-17 11:45:01.255][P:6564/T:6824][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=00000000057B0050, dwUserData=0000000000000000.]
+[2018-07-17 11:45:01.256][P:6564/T:6824][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=169164048.]
+Begin Time:2018-07-17 15:59:09.115
+[2018-07-17 15:59:09.115][P:6376/T:3384][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-17 15:59:09.116][P:6376/T:3384][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-17 15:59:09.124][P:6376/T:3384][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.18, port=9500, nTimeout=1000, cbListen=0000000002460050, dwUserData=0000000000000000.]
+[2018-07-17 15:59:09.125][P:6376/T:3384][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-17 15:59:09.125][P:6376/T:3384][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.2.18, port:9500, callback:0000000012962CD0
+[2018-07-17 15:59:09.126][P:6376/T:3384][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-17 15:59:09.126][P:6376/T:3384][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-17 15:59:09.126][P:6376/T:3384][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-17 16:10:41.329
+[2018-07-17 16:10:41.329][P:5324/T:6028][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-17 16:10:41.329][P:5324/T:6028][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-17 16:10:41.339][P:5324/T:6028][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000000300050, dwUserData=0000000000000000.]
+[2018-07-17 16:10:41.339][P:5324/T:6028][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=317757392.]
+Begin Time:2018-07-17 18:22:57.804
+[2018-07-17 18:22:57.804][P:7024/T:4028][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-17 18:22:57.804][P:7024/T:4028][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-17 18:22:57.854][P:7024/T:4028][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=00000000023B0050, dwUserData=0000000000000000.]
+[2018-07-17 18:22:57.856][P:7024/T:4028][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=276609280.]
+Begin Time:2018-07-18 11:28:05.830
+[2018-07-18 11:28:05.830][P:6520/T:3032][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-18 11:28:05.830][P:6520/T:3032][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-18 11:28:05.840][P:6520/T:3032][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000002500050, dwUserData=0000000000000000.]
+[2018-07-18 11:28:05.842][P:6520/T:3032][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284599248.]
+Begin Time:2018-07-18 12:46:26.672
+[2018-07-18 12:46:26.672][P:7648/T:5392][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-18 12:46:26.672][P:7648/T:5392][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-18 12:46:26.686][P:7648/T:5392][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=00000000003D0050, dwUserData=0000000000000000.]
+[2018-07-18 12:46:26.687][P:7648/T:5392][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=276991920.]
+Begin Time:2018-07-18 12:52:59.429
+[2018-07-18 12:52:59.429][P:8332/T:8608][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-18 12:52:59.429][P:8332/T:8608][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-18 12:52:59.438][P:8332/T:8608][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000000450050, dwUserData=0000000000000000.]
+[2018-07-18 12:52:59.439][P:8332/T:8608][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=249403408.]
+Begin Time:2018-07-18 14:18:47.602
+[2018-07-18 14:18:47.602][P:6788/T:7164][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-18 14:18:47.602][P:6788/T:7164][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-18 14:18:47.620][P:6788/T:7164][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000001E60050, dwUserData=0000000000000000.]
+[2018-07-18 14:18:47.621][P:6788/T:7164][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284507328.]
+Begin Time:2018-07-18 14:35:23.825
+[2018-07-18 14:35:23.825][P:6500/T:7368][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-18 14:35:23.825][P:6500/T:7368][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-18 14:35:23.833][P:6500/T:7368][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.50, port=9500, nTimeout=1000, cbListen=0000000000530050, dwUserData=0000000000000000.]
+[2018-07-18 14:35:23.833][P:6500/T:7368][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=298882416.]
+Begin Time:2018-07-19 09:52:33.482
+[2018-07-19 09:52:33.482][P:4624/T:6184][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 09:52:33.482][P:4624/T:6184][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 09:52:33.491][P:4624/T:6184][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.18, port=9500, nTimeout=1000, cbListen=00000000025D0050, dwUserData=0000000000000000.]
+[2018-07-19 09:52:33.492][P:4624/T:6184][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-19 09:52:33.492][P:4624/T:6184][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.2.18, port:9500, callback:0000000011632CD0
+[2018-07-19 09:52:33.493][P:4624/T:6184][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-19 09:52:33.493][P:4624/T:6184][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-19 09:52:33.493][P:4624/T:6184][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-19 10:45:50.442
+[2018-07-19 10:45:50.442][P:6844/T:6504][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 10:45:50.442][P:6844/T:6504][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 10:45:50.454][P:6844/T:6504][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.2.18, port=9500, nTimeout=1000, cbListen=00000000025E0050, dwUserData=0000000000000000.]
+[2018-07-19 10:45:50.455][P:6844/T:6504][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-19 10:45:50.455][P:6844/T:6504][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.2.18, port:9500, callback:0000000012B12CD0
+[2018-07-19 10:45:50.455][P:6844/T:6504][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-19 10:45:50.455][P:6844/T:6504][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-19 10:45:50.455][P:6844/T:6504][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-19 10:58:56.118
+[2018-07-19 10:58:56.119][P:3528/T:7552][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 10:58:56.119][P:3528/T:7552][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 10:58:56.127][P:3528/T:7552][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000024C0050, dwUserData=0000000000000000.]
+[2018-07-19 10:58:56.128][P:3528/T:7552][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=272996432.]
+Begin Time:2018-07-19 11:14:37.782
+[2018-07-19 11:14:37.783][P:8112/T:6912][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:14:37.783][P:8112/T:6912][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:14:37.791][P:8112/T:6912][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000023F0050, dwUserData=0000000000000000.]
+[2018-07-19 11:14:37.791][P:8112/T:6912][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=300563920.]
+Begin Time:2018-07-19 11:16:25.649
+[2018-07-19 11:16:25.649][P:6452/T:7600][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:16:25.649][P:6452/T:7600][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:16:25.658][P:6452/T:7600][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000001C80050, dwUserData=0000000000000000.]
+[2018-07-19 11:16:25.659][P:6452/T:7600][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=252626656.]
+Begin Time:2018-07-19 11:20:00.322
+[2018-07-19 11:20:00.322][P:5708/T:7560][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:20:00.322][P:5708/T:7560][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:20:00.332][P:5708/T:7560][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000000500050, dwUserData=0000000000000000.]
+[2018-07-19 11:20:00.332][P:5708/T:7560][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=272670048.]
+Begin Time:2018-07-19 11:25:32.196
+[2018-07-19 11:25:32.196][P:2408/T:6636][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:25:32.196][P:2408/T:6636][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:25:32.205][P:2408/T:6636][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000005B00050, dwUserData=0000000000000000.]
+[2018-07-19 11:25:32.205][P:2408/T:6636][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=259441232.]
+Begin Time:2018-07-19 11:29:02.803
+[2018-07-19 11:29:02.803][P:6888/T:7964][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:29:02.803][P:6888/T:7964][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:29:02.811][P:6888/T:7964][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000004D0050, dwUserData=0000000000000000.]
+[2018-07-19 11:29:02.812][P:6888/T:7964][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=266681456.]
+Begin Time:2018-07-19 11:33:45.464
+[2018-07-19 11:33:45.464][P:8164/T:7972][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:33:45.464][P:8164/T:7972][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:33:45.475][P:8164/T:7972][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002450050, dwUserData=0000000000000000.]
+[2018-07-19 11:33:45.476][P:8164/T:7972][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=301112112.]
+Begin Time:2018-07-19 11:56:38.767
+[2018-07-19 11:56:38.767][P:6776/T:6860][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 11:56:38.767][P:6776/T:6860][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 11:56:38.776][P:6776/T:6860][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000000400050, dwUserData=0000000000000000.]
+[2018-07-19 11:56:38.776][P:6776/T:6860][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=280664144.]
+Begin Time:2018-07-19 12:06:01.139
+[2018-07-19 12:06:01.139][P:8056/T:6020][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 12:06:01.139][P:8056/T:6020][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 12:06:01.147][P:8056/T:6020][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000024C0050, dwUserData=0000000000000000.]
+[2018-07-19 12:06:01.147][P:8056/T:6020][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=276470256.]
+Begin Time:2018-07-19 12:42:11.733
+[2018-07-19 12:42:11.733][P:8136/T:2884][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 12:42:11.733][P:8136/T:2884][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 12:42:11.745][P:8136/T:2884][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000004F0050, dwUserData=0000000000000000.]
+[2018-07-19 12:42:11.745][P:8136/T:2884][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=302303376.]
+Begin Time:2018-07-19 13:44:03.521
+[2018-07-19 13:44:03.522][P:7648/T:6632][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 13:44:03.522][P:7648/T:6632][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 13:44:03.530][P:7648/T:6632][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002510050, dwUserData=0000000000000000.]
+[2018-07-19 13:44:03.531][P:7648/T:6632][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=286429840.]
+Begin Time:2018-07-19 13:59:23.491
+[2018-07-19 13:59:23.491][P:6560/T:7784][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 13:59:23.491][P:6560/T:7784][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 13:59:23.499][P:6560/T:7784][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002610050, dwUserData=0000000000000000.]
+[2018-07-19 13:59:23.499][P:6560/T:7784][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=270766000.]
+Begin Time:2018-07-19 14:05:29.481
+[2018-07-19 14:05:29.481][P:8000/T:7372][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:05:29.481][P:8000/T:7372][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:05:29.490][P:8000/T:7372][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-07-19 14:05:29.490][P:8000/T:7372][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282325648.]
+Begin Time:2018-07-19 14:12:11.399
+[2018-07-19 14:12:11.399][P:6832/T:6508][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:12:11.399][P:6832/T:6508][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:12:11.408][P:6832/T:6508][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002510050, dwUserData=0000000000000000.]
+[2018-07-19 14:12:11.408][P:6832/T:6508][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284988048.]
+Begin Time:2018-07-19 14:17:07.144
+[2018-07-19 14:17:07.144][P:6708/T:5708][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:17:07.144][P:6708/T:5708][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:17:07.153][P:6708/T:5708][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000008B90050, dwUserData=0000000000000000.]
+[2018-07-19 14:17:07.153][P:6708/T:5708][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=296719728.]
+Begin Time:2018-07-19 14:24:58.919
+[2018-07-19 14:24:58.919][P:7472/T:1688][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:24:58.919][P:7472/T:1688][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:24:58.929][P:7472/T:1688][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000005B10050, dwUserData=0000000000000000.]
+[2018-07-19 14:24:58.930][P:7472/T:1688][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=268091088.]
+Begin Time:2018-07-19 14:34:45.417
+[2018-07-19 14:34:45.417][P:6916/T:1232][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:34:45.417][P:6916/T:1232][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:34:45.427][P:6916/T:1232][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000024C0050, dwUserData=0000000000000000.]
+[2018-07-19 14:34:45.428][P:6916/T:1232][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=157980752.]
+Begin Time:2018-07-19 14:39:06.757
+[2018-07-19 14:39:06.757][P:3308/T:7928][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:39:06.757][P:3308/T:7928][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:39:06.759][P:3308/T:7928][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000005B20050, dwUserData=0000000000000000.]
+[2018-07-19 14:39:06.760][P:3308/T:7928][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=298819088.]
+Begin Time:2018-07-19 14:44:01.472
+[2018-07-19 14:44:01.472][P:8016/T:6968][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 14:44:01.472][P:8016/T:6968][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 14:44:01.474][P:8016/T:6968][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000000440050, dwUserData=0000000000000000.]
+[2018-07-19 14:44:01.475][P:8016/T:6968][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=289128128.]
+Begin Time:2018-07-19 15:22:45.780
+[2018-07-19 15:22:45.780][P:7860/T:8128][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 15:22:45.780][P:7860/T:8128][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 15:22:45.782][P:7860/T:8128][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002480050, dwUserData=0000000000000000.]
+[2018-07-19 15:22:45.784][P:7860/T:8128][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=286822000.]
+Begin Time:2018-07-19 17:53:20.864
+[2018-07-19 17:53:20.864][P:8492/T:7072][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 17:53:20.864][P:8492/T:7072][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 17:53:20.866][P:8492/T:7072][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002450050, dwUserData=0000000000000000.]
+[2018-07-19 17:53:20.868][P:8492/T:7072][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-19 17:53:20.868][P:8492/T:7072][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.101, port:9500, callback:0000000011262CD0
+[2018-07-19 17:53:20.868][P:8492/T:7072][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-19 17:53:20.868][P:8492/T:7072][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-19 17:53:20.868][P:8492/T:7072][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-19 17:58:27.640
+[2018-07-19 17:58:27.640][P:6468/T:7916][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-19 17:58:27.640][P:6468/T:7916][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-19 17:58:27.642][P:6468/T:7916][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000001CC0050, dwUserData=0000000000000000.]
+[2018-07-19 17:58:27.642][P:6468/T:7916][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-19 17:58:27.642][P:6468/T:7916][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.101, port:9500, callback:0000000011422CD0
+[2018-07-19 17:58:27.642][P:6468/T:7916][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-19 17:58:27.643][P:6468/T:7916][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-19 17:58:27.643][P:6468/T:7916][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-20 11:11:17.510
+[2018-07-20 11:11:17.510][P:6836/T:7576][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-20 11:11:17.510][P:6836/T:7576][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-20 11:11:17.514][P:6836/T:7576][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-07-20 11:11:17.515][P:6836/T:7576][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-20 11:11:17.515][P:6836/T:7576][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.101, port:9500, callback:00000000119F2CD0
+[2018-07-20 11:11:17.515][P:6836/T:7576][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-20 11:11:17.515][P:6836/T:7576][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-20 11:11:17.515][P:6836/T:7576][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-20 11:19:20.923
+[2018-07-20 11:19:20.923][P:9100/T:5164][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-20 11:19:20.923][P:9100/T:5164][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-20 11:19:20.926][P:9100/T:5164][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000003E0050, dwUserData=0000000000000000.]
+[2018-07-20 11:19:20.927][P:9100/T:5164][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=285984912.]
+Begin Time:2018-07-23 12:25:11.020
+[2018-07-23 12:25:11.020][P:1060/T:836][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 12:25:11.020][P:1060/T:836][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 12:25:11.032][P:1060/T:836][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001DB0050, dwUserData=0000000000000000.]
+[2018-07-23 12:25:11.032][P:1060/T:836][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 12:25:11.033][P:1060/T:836][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000011212CD0
+[2018-07-23 12:25:11.033][P:1060/T:836][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 12:25:11.033][P:1060/T:836][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 12:25:11.033][P:1060/T:836][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 12:41:40.853
+[2018-07-23 12:41:40.853][P:3672/T:6896][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 12:41:40.853][P:3672/T:6896][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 12:41:40.864][P:3672/T:6896][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000023C0050, dwUserData=0000000000000000.]
+[2018-07-23 12:41:40.864][P:3672/T:6896][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 12:41:40.865][P:3672/T:6896][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:00000000110E2CD0
+[2018-07-23 12:41:40.865][P:3672/T:6896][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 12:41:40.865][P:3672/T:6896][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 12:41:40.865][P:3672/T:6896][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 12:44:21.792
+[2018-07-23 12:44:21.792][P:1588/T:4860][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 12:44:21.792][P:1588/T:4860][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 12:44:21.800][P:1588/T:4860][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D50050, dwUserData=0000000000000000.]
+[2018-07-23 12:44:21.801][P:1588/T:4860][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 12:44:21.801][P:1588/T:4860][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:00000000117E2CD0
+[2018-07-23 12:44:21.801][P:1588/T:4860][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 12:44:21.801][P:1588/T:4860][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 12:44:21.801][P:1588/T:4860][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 12:48:40.391
+[2018-07-23 12:48:40.391][P:4400/T:5136][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 12:48:40.392][P:4400/T:5136][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 12:48:40.401][P:4400/T:5136][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001DB0050, dwUserData=0000000000000000.]
+[2018-07-23 12:48:40.401][P:4400/T:5136][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 12:48:40.401][P:4400/T:5136][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:00000000123D2CD0
+[2018-07-23 12:48:40.401][P:4400/T:5136][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 12:48:40.401][P:4400/T:5136][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 12:48:40.401][P:4400/T:5136][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 12:53:39.183
+[2018-07-23 12:53:39.183][P:7396/T:6292][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 12:53:39.183][P:7396/T:6292][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 12:53:39.192][P:7396/T:6292][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000440050, dwUserData=0000000000000000.]
+[2018-07-23 12:53:39.192][P:7396/T:6292][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 12:53:39.192][P:7396/T:6292][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000012702CD0
+[2018-07-23 12:53:39.192][P:7396/T:6292][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 12:53:39.192][P:7396/T:6292][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 12:53:39.192][P:7396/T:6292][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 13:02:34.795
+[2018-07-23 13:02:34.796][P:8128/T:7400][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 13:02:34.796][P:8128/T:7400][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 13:02:34.806][P:8128/T:7400][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002190050, dwUserData=0000000000000000.]
+[2018-07-23 13:02:34.806][P:8128/T:7400][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 13:02:34.806][P:8128/T:7400][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000011402CD0
+[2018-07-23 13:02:34.806][P:8128/T:7400][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 13:02:34.806][P:8128/T:7400][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 13:02:34.806][P:8128/T:7400][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 13:06:47.017
+[2018-07-23 13:06:47.017][P:8016/T:2488][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 13:06:47.018][P:8016/T:2488][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 13:06:47.026][P:8016/T:2488][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000320050, dwUserData=0000000000000000.]
+[2018-07-23 13:06:47.026][P:8016/T:2488][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 13:06:47.026][P:8016/T:2488][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000011342CD0
+[2018-07-23 13:06:47.026][P:8016/T:2488][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 13:06:47.026][P:8016/T:2488][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 13:06:47.026][P:8016/T:2488][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 13:11:50.536
+[2018-07-23 13:11:50.536][P:4284/T:7560][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 13:11:50.536][P:4284/T:7560][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 13:11:50.552][P:4284/T:7560][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002200050, dwUserData=0000000000000000.]
+[2018-07-23 13:11:50.552][P:4284/T:7560][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 13:11:50.552][P:4284/T:7560][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000011062CD0
+[2018-07-23 13:11:50.552][P:4284/T:7560][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 13:11:50.553][P:4284/T:7560][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 13:11:50.553][P:4284/T:7560][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-07-23 13:21:16.782
+[2018-07-23 13:21:16.782][P:2792/T:7568][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-07-23 13:21:16.782][P:2792/T:7568][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-07-23 13:21:16.798][P:2792/T:7568][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000021C0050, dwUserData=0000000000000000.]
+[2018-07-23 13:21:16.798][P:2792/T:7568][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-07-23 13:21:16.798][P:2792/T:7568][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:00000000113E2CD0
+[2018-07-23 13:21:16.799][P:2792/T:7568][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-07-23 13:21:16.799][P:2792/T:7568][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-07-23 13:21:16.799][P:2792/T:7568][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-03 10:16:30.784
+[2018-08-03 10:16:30.784][P:4136/T:2476][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-03 10:16:30.784][P:4136/T:2476][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-03 10:16:30.794][P:4136/T:2476][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.0.15, port=9500, nTimeout=1000, cbListen=0000000000550050, dwUserData=0000000000000000.]
+[2018-08-03 10:16:30.795][P:4136/T:2476][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-03 10:16:30.795][P:4136/T:2476][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.0.15, port:9500, callback:0000000012972CD0
+[2018-08-03 10:16:30.795][P:4136/T:2476][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-03 10:16:30.795][P:4136/T:2476][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-03 10:16:30.795][P:4136/T:2476][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-03 10:18:17.800
+[2018-08-03 10:18:17.800][P:5432/T:1648][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-03 10:18:17.800][P:5432/T:1648][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-03 10:18:17.807][P:5432/T:1648][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.0.104, port=9500, nTimeout=1000, cbListen=0000000002510050, dwUserData=0000000000000000.]
+[2018-08-03 10:18:17.808][P:5432/T:1648][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-03 10:18:17.808][P:5432/T:1648][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.0.104, port:9500, callback:0000000011382CD0
+[2018-08-03 10:18:17.808][P:5432/T:1648][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-03 10:18:17.808][P:5432/T:1648][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-03 10:18:17.808][P:5432/T:1648][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-10 09:51:04.658
+[2018-08-10 09:51:04.659][P:2088/T:2356][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 09:51:04.659][P:2088/T:2356][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 09:51:04.667][P:2088/T:2356][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024E0050, dwUserData=0000000000000000.]
+[2018-08-10 09:51:04.668][P:2088/T:2356][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-10 09:51:04.668][P:2088/T:2356][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:0000000011772CD0
+[2018-08-10 09:51:04.668][P:2088/T:2356][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-10 09:51:04.669][P:2088/T:2356][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-10 09:51:04.669][P:2088/T:2356][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-10 09:57:36.151
+[2018-08-10 09:57:36.151][P:7140/T:6172][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 09:57:36.151][P:7140/T:6172][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 09:57:36.160][P:7140/T:6172][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.104, port=9500, nTimeout=1000, cbListen=0000000001C30050, dwUserData=0000000000000000.]
+[2018-08-10 09:57:36.161][P:7140/T:6172][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=285064896.]
+Begin Time:2018-08-10 20:07:00.026
+[2018-08-10 20:07:00.026][P:10180/T:9800][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:07:00.026][P:10180/T:9800][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:07:00.039][P:10180/T:9800][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.104, port=9500, nTimeout=1000, cbListen=0000000000530050, dwUserData=0000000000000000.]
+[2018-08-10 20:07:00.040][P:10180/T:9800][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-10 20:07:00.040][P:10180/T:9800][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.104, port:9500, callback:0000000011D02CD0
+[2018-08-10 20:07:00.040][P:10180/T:9800][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-10 20:07:00.041][P:10180/T:9800][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-10 20:07:00.041][P:10180/T:9800][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-10 20:12:31.476
+[2018-08-10 20:12:31.477][P:1612/T:4960][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:12:31.477][P:1612/T:4960][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:12:31.489][P:1612/T:4960][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=00000000026B0050, dwUserData=0000000000000000.]
+[2018-08-10 20:12:31.490][P:1612/T:4960][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=292371728.]
+Begin Time:2018-08-10 20:13:52.038
+[2018-08-10 20:13:52.039][P:10032/T:8972][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:13:52.039][P:10032/T:8972][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:13:52.051][P:10032/T:8972][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002480050, dwUserData=0000000000000000.]
+[2018-08-10 20:13:52.052][P:10032/T:8972][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=300891408.]
+Begin Time:2018-08-10 20:17:40.147
+[2018-08-10 20:17:40.147][P:5624/T:9012][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:17:40.147][P:5624/T:9012][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:17:40.160][P:5624/T:9012][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002350050, dwUserData=0000000000000000.]
+[2018-08-10 20:17:40.161][P:5624/T:9012][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=306432144.]
+Begin Time:2018-08-10 20:23:33.794
+[2018-08-10 20:23:33.794][P:9592/T:5480][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:23:33.794][P:9592/T:5480][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:23:33.812][P:9592/T:5480][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000001D20050, dwUserData=0000000000000000.]
+[2018-08-10 20:23:33.815][P:9592/T:5480][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=267271440.]
+Begin Time:2018-08-10 20:33:44.400
+[2018-08-10 20:33:44.401][P:9092/T:6176][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:33:44.401][P:9092/T:6176][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:33:44.411][P:9092/T:6176][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000000360050, dwUserData=0000000000000000.]
+[2018-08-10 20:33:44.412][P:9092/T:6176][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=280575248.]
+Begin Time:2018-08-10 20:40:57.848
+[2018-08-10 20:40:57.848][P:8464/T:10056][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:40:57.848][P:8464/T:10056][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:40:57.862][P:8464/T:10056][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002470050, dwUserData=0000000000000000.]
+[2018-08-10 20:40:57.863][P:8464/T:10056][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=151993616.]
+Begin Time:2018-08-10 20:42:56.228
+[2018-08-10 20:42:56.229][P:9636/T:9260][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-10 20:42:56.229][P:9636/T:9260][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-10 20:42:56.239][P:9636/T:9260][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=00000000025B0050, dwUserData=0000000000000000.]
+[2018-08-10 20:42:56.240][P:9636/T:9260][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=308559120.]
+Begin Time:2018-08-13 10:30:32.017
+[2018-08-13 10:30:32.017][P:6984/T:4816][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 10:30:32.017][P:6984/T:4816][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 10:30:32.027][P:6984/T:4816][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D00050, dwUserData=0000000000000000.]
+[2018-08-13 10:30:32.028][P:6984/T:4816][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-13 10:30:32.028][P:6984/T:4816][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.100, port:9500, callback:00000000118F2CD0
+[2018-08-13 10:30:32.028][P:6984/T:4816][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-13 10:30:32.028][P:6984/T:4816][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-13 10:30:32.028][P:6984/T:4816][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-13 10:31:46.435
+[2018-08-13 10:31:46.435][P:1640/T:3820][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 10:31:46.435][P:1640/T:3820][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 10:31:46.442][P:1640/T:3820][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000001C70050, dwUserData=0000000000000000.]
+[2018-08-13 10:31:46.442][P:1640/T:3820][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=280378640.]
+Begin Time:2018-08-13 16:22:16.349
+[2018-08-13 16:22:16.350][P:6720/T:1976][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 16:22:16.350][P:6720/T:1976][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 16:22:16.360][P:6720/T:1976][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002350050, dwUserData=0000000000000000.]
+[2018-08-13 16:22:16.361][P:6720/T:1976][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=279986144.]
+Begin Time:2018-08-13 16:25:41.745
+[2018-08-13 16:25:41.746][P:8568/T:8928][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 16:25:41.746][P:8568/T:8928][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 16:25:41.756][P:8568/T:8928][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000001E50050, dwUserData=0000000000000000.]
+[2018-08-13 16:25:41.757][P:8568/T:8928][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282541600.]
+Begin Time:2018-08-13 17:34:11.181
+[2018-08-13 17:34:11.181][P:8232/T:7892][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 17:34:11.181][P:8232/T:7892][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 17:34:11.192][P:8232/T:7892][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002590050, dwUserData=0000000000000000.]
+[2018-08-13 17:34:11.193][P:8232/T:7892][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284966880.]
+Begin Time:2018-08-13 18:29:46.145
+[2018-08-13 18:29:46.146][P:8900/T:7056][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-13 18:29:46.146][P:8900/T:7056][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-13 18:29:46.158][P:8900/T:7056][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-08-13 18:29:46.158][P:8900/T:7056][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=301416416.]
+Begin Time:2018-08-14 09:47:50.582
+[2018-08-14 09:47:50.583][P:3064/T:2500][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 09:47:50.583][P:3064/T:2500][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 09:47:50.593][P:3064/T:2500][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D20050, dwUserData=0000000000000000.]
+[2018-08-14 09:47:50.595][P:3064/T:2500][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=290734048.]
+Begin Time:2018-08-14 10:04:17.493
+[2018-08-14 10:04:17.493][P:2040/T:4232][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 10:04:17.493][P:2040/T:4232][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 10:04:17.501][P:2040/T:4232][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002460050, dwUserData=0000000000000000.]
+[2018-08-14 10:04:17.501][P:2040/T:4232][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=285097920.]
+Begin Time:2018-08-14 12:25:41.265
+[2018-08-14 12:25:41.266][P:4620/T:7204][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 12:25:41.266][P:4620/T:7204][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 12:25:41.277][P:4620/T:7204][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002470050, dwUserData=0000000000000000.]
+[2018-08-14 12:25:41.279][P:4620/T:7204][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284180448.]
+Begin Time:2018-08-14 12:29:30.497
+[2018-08-14 12:29:30.497][P:6584/T:4040][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 12:29:30.497][P:6584/T:4040][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 12:29:30.507][P:6584/T:4040][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001EA0050, dwUserData=0000000000000000.]
+[2018-08-14 12:29:30.507][P:6584/T:4040][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=277299168.]
+Begin Time:2018-08-14 12:34:50.522
+[2018-08-14 12:34:50.522][P:8060/T:5284][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 12:34:50.522][P:8060/T:5284][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 12:34:50.531][P:8060/T:5284][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000005AD0050, dwUserData=0000000000000000.]
+[2018-08-14 12:34:50.531][P:8060/T:5284][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=266813408.]
+Begin Time:2018-08-14 12:40:17.087
+[2018-08-14 12:40:17.087][P:3552/T:7544][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 12:40:17.087][P:3552/T:7544][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 12:40:17.096][P:3552/T:7544][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002470050, dwUserData=0000000000000000.]
+[2018-08-14 12:40:17.097][P:3552/T:7544][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=285622240.]
+Begin Time:2018-08-14 13:35:29.828
+[2018-08-14 13:35:29.828][P:6928/T:7372][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 13:35:29.828][P:6928/T:7372][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 13:35:29.837][P:6928/T:7372][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D30050, dwUserData=0000000000000000.]
+[2018-08-14 13:35:29.837][P:6928/T:7372][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=281624544.]
+Begin Time:2018-08-14 13:53:34.952
+[2018-08-14 13:53:34.952][P:6428/T:7880][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 13:53:34.952][P:6428/T:7880][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 13:53:34.961][P:6428/T:7880][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002470050, dwUserData=0000000000000000.]
+[2018-08-14 13:53:34.961][P:6428/T:7880][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=297966800.]
+Begin Time:2018-08-14 13:54:53.081
+[2018-08-14 13:54:53.082][P:6628/T:7400][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 13:54:53.082][P:6628/T:7400][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 13:54:53.090][P:6628/T:7400][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001E30050, dwUserData=0000000000000000.]
+[2018-08-14 13:54:53.090][P:6628/T:7400][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=184041440.]
+Begin Time:2018-08-14 14:01:42.584
+[2018-08-14 14:01:42.584][P:7756/T:2496][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 14:01:42.584][P:7756/T:2496][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 14:01:42.593][P:7756/T:2496][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000025D0050, dwUserData=0000000000000000.]
+[2018-08-14 14:01:42.594][P:7756/T:2496][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=297549792.]
+Begin Time:2018-08-14 14:12:16.750
+[2018-08-14 14:12:16.750][P:3496/T:2116][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 14:12:16.750][P:3496/T:2116][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 14:12:16.759][P:3496/T:2116][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D80050, dwUserData=0000000000000000.]
+[2018-08-14 14:12:16.759][P:3496/T:2116][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=245448672.]
+Begin Time:2018-08-14 14:43:36.510
+[2018-08-14 14:43:36.510][P:7352/T:784][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 14:43:36.510][P:7352/T:784][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 14:43:36.520][P:7352/T:784][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024C0050, dwUserData=0000000000000000.]
+[2018-08-14 14:43:36.520][P:7352/T:784][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=271007712.]
+Begin Time:2018-08-14 15:48:25.705
+[2018-08-14 15:48:25.705][P:4100/T:7424][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 15:48:25.705][P:4100/T:7424][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 15:48:25.717][P:4100/T:7424][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024F0050, dwUserData=0000000000000000.]
+[2018-08-14 15:48:25.719][P:4100/T:7424][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284639200.]
+Begin Time:2018-08-14 15:53:19.007
+[2018-08-14 15:53:19.007][P:7380/T:7492][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 15:53:19.007][P:7380/T:7492][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 15:53:19.016][P:7380/T:7492][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D70050, dwUserData=0000000000000000.]
+[2018-08-14 15:53:19.017][P:7380/T:7492][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=288636896.]
+Begin Time:2018-08-14 16:03:08.873
+[2018-08-14 16:03:08.874][P:7200/T:5832][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 16:03:08.874][P:7200/T:5832][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 16:03:08.882][P:7200/T:5832][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000350050, dwUserData=0000000000000000.]
+[2018-08-14 16:03:08.883][P:7200/T:5832][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=301613024.]
+Begin Time:2018-08-14 16:43:28.211
+[2018-08-14 16:43:28.211][P:3660/T:5648][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 16:43:28.211][P:3660/T:5648][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 16:43:28.213][P:3660/T:5648][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D70050, dwUserData=0000000000000000.]
+[2018-08-14 16:43:28.214][P:3660/T:5648][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=299974224.]
+Begin Time:2018-08-14 16:44:43.184
+[2018-08-14 16:44:43.184][P:5776/T:7824][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 16:44:43.184][P:5776/T:7824][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 16:44:43.186][P:5776/T:7824][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002460050, dwUserData=0000000000000000.]
+[2018-08-14 16:44:43.186][P:5776/T:7824][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=299547776.]
+Begin Time:2018-08-14 17:44:57.523
+[2018-08-14 17:44:57.524][P:8060/T:7964][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 17:44:57.524][P:8060/T:7964][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 17:44:57.527][P:8060/T:7964][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000550050, dwUserData=0000000000000000.]
+[2018-08-14 17:44:57.527][P:8060/T:7964][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=300302304.]
+Begin Time:2018-08-14 18:32:12.826
+[2018-08-14 18:32:12.826][P:5500/T:8004][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 18:32:12.826][P:5500/T:8004][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 18:32:12.828][P:5500/T:8004][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002450050, dwUserData=0000000000000000.]
+[2018-08-14 18:32:12.828][P:5500/T:8004][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=283525088.]
+Begin Time:2018-08-14 18:42:27.506
+[2018-08-14 18:42:27.506][P:4972/T:2020][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 18:42:27.506][P:4972/T:2020][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 18:42:27.508][P:4972/T:2020][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002350050, dwUserData=0000000000000000.]
+[2018-08-14 18:42:27.508][P:4972/T:2020][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=308494304.]
+Begin Time:2018-08-14 19:06:28.993
+[2018-08-14 19:06:28.993][P:7728/T:4872][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-14 19:06:28.993][P:7728/T:4872][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-14 19:06:28.995][P:7728/T:4872][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C60050, dwUserData=0000000000000000.]
+[2018-08-14 19:06:28.995][P:7728/T:4872][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=268910560.]
+Begin Time:2018-08-15 10:12:26.924
+[2018-08-15 10:12:26.924][P:2688/T:6040][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 10:12:26.924][P:2688/T:6040][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 10:12:26.933][P:2688/T:6040][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000004F0050, dwUserData=0000000000000000.]
+[2018-08-15 10:12:26.934][P:2688/T:6040][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282476512.]
+Begin Time:2018-08-15 10:43:29.575
+[2018-08-15 10:43:29.575][P:6660/T:2804][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 10:43:29.575][P:6660/T:2804][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 10:43:29.583][P:6660/T:2804][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002400050, dwUserData=0000000000000000.]
+[2018-08-15 10:43:29.583][P:6660/T:2804][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=250429408.]
+Begin Time:2018-08-15 10:48:45.819
+[2018-08-15 10:48:45.819][P:6800/T:4780][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 10:48:45.819][P:6800/T:4780][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 10:48:45.827][P:6800/T:4780][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002700050, dwUserData=0000000000000000.]
+[2018-08-15 10:48:45.827][P:6800/T:4780][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=245579744.]
+Begin Time:2018-08-15 11:05:17.905
+[2018-08-15 11:05:17.905][P:6560/T:4624][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 11:05:17.905][P:6560/T:4624][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 11:05:17.914][P:6560/T:4624][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000023F0050, dwUserData=0000000000000000.]
+[2018-08-15 11:05:17.914][P:6560/T:4624][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=270811104.]
+Begin Time:2018-08-15 11:10:08.296
+[2018-08-15 11:10:08.297][P:4480/T:6036][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 11:10:08.297][P:4480/T:6036][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 11:10:08.305][P:4480/T:6036][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-08-15 11:10:08.305][P:4480/T:6036][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=275988448.]
+Begin Time:2018-08-15 11:14:45.686
+[2018-08-15 11:14:45.686][P:4612/T:2276][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 11:14:45.686][P:4612/T:2276][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 11:14:45.694][P:4612/T:2276][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000059C0050, dwUserData=0000000000000000.]
+[2018-08-15 11:14:45.694][P:4612/T:2276][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=278740960.]
+Begin Time:2018-08-15 13:42:14.940
+[2018-08-15 13:42:14.941][P:7960/T:3284][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 13:42:14.941][P:7960/T:3284][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 13:42:14.944][P:7960/T:3284][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000400050, dwUserData=0000000000000000.]
+[2018-08-15 13:42:14.945][P:7960/T:3284][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=286212064.]
+Begin Time:2018-08-15 14:04:51.692
+[2018-08-15 14:04:51.692][P:1264/T:8156][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 14:04:51.692][P:1264/T:8156][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 14:04:51.694][P:1264/T:8156][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C70050, dwUserData=0000000000000000.]
+[2018-08-15 14:04:51.695][P:1264/T:8156][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=306986976.]
+Begin Time:2018-08-15 15:58:02.445
+[2018-08-15 15:58:02.445][P:7428/T:5652][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 15:58:02.445][P:7428/T:5652][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 15:58:02.447][P:7428/T:5652][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000005AD0050, dwUserData=0000000000000000.]
+[2018-08-15 15:58:02.449][P:7428/T:5652][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=271335392.]
+Begin Time:2018-08-15 16:05:24.434
+[2018-08-15 16:05:24.434][P:4380/T:7900][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 16:05:24.434][P:4380/T:7900][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 16:05:24.436][P:4380/T:7900][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002450050, dwUserData=0000000000000000.]
+[2018-08-15 16:05:24.436][P:4380/T:7900][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=266333584.]
+Begin Time:2018-08-15 16:14:35.869
+[2018-08-15 16:14:35.869][P:8004/T:7324][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-15 16:14:35.869][P:8004/T:7324][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-15 16:14:35.871][P:8004/T:7324][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D10050, dwUserData=0000000000000000.]
+[2018-08-15 16:14:35.871][P:8004/T:7324][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=317997024.]
+Begin Time:2018-08-16 11:23:47.593
+[2018-08-16 11:23:47.594][P:5804/T:2576][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-16 11:23:47.594][P:5804/T:2576][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-16 11:23:47.605][P:5804/T:2576][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000026F0050, dwUserData=0000000000000000.]
+[2018-08-16 11:23:47.606][P:5804/T:2576][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=303972320.]
+Begin Time:2018-08-16 12:02:18.433
+[2018-08-16 12:02:18.433][P:3572/T:7884][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-16 12:02:18.433][P:3572/T:7884][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-16 12:02:18.445][P:3572/T:7884][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000026F0050, dwUserData=0000000000000000.]
+[2018-08-16 12:02:18.446][P:3572/T:7884][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=303513568.]
+Begin Time:2018-08-16 12:13:37.250
+[2018-08-16 12:13:37.250][P:6200/T:7860][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-16 12:13:37.250][P:6200/T:7860][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-16 12:13:37.261][P:6200/T:7860][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000300050, dwUserData=0000000000000000.]
+[2018-08-16 12:13:37.261][P:6200/T:7860][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282804192.]
+Begin Time:2018-08-16 12:14:28.704
+[2018-08-16 12:14:28.704][P:2476/T:7576][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-16 12:14:28.704][P:2476/T:7576][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-16 12:14:28.713][P:2476/T:7576][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000025B0050, dwUserData=0000000000000000.]
+[2018-08-16 12:14:28.714][P:2476/T:7576][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=278609888.]
+Begin Time:2018-08-16 12:18:51.466
+[2018-08-16 12:18:51.466][P:2260/T:924][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-16 12:18:51.466][P:2260/T:924][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-16 12:18:51.476][P:2260/T:924][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000440050, dwUserData=0000000000000000.]
+[2018-08-16 12:18:51.477][P:2260/T:924][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282804192.]
+Begin Time:2018-08-20 09:49:29.780
+[2018-08-20 09:49:29.781][P:2660/T:5240][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 09:49:29.781][P:2660/T:5240][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 09:49:29.788][P:2660/T:5240][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002400050, dwUserData=0000000000000000.]
+[2018-08-20 09:49:29.789][P:2660/T:5240][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-20 09:49:29.789][P:2660/T:5240][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.102, port:9500, callback:0000000011082CD0
+[2018-08-20 09:49:29.789][P:2660/T:5240][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-20 09:49:29.789][P:2660/T:5240][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-20 09:49:29.789][P:2660/T:5240][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-20 09:50:29.055
+[2018-08-20 09:50:29.055][P:2776/T:5592][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 09:50:29.055][P:2776/T:5592][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 09:50:29.062][P:2776/T:5592][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002530050, dwUserData=0000000000000000.]
+[2018-08-20 09:50:29.062][P:2776/T:5592][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=197214096.]
+Begin Time:2018-08-20 10:57:58.049
+[2018-08-20 10:57:58.049][P:7724/T:8176][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 10:57:58.049][P:7724/T:8176][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 10:57:58.058][P:7724/T:8176][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C70050, dwUserData=0000000000000000.]
+[2018-08-20 10:57:58.059][P:7724/T:8176][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=287456224.]
+Begin Time:2018-08-20 12:06:01.460
+[2018-08-20 12:06:01.460][P:3584/T:7888][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 12:06:01.460][P:3584/T:7888][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 12:06:01.468][P:3584/T:7888][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002510050, dwUserData=0000000000000000.]
+[2018-08-20 12:06:01.468][P:3584/T:7888][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=240008896.]
+Begin Time:2018-08-20 14:09:29.557
+[2018-08-20 14:09:29.557][P:6804/T:2832][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 14:09:29.557][P:6804/T:2832][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 14:09:29.565][P:6804/T:2832][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-08-20 14:09:29.566][P:6804/T:2832][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=318390416.]
+Begin Time:2018-08-20 14:12:18.742
+[2018-08-20 14:12:18.742][P:2384/T:7984][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 14:12:18.742][P:2384/T:7984][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 14:12:18.750][P:2384/T:7984][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001CB0050, dwUserData=0000000000000000.]
+[2018-08-20 14:12:18.750][P:2384/T:7984][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=243284960.]
+Begin Time:2018-08-20 16:07:16.035
+[2018-08-20 16:07:16.035][P:4632/T:1940][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 16:07:16.035][P:4632/T:1940][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 16:07:16.043][P:4632/T:1940][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002400050, dwUserData=0000000000000000.]
+[2018-08-20 16:07:16.043][P:4632/T:1940][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=284856944.]
+Begin Time:2018-08-20 16:14:54.846
+[2018-08-20 16:14:54.846][P:8800/T:8712][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 16:14:54.846][P:8800/T:8712][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 16:14:54.858][P:8800/T:8712][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002530050, dwUserData=0000000000000000.]
+[2018-08-20 16:14:54.858][P:8800/T:8712][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=305384432.]
+Begin Time:2018-08-20 16:16:53.560
+[2018-08-20 16:16:53.560][P:2992/T:7388][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 16:16:53.560][P:2992/T:7388][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 16:16:53.568][P:2992/T:7388][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000006A0050, dwUserData=0000000000000000.]
+[2018-08-20 16:16:53.568][P:2992/T:7388][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=288308192.]
+Begin Time:2018-08-20 17:22:47.649
+[2018-08-20 17:22:47.649][P:4524/T:9136][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 17:22:47.649][P:4524/T:9136][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 17:22:47.657][P:4524/T:9136][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000005A50050, dwUserData=0000000000000000.]
+[2018-08-20 17:22:47.657][P:4524/T:9136][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=282183200.]
+Begin Time:2018-08-20 17:25:31.634
+[2018-08-20 17:25:31.634][P:8084/T:9028][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 17:25:31.634][P:8084/T:9028][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 17:25:31.642][P:8084/T:9028][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002470050, dwUserData=0000000000000000.]
+[2018-08-20 17:25:31.642][P:8084/T:9028][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=271294800.]
+Begin Time:2018-08-20 17:38:43.363
+[2018-08-20 17:38:43.363][P:9052/T:644][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 17:38:43.363][P:9052/T:644][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 17:38:43.370][P:9052/T:644][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000350050, dwUserData=0000000000000000.]
+[2018-08-20 17:38:43.371][P:9052/T:644][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=304453072.]
+Begin Time:2018-08-20 17:51:33.442
+[2018-08-20 17:51:33.442][P:7736/T:8096][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 17:51:33.442][P:7736/T:8096][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 17:51:33.451][P:7736/T:8096][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000005B50050, dwUserData=0000000000000000.]
+[2018-08-20 17:51:33.452][P:7736/T:8096][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=279486160.]
+Begin Time:2018-08-20 18:11:43.434
+[2018-08-20 18:11:43.434][P:7888/T:8304][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 18:11:43.434][P:7888/T:8304][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 18:11:43.442][P:7888/T:8304][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D70050, dwUserData=0000000000000000.]
+[2018-08-20 18:11:43.442][P:7888/T:8304][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=175084032.]
+Begin Time:2018-08-20 18:27:02.402
+[2018-08-20 18:27:02.402][P:2236/T:8876][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 18:27:02.402][P:2236/T:8876][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 18:27:02.410][P:2236/T:8876][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002450050, dwUserData=0000000000000000.]
+[2018-08-20 18:27:02.411][P:2236/T:8876][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=286431408.]
+Begin Time:2018-08-20 19:01:09.625
+[2018-08-20 19:01:09.625][P:1784/T:6260][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 19:01:09.625][P:1784/T:6260][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 19:01:09.641][P:1784/T:6260][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=00000000027D0050, dwUserData=0000000000000000.]
+[2018-08-20 19:01:09.641][P:1784/T:6260][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-20 19:01:09.641][P:1784/T:6260][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.102, port:9500, callback:0000000011722CD0
+[2018-08-20 19:01:09.641][P:1784/T:6260][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-20 19:01:09.641][P:1784/T:6260][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-20 19:01:09.641][P:1784/T:6260][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-20 19:02:59.999
+[2018-08-20 19:02:59.999][P:7076/T:6692][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-20 19:02:59.999][P:7076/T:6692][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-20 19:03:00.006][P:7076/T:6692][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002630050, dwUserData=0000000000000000.]
+[2018-08-20 19:03:00.007][P:7076/T:6692][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=242326912.]
+Begin Time:2018-08-21 16:28:53.538
+[2018-08-21 16:28:53.539][P:3988/T:6324][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-21 16:28:53.539][P:3988/T:6324][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-21 16:28:53.549][P:3988/T:6324][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.102, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-08-21 16:28:53.550][P:3988/T:6324][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-21 16:28:53.550][P:3988/T:6324][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.102, port:9500, callback:0000000011962CD0
+[2018-08-21 16:28:53.550][P:3988/T:6324][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-21 16:28:53.551][P:3988/T:6324][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-21 16:28:53.551][P:3988/T:6324][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-21 16:31:23.777
+[2018-08-21 16:31:23.777][P:1980/T:7124][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-21 16:31:23.777][P:1980/T:7124][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-21 16:31:23.784][P:1980/T:7124][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.101, port=9500, nTimeout=1000, cbListen=0000000002710050, dwUserData=0000000000000000.]
+[2018-08-21 16:31:23.784][P:1980/T:7124][TPObject.cpp:742][Error][90002011] Err bind socket, err:10049
+[2018-08-21 16:31:23.784][P:1980/T:7124][dhdevprob.cpp:2967][Error][90010010] Failed to start listen, ip:192.168.1.101, port:9500, callback:0000000011882CD0
+[2018-08-21 16:31:23.784][P:1980/T:7124][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=0.]
+[2018-08-21 16:31:23.785][P:1980/T:7124][dhnetsdk.cpp:6120][Info][0] Enter CLIENT_GetLastError.
+[2018-08-21 16:31:23.785][P:1980/T:7124][dhnetsdk.cpp:6123][Info][0] Leave CLIENT_GetLastError.[Error code=90010010.]
+Begin Time:2018-08-21 16:32:08.574
+[2018-08-21 16:32:08.575][P:3988/T:5116][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-21 16:32:08.575][P:3988/T:5116][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-21 16:32:08.583][P:3988/T:5116][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002550050, dwUserData=0000000000000000.]
+[2018-08-21 16:32:08.583][P:3988/T:5116][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=287675120.]
+Begin Time:2018-08-21 16:38:32.356
+[2018-08-21 16:38:32.356][P:948/T:6824][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-21 16:38:32.356][P:948/T:6824][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-21 16:38:32.364][P:948/T:6824][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000001F0050, dwUserData=0000000000000000.]
+[2018-08-21 16:38:32.364][P:948/T:6824][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=307140048.]
+Begin Time:2018-08-22 16:46:25.833
+[2018-08-22 16:46:25.833][P:4892/T:1168][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 16:46:25.833][P:4892/T:1168][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 16:46:25.842][P:4892/T:1168][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C80050, dwUserData=0000000000000000.]
+[2018-08-22 16:46:25.843][P:4892/T:1168][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=240947952.]
+Begin Time:2018-08-22 16:47:56.381
+[2018-08-22 16:47:56.381][P:4284/T:6208][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 16:47:56.381][P:4284/T:6208][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 16:47:56.389][P:4284/T:6208][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002530050, dwUserData=0000000000000000.]
+[2018-08-22 16:47:56.389][P:4284/T:6208][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=273038176.]
+Begin Time:2018-08-22 16:53:52.901
+[2018-08-22 16:53:52.901][P:4752/T:1668][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 16:53:52.901][P:4752/T:1668][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 16:53:52.908][P:4752/T:1668][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002510050, dwUserData=0000000000000000.]
+[2018-08-22 16:53:52.909][P:4752/T:1668][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=302434528.]
+Begin Time:2018-08-22 17:05:35.813
+[2018-08-22 17:05:35.813][P:7132/T:1236][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 17:05:35.813][P:7132/T:1236][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 17:05:35.821][P:7132/T:1236][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000300050, dwUserData=0000000000000000.]
+[2018-08-22 17:05:35.821][P:7132/T:1236][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=244620784.]
+Begin Time:2018-08-22 17:27:34.410
+[2018-08-22 17:27:34.410][P:3660/T:6448][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 17:27:34.410][P:3660/T:6448][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 17:27:34.419][P:3660/T:6448][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002490050, dwUserData=0000000000000000.]
+[2018-08-22 17:27:34.420][P:3660/T:6448][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1698774864.]
+Begin Time:2018-08-22 19:56:28.678
+[2018-08-22 19:56:28.678][P:3268/T:2804][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 19:56:28.678][P:3268/T:2804][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 19:56:28.692][P:3268/T:2804][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000003F0050, dwUserData=0000000000000000.]
+[2018-08-22 19:56:28.695][P:3268/T:2804][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1636581296.]
+Begin Time:2018-08-22 20:01:33.964
+[2018-08-22 20:01:33.964][P:8128/T:4268][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:01:33.964][P:8128/T:4268][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:01:33.975][P:8128/T:4268][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002630050, dwUserData=0000000000000000.]
+[2018-08-22 20:01:33.977][P:8128/T:4268][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1716207536.]
+Begin Time:2018-08-22 20:05:40.215
+[2018-08-22 20:05:40.215][P:6360/T:7312][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:05:40.215][P:6360/T:7312][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:05:40.227][P:6360/T:7312][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002490050, dwUserData=0000000000000000.]
+[2018-08-22 20:05:40.230][P:6360/T:7312][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1672495024.]
+Begin Time:2018-08-22 20:13:25.369
+[2018-08-22 20:13:25.369][P:520/T:5668][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:13:25.369][P:520/T:5668][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:13:25.380][P:520/T:5668][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000004F0050, dwUserData=0000000000000000.]
+[2018-08-22 20:13:25.381][P:520/T:5668][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1695760304.]
+Begin Time:2018-08-22 20:53:52.881
+[2018-08-22 20:53:52.881][P:6728/T:1560][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:53:52.881][P:6728/T:1560][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:53:52.890][P:6728/T:1560][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024A0050, dwUserData=0000000000000000.]
+[2018-08-22 20:53:52.894][P:6728/T:1560][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1689272240.]
+Begin Time:2018-08-22 20:54:50.330
+[2018-08-22 20:54:50.330][P:5756/T:4760][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:54:50.330][P:5756/T:4760][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:54:50.341][P:5756/T:4760][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C50050, dwUserData=0000000000000000.]
+[2018-08-22 20:54:50.343][P:5756/T:4760][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1686126512.]
+Begin Time:2018-08-22 20:57:14.659
+[2018-08-22 20:57:14.659][P:8096/T:6688][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 20:57:14.659][P:8096/T:6688][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 20:57:14.668][P:8096/T:6688][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001C50050, dwUserData=0000000000000000.]
+[2018-08-22 20:57:14.669][P:8096/T:6688][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1694449584.]
+Begin Time:2018-08-22 21:03:34.288
+[2018-08-22 21:03:34.289][P:1332/T:7888][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 21:03:34.289][P:1332/T:7888][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 21:03:34.300][P:1332/T:7888][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002440050, dwUserData=0000000000000000.]
+[2018-08-22 21:03:34.303][P:1332/T:7888][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1683636144.]
+Begin Time:2018-08-22 21:54:19.442
+[2018-08-22 21:54:19.442][P:4524/T:3284][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 21:54:19.442][P:4524/T:3284][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 21:54:19.452][P:4524/T:3284][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000001D30050, dwUserData=0000000000000000.]
+[2018-08-22 21:54:19.452][P:4524/T:3284][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1690255280.]
+Begin Time:2018-08-22 22:06:47.785
+[2018-08-22 22:06:47.785][P:5984/T:2040][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:06:47.785][P:5984/T:2040][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:06:47.795][P:5984/T:2040][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002440050, dwUserData=0000000000000000.]
+[2018-08-22 22:06:47.797][P:5984/T:2040][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1744191408.]
+Begin Time:2018-08-22 22:18:20.280
+[2018-08-22 22:18:20.280][P:7872/T:1584][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:18:20.280][P:7872/T:1584][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:18:20.288][P:7872/T:1584][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000057A60050, dwUserData=0000000000000000.]
+[2018-08-22 22:18:20.291][P:7872/T:1584][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1695367088.]
+Begin Time:2018-08-22 22:22:34.558
+[2018-08-22 22:22:34.558][P:4688/T:5752][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:22:34.558][P:4688/T:5752][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:22:34.567][P:4688/T:5752][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000121A0050, dwUserData=0000000000000000.]
+[2018-08-22 22:22:34.567][P:4688/T:5752][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1694121904.]
+Begin Time:2018-08-22 22:30:18.353
+[2018-08-22 22:30:18.353][P:5944/T:3184][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:30:18.353][P:5944/T:3184][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:30:18.363][P:5944/T:3184][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002340050, dwUserData=0000000000000000.]
+[2018-08-22 22:30:18.364][P:5944/T:3184][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1678196656.]
+Begin Time:2018-08-22 22:39:57.652
+[2018-08-22 22:39:57.652][P:4896/T:7404][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:39:57.652][P:4896/T:7404][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:39:57.666][P:4896/T:7404][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000000520050, dwUserData=0000000000000000.]
+[2018-08-22 22:39:57.668][P:4896/T:7404][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1712930736.]
+Begin Time:2018-08-22 22:46:15.936
+[2018-08-22 22:46:15.936][P:3604/T:4736][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-22 22:46:15.936][P:3604/T:4736][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-22 22:46:15.947][P:3604/T:4736][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000025B0050, dwUserData=0000000000000000.]
+[2018-08-22 22:46:15.947][P:3604/T:4736][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1689403312.]
+Begin Time:2018-08-23 10:14:59.969
+[2018-08-23 10:14:59.969][P:4104/T:4028][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-23 10:14:59.969][P:4104/T:4028][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-23 10:14:59.980][P:4104/T:4028][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002460050, dwUserData=0000000000000000.]
+[2018-08-23 10:14:59.980][P:4104/T:4028][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1663844272.]
+Begin Time:2018-08-23 10:21:52.237
+[2018-08-23 10:21:52.237][P:3472/T:4688][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-23 10:21:52.237][P:3472/T:4688][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-23 10:21:52.246][P:3472/T:4688][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024A0050, dwUserData=0000000000000000.]
+[2018-08-23 10:21:52.247][P:3472/T:4688][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1715158960.]
+Begin Time:2018-08-23 10:31:08.347
+[2018-08-23 10:31:08.347][P:6936/T:6696][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-23 10:31:08.347][P:6936/T:6696][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-23 10:31:08.357][P:6936/T:6696][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=0000000002520050, dwUserData=0000000000000000.]
+[2018-08-23 10:31:08.359][P:6936/T:6696][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1671315376.]
+Begin Time:2018-08-23 10:40:20.868
+[2018-08-23 10:40:20.868][P:6172/T:2120][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-23 10:40:20.868][P:6172/T:2120][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-23 10:40:20.878][P:6172/T:2120][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000025B0050, dwUserData=0000000000000000.]
+[2018-08-23 10:40:20.879][P:6172/T:2120][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1679114160.]
+Begin Time:2018-08-23 16:25:39.598
+[2018-08-23 16:25:39.598][P:5340/T:572][dhnetsdk.cpp:213][Info][0] Enter CLIENT_SetNetworkParam:[nWaittime=0, nConnectTime=5000, nConnectTryNum=0, nSubConnectSpaceTime=0, nGetDevInfoTime=0, nConnectBufSize=0, nGetConnInfoTime=0, nSearchRecordTime=0, nsubDisconnetTime=0, byNetType=0, byPlaybackBufSize=0, bDetectDisconnTime=0, bKeepLifeInterval=0, nPicBufSize=0].
+[2018-08-23 16:25:39.598][P:5340/T:572][dhnetsdk.cpp:228][Info][0] Leave CLIENT_SetNetworkParam.
+[2018-08-23 16:25:39.609][P:5340/T:572][dhnetsdk.cpp:6269][Info][0] Enter CLIENT_ListenServer. [ip=192.168.1.100, port=9500, nTimeout=1000, cbListen=00000000024A0050, dwUserData=0000000000000000.]
+[2018-08-23 16:25:39.612][P:5340/T:572][dhnetsdk.cpp:6273][Info][0] Leave CLIENT_ListenServer.[ret=1678065584.]

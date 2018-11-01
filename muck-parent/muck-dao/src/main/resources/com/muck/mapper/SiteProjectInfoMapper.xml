@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SiteProjectInfoMapper">
+
+	<!-- 封装项目情况登记表 -->
+	<resultMap id="SiteProjectInfoResultMap" type="com.muck.domain.SiteProjectInfo">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="project_name" property="projectName" jdbcType="VARCHAR" />
+		<result column="project_address" property="projectAddress"
+			jdbcType="VARCHAR" />
+		<result column="project_introduce" property="projectIntroduce"
+			jdbcType="VARCHAR" />
+		<result column="project_scale" property="projectScale"
+			jdbcType="VARCHAR" />
+		<result column="project_period" property="projectPeriod"
+			jdbcType="VARCHAR" />
+		<result column="build_unit" property="buildUnit" jdbcType="VARCHAR" />
+		<result column="build_unit_manager" property="buildUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="build_unit_manager_phone" property="buildUnitManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="construction_unit" property="constructionUnit"
+			jdbcType="VARCHAR" />
+		<result column="construction_unit_manager" property="constructionUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="construction_unit_manager_phone" property="constructionUnitManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="supervision_unit" property="supervisionUnit"
+			jdbcType="VARCHAR" />
+		<result column="supervision_unit_manager" property="supervisionUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="supervision_unit_manager_phone" property="supervisionUnitManagerPhone"
+			jdbcType="CHAR" />
+		<result column="earthwork_unit" property="earthworkUnit"
+			jdbcType="VARCHAR" />
+		<result column="earthwork_unit_manager" property="earthworkUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="earthwork_unit_manager_phone" property="earthworkUnitManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="transport_unit" property="transportUnit"
+			jdbcType="VARCHAR" />
+		<result column="transport_unit_manager" property="transportUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="transport_unit_manager_phone" property="transportUnitManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="entrance_cleaners" property="entranceCleaners"
+			jdbcType="VARCHAR" />
+		<result column="entrance_cleaners_manager" property="entranceCleanersManager"
+			jdbcType="VARCHAR" />
+		<result column="entrance_cleaners_manager_phone" property="entranceCleanersManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="video_surveillance" property="videoSurveillance"
+			jdbcType="VARCHAR" />
+		<result column="video_surveillance_manager" property="videoSurveillanceManager"
+			jdbcType="VARCHAR" />
+		<result column="video_surveillance_manager_phone" property="videoSurveillanceManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="design_unit" property="designUnit" jdbcType="VARCHAR" />
+		<result column="design_unit_manager" property="designUnitManager"
+			jdbcType="VARCHAR" />
+		<result column="design_unit_manager_phone" property="designUnitManagerPhone"
+			jdbcType="VARCHAR" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="site_device_register_code" property="siteDeviceRegisterCode"
+			jdbcType="VARCHAR" />
+		<result column="project_info_memo" property="projectInfoMemo"
+			jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 添加工地详情 -->
+	<insert id="insert" parameterType="com.muck.domain.SiteProjectInfo">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_biz_site_project_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="projectName != null">
+				project_name,
+			</if>
+			<if test="projectAddress != null">
+				project_address,
+			</if>
+			<if test="projectIntroduce != null">
+				project_introduce,
+			</if>
+			<if test="projectScale != null">
+				project_scale,
+			</if>
+			<if test="projectPeriod != null">
+				project_period,
+			</if>
+			<if test="buildUnit != null">
+				build_unit,
+			</if>
+			<if test="buildUnitManager != null">
+				build_unit_manager,
+			</if>
+			<if test="buildUnitManagerPhone != null">
+				build_unit_manager_phone,
+			</if>
+			<if test="constructionUnit != null">
+				construction_unit,
+			</if>
+			<if test="constructionUnitManager != null">
+				construction_unit_manager,
+			</if>
+			<if test="constructionUnitManagerPhone != null">
+				construction_unit_manager_phone,
+			</if>
+			<if test="supervisionUnit != null">
+				supervision_unit,
+			</if>
+			<if test="supervisionUnitManager != null">
+				supervision_unit_manager,
+			</if>
+			<if test="supervisionUnitManagerPhone != null">
+				supervision_unit_manager_phone,
+			</if>
+			<if test="earthworkUnit != null">
+				earthwork_unit,
+			</if>
+			<if test="earthworkUnitManager != null">
+				earthwork_unit_manager,
+			</if>
+			<if test="earthworkUnitManagerPhone != null">
+				earthwork_unit_manager_phone,
+			</if>
+			<if test="transportUnit != null">
+				transport_unit,
+			</if>
+			<if test="transportUnitManager != null">
+				transport_unit_manager,
+			</if>
+			<if test="transportUnitManagerPhone != null">
+				transport_unit_manager_phone,
+			</if>
+			<if test="entranceCleaners != null">
+				entrance_cleaners,
+			</if>
+			<if test="entranceCleanersManager != null">
+				entrance_cleaners_manager,
+			</if>
+			<if test="entranceCleanersManagerPhone != null">
+				entrance_cleaners_manager_phone,
+			</if>
+			<if test="videoSurveillance != null">
+				video_surveillance,
+			</if>
+			<if test="videoSurveillanceManager != null">
+				video_surveillance_manager,
+			</if>
+			<if test="videoSurveillanceManagerPhone != null">
+				video_surveillance_manager_phone,
+			</if>
+			<if test="designUnit != null">
+				design_unit,
+			</if>
+			<if test="designUnitManager != null">
+				design_unit_manager,
+			</if>
+			<if test="designUnitManagerPhone != null">
+				design_unit_manager_phone,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="siteDeviceRegisterCode != null">
+				site_device_register_code,
+			</if>
+			<if test="projectInfoMemo != null">
+				project_info_memo,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="site != null">
+				site_id,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id, typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="projectName != null">
+				#{projectName,jdbcType=VARCHAR},
+			</if>
+			<if test="projectAddress != null">
+				#{projectAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="projectIntroduce != null">
+				#{projectIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="projectScale != null">
+				#{projectScale,jdbcType=VARCHAR},
+			</if>
+			<if test="projectPeriod != null">
+				#{projectPeriod,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnit != null">
+				#{buildUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnitManager != null">
+				#{buildUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnitManagerPhone != null">
+				#{buildUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnit != null">
+				#{constructionUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnitManager != null">
+				#{constructionUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnitManagerPhone != null">
+				#{constructionUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnit != null">
+				#{supervisionUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnitManager != null">
+				#{supervisionUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnitManagerPhone != null">
+				#{supervisionUnitManagerPhone,jdbcType=CHAR},
+			</if>
+			<if test="earthworkUnit != null">
+				#{earthworkUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="earthworkUnitManager != null">
+				#{earthworkUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="earthworkUnitManagerPhone != null">
+				#{earthworkUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnit != null">
+				#{transportUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnitManager != null">
+				#{transportUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnitManagerPhone != null">
+				#{transportUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleaners != null">
+				#{entranceCleaners,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleanersManager != null">
+				#{entranceCleanersManager,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleanersManagerPhone != null">
+				#{entranceCleanersManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillance != null">
+				#{videoSurveillance,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillanceManager != null">
+				#{videoSurveillanceManager,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillanceManagerPhone != null">
+				#{videoSurveillanceManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnit != null">
+				#{designUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnitManager != null">
+				#{designUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnitManagerPhone != null">
+				#{designUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteDeviceRegisterCode != null">
+				#{siteDeviceRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="projectInfoMemo != null">
+				#{projectInfoMemo,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				#{site.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量添加 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_biz_site_project_info
+		(
+		id,
+		project_name,
+		project_address,
+		project_introduce,
+		project_scale,
+		project_period,
+		build_unit,
+		build_unit_manager,
+		build_unit_manager_phone,
+		construction_unit,
+		construction_unit_manager,
+		construction_unit_manager_phone,
+		supervision_unit,
+		supervision_unit_manager,
+		supervision_unit_manager_phone,
+		earthwork_unit,
+		earthwork_unit_manager,
+		earthwork_unit_manager_phone,
+		transport_unit,
+		transport_unit_manager,
+		transport_unit_manager_phone,
+		entrance_cleaners,
+		entrance_cleaners_manager,
+		entrance_cleaners_manager_phone,
+		video_surveillance,
+		video_surveillance_manager,
+		video_surveillance_manager_phone,
+		design_unit,
+		design_unit_manager,
+		design_unit_manager_phone,
+		project_info_memo,
+		area_name,
+		site_device_register_code,
+		memo,
+		site_id,
+		deleted,
+		created_time
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.id,jdbcType=BIGINT},
+			#{item.projectName,jdbcType=VARCHAR},
+			#{item.projectAddress,jdbcType=VARCHAR},
+			#{item.projectIntroduce,jdbcType=VARCHAR},
+			#{item.projectScale,jdbcType=VARCHAR},
+			#{item.projectPeriod,jdbcType=VARCHAR},
+			#{item.buildUnit,jdbcType=VARCHAR},
+			#{item.buildUnitManager,jdbcType=VARCHAR},
+			#{item.buildUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.constructionUnit,jdbcType=VARCHAR},
+			#{item.constructionUnitManager,jdbcType=VARCHAR},
+			#{item.constructionUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.supervisionUnit,jdbcType=VARCHAR},
+			#{item.supervisionUnitManager,jdbcType=VARCHAR},
+			#{item.supervisionUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.earthworkUnit,jdbcType=VARCHAR},
+			#{item.earthworkUnitManager,jdbcType=VARCHAR},
+			#{item.earthworkUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.transportUnit,jdbcType=VARCHAR},
+			#{item.transportUnitManager,jdbcType=VARCHAR},
+			#{item.transportUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.entranceCleaners,jdbcType=VARCHAR},
+			#{item.entranceCleanersManager,jdbcType=VARCHAR},
+			#{item.entranceCleanersManagerPhone,jdbcType=VARCHAR},
+			#{item.videoSurveillance,jdbcType=VARCHAR},
+			#{item.videoSurveillanceManager,jdbcType=VARCHAR},
+			#{item.videoSurveillanceManagerPhone,jdbcType=VARCHAR},
+			#{item.designUnit,jdbcType=VARCHAR},
+			#{item.designUnitManager,jdbcType=VARCHAR},
+			#{item.designUnitManagerPhone,jdbcType=VARCHAR},
+			#{item.projectInfoMemo,jdbcType=VARCHAR},
+			#{item.areaName,jdbcType=VARCHAR},
+			#{item.siteDeviceRegisterCode,jdbcType=VARCHAR},
+			#{item.memo,jdbcType=VARCHAR},
+			#{item.site.id,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.deleted,jdbcType=TINYINT},
+			#{item.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		id=values(id),
+		project_address=values(project_address),
+		project_introduce=values(project_introduce),
+		project_scale=values(project_scale),
+		project_period=values(project_period),
+		build_unit=values(build_unit),
+		build_unit_manager=values(build_unit_manager),
+		build_unit_manager_phone=values(build_unit_manager_phone),
+		construction_unit=values(construction_unit),
+		construction_unit_manager=values(construction_unit_manager),
+		construction_unit_manager_phone=values(construction_unit_manager_phone),
+		supervision_unit=values(supervision_unit),
+		supervision_unit_manager=values(supervision_unit_manager),
+		supervision_unit_manager_phone=values(supervision_unit_manager_phone),
+		earthwork_unit=values(earthwork_unit),
+		earthwork_unit_manager=values(earthwork_unit_manager),
+		earthwork_unit_manager_phone=values(earthwork_unit_manager_phone),
+		transport_unit=values(transport_unit),
+		transport_unit_manager=values(transport_unit_manager),
+		transport_unit_manager_phone=values(transport_unit_manager_phone),
+		entrance_cleaners=values(entrance_cleaners),
+		entrance_cleaners_manager=values(entrance_cleaners_manager),
+		entrance_cleaners_manager_phone=values(entrance_cleaners_manager_phone),
+		video_surveillance=values(video_surveillance),
+		video_surveillance_manager=values(video_surveillance_manager),
+		video_surveillance_manager_phone=values(video_surveillance_manager_phone),
+		design_unit=values(design_unit),
+		design_unit_manager=values(design_unit_manager),
+		design_unit_manager_phone=values(design_unit_manager_phone),
+		project_info_memo=values(project_info_memo),
+		area_name=values(area_name),
+		site_device_register_code=values(site_device_register_code),
+		memo=values(memo),
+		site_id=values(site_id),
+		deleted=values(deleted),
+		created_time=values(created_time)
+	</insert>
+
+	<!-- 更新工地详情 -->
+	<update id="updateById" parameterType="com.muck.domain.SiteProjectInfo">
+		update t_biz_site_project_info
+		<set>
+			<if test="projectName != null">
+				project_name = #{projectName,jdbcType=VARCHAR},
+			</if>
+			<if test="projectAddress != null">
+				project_address = #{projectAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="projectIntroduce != null">
+				project_introduce = #{projectIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="projectScale != null">
+				project_scale = #{projectScale,jdbcType=VARCHAR},
+			</if>
+			<if test="projectPeriod != null">
+				project_period = #{projectPeriod,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnit != null">
+				build_unit = #{buildUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnitManager != null">
+				build_unit_manager =
+				#{buildUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="buildUnitManagerPhone != null">
+				build_unit_manager_phone =
+				#{buildUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnit != null">
+				construction_unit = #{constructionUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnitManager != null">
+				construction_unit_manager =
+				#{constructionUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="constructionUnitManagerPhone != null">
+				construction_unit_manager_phone =
+				#{constructionUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnit != null">
+				supervision_unit = #{supervisionUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnitManager != null">
+				supervision_unit_manager =
+				#{supervisionUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="supervisionUnitManagerPhone != null">
+				supervision_unit_manager_phone =
+				#{supervisionUnitManagerPhone,jdbcType=CHAR},
+			</if>
+			<if test="earthworkUnit != null">
+				earthwork_unit = #{earthworkUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="earthworkUnitManager != null">
+				earthwork_unit_manager =
+				#{earthworkUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="earthworkUnitManagerPhone != null">
+				earthwork_unit_manager_phone =
+				#{earthworkUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnit != null">
+				transport_unit = #{transportUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnitManager != null">
+				transport_unit_manager =
+				#{transportUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="transportUnitManagerPhone != null">
+				transport_unit_manager_phone =
+				#{transportUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleaners != null">
+				entrance_cleaners = #{entranceCleaners,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleanersManager != null">
+				entrance_cleaners_manager =
+				#{entranceCleanersManager,jdbcType=VARCHAR},
+			</if>
+			<if test="entranceCleanersManagerPhone != null">
+				entrance_cleaners_manager_phone =
+				#{entranceCleanersManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillance != null">
+				video_surveillance =
+				#{videoSurveillance,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillanceManager != null">
+				video_surveillance_manager =
+				#{videoSurveillanceManager,jdbcType=VARCHAR},
+			</if>
+			<if test="videoSurveillanceManagerPhone != null">
+				video_surveillance_manager_phone =
+				#{videoSurveillanceManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnit != null">
+				design_unit =
+				#{designUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnitManager != null">
+				design_unit_manager=
+				#{designUnitManager,jdbcType=VARCHAR},
+			</if>
+			<if test="designUnitManagerPhone != null">
+				design_unit_manager_phone =
+				#{designUnitManagerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				area_name =
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteDeviceRegisterCode != null">
+				site_device_register_code =
+				#{siteDeviceRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="projectInfoMemo != null">
+				project_info_memo=
+				#{projectInfoMemo,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				site_id = #{site.id,jdbcType=BIGINT},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<sql id="Base_Column_List">
+		id, project_name, project_address, project_introduce,
+		project_scale,
+		project_period,
+		build_unit, build_unit_manager,
+		build_unit_manager_phone, construction_unit,
+		construction_unit_manager,
+		construction_unit_manager_phone,
+		supervision_unit, supervision_unit_manager,
+		supervision_unit_manager_phone,
+		earthwork_unit, earthwork_unit_manager,
+		earthwork_unit_manager_phone, transport_unit,
+		transport_unit_manager,
+		transport_unit_manager_phone,
+		entrance_cleaners,
+		entrance_cleaners_manager,
+		entrance_cleaners_manager_phone,
+		video_surveillance,
+		video_surveillance_manager,
+		video_surveillance_manager_phone,
+		design_unit,
+		design_unit_manager,
+		design_unit_manager_phone,
+		project_info_memo,
+		area_name,
+		site_device_register_code,
+		memo, site_id, deleted, created_time
+	</sql>
+
+	<select id="querySiteProjectInfoBySiteId" resultMap="SiteProjectInfoResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from
+		t_biz_site_project_info
+		where
+		site_id =
+		#{siteId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+	<select id="querySiteProjectInfoBySiteId1" resultMap="SiteProjectInfoResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from
+		t_biz_site_project_info
+		where
+		site_id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<!-- 根据id查询项目详情 -->
+	<select id="selectById" parameterType="string" resultMap="SiteProjectInfoResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from t_biz_site_project_info
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+
+	</select>
+	<select id="getProjectInfoByRegisterId" parameterType="string"
+		resultMap="SiteProjectInfoResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from t_biz_site_project_info
+		where site_device_register_id=#{registerCode,jdbcType=VARCHAR}
+
+
+	</select>
+	
+	<!-- 根据注册号查询项目详情 -->
+	<select id="getProjectInfoByRegisterCode" parameterType="string"
+		resultMap="SiteProjectInfoResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from t_biz_site_project_info
+		where site_device_register_code=#{registerCode,jdbcType=VARCHAR}
+	</select>
+	<update id="deleteById" parameterType="string">
+	update t_biz_site_project_info
+	set deleted=0
+	where id=#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	
+	</update>
+
+
+
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="SiteProjectInfoResultMap">
+		${sql}
+	</select>
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="SiteProjectInfoResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+
+</mapper>

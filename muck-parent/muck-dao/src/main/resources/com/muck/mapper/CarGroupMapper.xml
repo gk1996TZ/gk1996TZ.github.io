@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarGroupMapper">
+	<resultMap id="CarGroupResultMap" type="com.muck.domain.CarGroup">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="group_code" property="groupCode" jdbcType="VARCHAR" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId" jdbcType="BIGINT" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 根据id查询车辆组 -->
+	<select id="selectById" parameterType="long" resultMap="CarGroupResultMap">
+		select
+		id, 
+		group_code, 
+		group_name, 
+		company_id, 
+		company_name, 
+		parent_id,
+		deleted,
+		operator_id, 
+		operator_name,
+		created_time, 
+		updated_time, 
+		memo
+		from
+		t_car_group
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+	<!-- 根据车辆组查询车辆组 -->
+	<select id="queryByCarGroupName" parameterType="string" resultMap="CarGroupResultMap">
+		select
+		id, 
+		group_code, 
+		group_name, 
+		company_id, 
+		company_name, 
+		parent_id,
+		deleted,
+		operator_id, 
+		operator_name,
+		created_time, 
+		updated_time, 
+		memo
+		from
+		t_car_group
+		where
+		group_name = #{carGroupName,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据车牌号查询车辆组信息 -->
+	<select id="queryByCarCode" parameterType="string" resultMap="CarGroupResultMap">
+	    select
+		id, 
+		group_code, 
+		group_name, 
+		company_id, 
+		company_name, 
+		parent_id,
+		deleted,
+		operator_id, 
+		operator_name,
+		created_time, 
+		updated_time, 
+		memo
+		from
+		t_car_group
+		where
+		car_code = #{carCode}
+	</select>
+
+	<!-- 添加车辆组 -->
+	<insert id="insert" parameterType="com.muck.domain.CarGroup">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	    insert into t_car_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="groupCode != null">
+				group_code,
+			</if>
+			<if test="groupName != null">
+				group_name,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="groupCode != null">
+				#{groupCode,jdbcType=VARCHAR},
+			</if>
+			<if test="groupName != null">
+				#{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="parentId != null">
+				#{parentId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 添加所有的车辆组 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_car_group
+		(
+		id,
+		group_code,
+		group_name,
+		company_id,
+		company_name,
+		parent_id,
+		deleted,
+		operator_id,
+		operator_name,
+		created_time,
+		updated_time,
+		memo
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator="," close=";">
+			(
+			#{item.id,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.groupCode,jdbcType=VARCHAR},
+			#{item.groupName,jdbcType=VARCHAR},
+			#{item.companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.companyName,jdbcType=VARCHAR},
+			#{item.parentId,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.deleted,jdbcType=TINYINT},
+			#{item.operatorId,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.operatorName,jdbcType=VARCHAR},
+			#{item.createdTime,jdbcType=TIMESTAMP},
+			#{item.updatedTime,jdbcType=TIMESTAMP},
+			#{item.memo,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+	<!-- 根据id删除车辆组（逻辑删除） -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_car_group
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_car_group
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改车辆组信息 -->
+	<update id="updateById" parameterType="com.muck.domain.CarGroup">
+		update t_car_group
+		<set>
+			<if test="groupCode != null">
+				group_code = #{groupCode,jdbcType=VARCHAR},
+			</if>
+			<if test="groupName != null">
+				group_name = #{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id =
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id =
+				#{parentId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id =
+				#{operatorId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="CarGroupResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="CarGroupResultMap">
+		${sql}
+	</select>
+
+	
+	<!-- 车辆组树结果集 -->
+	<resultMap id="CarGroupTreeResultMap" type="com.muck.domain.Company">
+		<id column="companyid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="company_total" property="total" javaType = "INTEGER"/>
+		<!-- 映射车辆组信息 -->
+		<collection property="carGroups" ofType="com.muck.domain.CarGroup">
+			<result column="cargroupid" property="id"
+				typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="group_name" property="groupName" javaType = "string" />
+			<result column="car_group_total" property="total" javaType = "INTEGER"/>
+		</collection>
+	</resultMap>
+	<!-- 获取车辆组树 -->
+	<select id="queryCarGroupTree" resultMap="CarGroupTreeResultMap">
+		select
+		company.id companyid,
+		company.company_name,
+		car_group.id cargroupid,
+		car_group.group_name,
+		(select count(id) from t_car where company_id = company.id and deleted = 1) as company_total,
+		(select if(count(id) = 0,null,count(id)) from t_car where car_group_id in (select getChildCarGroupById(car_group.id))) as car_group_total 
+		from
+		t_company company 
+		<if test="companyId != null and companyId != ''">
+			inner
+		</if>
+		<if test="companyId == null or companyId == ''">
+			left
+		</if>
+			join t_car_group car_group
+		on company.id = car_group.company_id
+		<where>
+			<if test="companyId != null and companyId != ''">
+				and company.id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			and parent_id is null and 
+			car_group.deleted = 1 or 
+			car_group.deleted is null
+		</where>
+	</select>
+
+	
+	
+	<!-- 第二级车辆组树结果集 -->
+	<resultMap id="CarGroupAccessResultMap"  type="com.muck.domain.CarGroup">
+		<result column="cargroupid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="group_name" property="groupName" javaType = "string" />
+		<result column="car_group_total" property="total" javaType = "INTEGER"/>
+		<result column="parent_id" property="parentId" typeHandler="com.muck.handler.IdTypeHandler"/>
+	</resultMap>
+	<!-- 获取第二级车辆组树 -->
+	<select id="queryCarGroupAccess" resultMap="CarGroupAccessResultMap">
+		select
+		car_group.id cargroupid,
+		car_group.group_name,
+		(select if(count(id) = 0,null,count(id)) from t_car where car_group_id in (select getChildCarGroupById(car_group.id))) as car_group_total, 
+		car_group.parent_id
+		from
+		t_car_group car_group
+		where parent_id in (${carGroupIds}) and car_group.deleted = 1
+	</select>
+	
+	
+	
+	
+
+	<!-- 根据车辆组id查询车辆列表 -->
+	<resultMap id="CarGroupCarResultMap" type="com.muck.domain.Car">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+		<result column="car_person_name" property="carPersonName"
+			jdbcType="VARCHAR" />
+		<result column="car_person_phone" property="carPersonPhone"
+			jdbcType="VARCHAR" />
+		<result column="area_id" property="areaId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="company_principal_name" property="companyPrincipalName"
+			jdbcType="VARCHAR" />
+		<result column="company_principal_phone" property="companyPrincipalPhone"
+			jdbcType="VARCHAR" />
+		<result column="car_group_id" property="carGroupId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_group_name" property="carGroupName"
+			jdbcType="VARCHAR" />
+		<result column="car_gps_machine_number" property="carGpsMachineNumber"
+			jdbcType="VARCHAR" />
+		<result column="car_vehicle_model" property="carVehicleModel"
+			jdbcType="VARCHAR" />
+		<result column="is_lock" property="isLock" jdbcType="TINYINT" />
+		<result column="is_running" property="isRunning" jdbcType="TINYINT" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryCarByGroupId" resultMap="CarGroupCarResultMap">
+		select
+		car.id,
+		car.car_code,
+		car.car_person_name,
+		car.car_person_phone,
+		car.area_id,
+		car.area_name,
+		car.company_id,
+		car.company_name,
+		car.company_principal_name,
+		car.company_principal_phone,
+		car.car_group_id,
+		car.car_group_name,
+		car.car_gps_machine_number,
+		car.car_vehicle_model,
+		car.is_lock,
+		car.is_running,
+		car.deleted,
+		car.operator_id,
+		car.operator_name,
+		car.created_time,
+		car.updated_time,
+		car.memo
+		from
+		t_car_group car_group,t_car car
+		where
+		car_group.id = car.car_group_id and
+		car.deleted = 1
+	</select>
+	
+	<!-- 根据车辆组和企业id查询车辆组 -->
+	<select id="selectByGroupNameAndCompany" resultMap="CarGroupResultMap">
+		select
+			id,
+			group_name
+		from
+			t_car_group
+		where
+			group_name = #{carGroupName,jdbcType=VARCHAR} and
+			company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+</mapper>

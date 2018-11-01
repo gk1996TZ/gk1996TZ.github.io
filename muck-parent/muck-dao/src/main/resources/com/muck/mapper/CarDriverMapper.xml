@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarDriverMapper">
+
+	<!-- 车辆驾驶员映射实体	 -->
+	<resultMap id="CarDriverResultMap" type="com.muck.domain.CarDriver">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+		<result column="driver_sex" property="driverSex" jdbcType="VARCHAR" />
+		<result column="driver_birth" property="driverBirth" jdbcType="VARCHAR" />
+		<result column="is_marry" property="isMarry" jdbcType="VARCHAR" />
+		<result column="driver_nation" property="driverNation" jdbcType="VARCHAR" />
+		<result column="driver_education" property="driverEducation" jdbcType="VARCHAR" />
+		<result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+		<result column="id_number_address" property="idNumberAddress" jdbcType="VARCHAR" />
+		<result column="driver_license_file_number" property="driverLicenseFileNumber" jdbcType="VARCHAR" />
+		<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+		<result column="head_path" property="headPath" jdbcType="VARCHAR" />
+		<result column="live_address" property="liveAddress" jdbcType="VARCHAR" />
+		<result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="status_type" property="statusType" jdbcType="INTEGER" />
+		<result column="reason" property="reason" jdbcType="VARCHAR" />
+		<result column="resume" property="resume" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="operator_model" property="operatorModel" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		
+		<collection property="carDriverFamilyMembers" ofType="com.muck.domain.CarDriverFamilyMember">
+			<result column="name" property="name" jdbcType="VARCHAR"/>
+			<result column="phone" property="phone" jdbcType="VARCHAR"/>
+			<result column="relation" property="relation" jdbcType="VARCHAR"/>
+			<result column="work_unit" property="workUnit" jdbcType="VARCHAR"/>
+		</collection>
+	</resultMap>
+	
+	<!--  添加驾驶员 -->
+	<insert id="insert" parameterType="com.muck.domain.CarDriver">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into t_car_driver
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="driverName != null">
+				driver_name,
+			</if>
+			<if test="driverSex != null">
+				driver_sex,
+			</if>
+			<if test="driverBirth != null">
+				driver_birth,
+			</if>
+			<if test="isMarry != null">
+				is_marry,
+			</if>
+			<if test="driverNation != null">
+				driver_nation,
+			</if>
+			<if test="driverEducation != null">
+				driver_education,
+			</if>
+			<if test="idNumber != null">
+				id_number,
+			</if>
+			<if test="carCode != null">
+				car_code,
+			</if>
+			<if test="headPath != null">
+				head_path,
+			</if>
+			<if test="liveAddress != null">
+				live_address,
+			</if>
+			<if test="driverPhone != null">
+				driver_phone,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="resume != null">
+				resume,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="operatorModel != null">
+				operator_model,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="statusType != null">
+				status_type,
+			</if>
+			<if test="reason != null">
+				reason,
+			</if>
+			<if test="idNumberAddress != null">
+				id_number_address,
+			</if>
+			<if test="driverLicenseFileNumber != null">
+				driver_license_file_number,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="driverName != null">
+				#{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="driverSex != null">
+				#{driverSex,jdbcType=VARCHAR},
+			</if>
+			<if test="driverBirth != null">
+				#{driverBirth,jdbcType=VARCHAR},
+			</if>
+			<if test="isMarry != null">
+				#{isMarry,jdbcType=VARCHAR},
+			</if>
+			<if test="driverNation != null">
+				#{driverNation,jdbcType=VARCHAR},
+			</if>
+			<if test="driverEducation != null">
+				#{driverEducation,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumber != null">
+				#{idNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carCode != null">
+				#{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="headPath != null">
+				#{headPath,jdbcType=VARCHAR},
+			</if>
+			<if test="liveAddress != null">
+				#{liveAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="driverPhone != null">
+				#{driverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="resume != null">
+				#{resume,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorModel != null">
+				#{operatorModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="statusType != null">
+				#{statusType,jdbcType=INTEGER},
+			</if>
+			<if test="reason != null">
+				#{reason,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumberAddress != null">
+				#{idNumberAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="driverLicenseFileNumber != null">
+				#{driverLicenseFileNumber,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量插入驾驶员数据 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_car_driver
+		(
+			id, 
+			driver_id,
+			driver_name, 
+			driver_sex, 
+			driver_age,
+			driver_birth, 
+			is_marry, 
+			driver_nation, 
+			driver_education, 
+			id_number_address, 
+			id_number, 
+			driver_license_file_number,
+			car_code, 
+			head_path, 
+			live_address, 
+			driver_phone, 
+			company_id, 
+			company_name, 
+			status_type, 
+			reason, 
+			resume, 
+			memo, 
+			operator_model, 
+			deleted, 
+			operator_id, 
+			operator_name, 
+			created_time, 
+			updated_time
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+				#{item.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{item.driverId,jdbcType=VARCHAR}, 
+				#{item.driverName,jdbcType=VARCHAR}, 
+				#{item.driverSex,jdbcType=VARCHAR}, 
+				#{item.driverAge,jdbcType=VARCHAR}, 
+				#{item.driverBirth,jdbcType=VARCHAR}, 
+				#{item.isMarry,jdbcType=VARCHAR}, 
+				#{item.driverNation,jdbcType=VARCHAR}, 
+				#{item.driverEducation,jdbcType=VARCHAR}, 
+				#{item.idNumberAddress,jdbcType=VARCHAR}, 
+				#{item.idNumber,jdbcType=VARCHAR}, 
+				#{item.driverLicenseFileNumber,jdbcType=VARCHAR}, 
+				#{item.carCode,jdbcType=VARCHAR}, 
+				#{item.headPath,jdbcType=VARCHAR}, 
+				#{item.liveAddress,jdbcType=VARCHAR}, 
+				#{item.driverPhone,jdbcType=VARCHAR}, 
+				#{item.companyId,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{item.companyName,jdbcType=VARCHAR}, 
+				#{item.statusType,jdbcType=INTEGER}, 
+				#{item.reason,jdbcType=VARCHAR}, 
+				#{item.resume,jdbcType=VARCHAR}, 
+				#{item.memo,jdbcType=VARCHAR}, 
+				#{item.operatorModel,jdbcType=VARCHAR}, 
+				#{item.deleted,jdbcType=TINYINT}, 
+				#{item.operatorId,jdbcType=BIGINT}, 
+				#{item.operatorName,jdbcType=VARCHAR}, 
+				#{item.createdTime,jdbcType=TIMESTAMP}, 
+				#{item.updatedTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		id = values(id), 
+		driver_id = values(driver_id),
+		driver_name = values(driver_name), 
+		driver_sex = values(driver_sex), 
+		driver_age = values(driver_age),
+		driver_birth = values(driver_birth), 
+		is_marry = values(is_marry), 
+		driver_nation = values(driver_nation), 
+		driver_education = values(driver_education), 
+		id_number_address = values(id_number_address), 
+		id_number = values(id_number), 
+		driver_license_file_number = values(driver_license_file_number),
+		car_code = values(car_code), 
+		head_path = values(head_path), 
+		live_address = values(live_address), 
+		driver_phone = values(driver_phone), 
+		company_id = values(company_id), 
+		company_name = values(company_name), 
+		status_type = values(status_type), 
+		reason = values(reason), 
+		resume = values(resume), 
+		memo = values(memo), 
+		operator_model = values(operator_model), 
+		deleted = values(deleted), 
+		operator_id = values(operator_id), 
+		operator_name = values(operator_name), 
+		created_time = values(created_time), 
+		updated_time = values(updated_time)
+	</insert>
+	
+	<!-- 设置维护企业和驾驶员的的关系 -->
+	<update id="setCompanyAndCarDriverRelation">
+		UPDATE t_car_driver
+		INNER JOIN (SELECT id,company_name FROM
+		t_company) company ON company.company_name =
+		t_car_driver.company_name
+		SET t_car_driver.company_id =
+		company.id
+	</update>
+	
+	
+	<!-- 根据id修改驾驶员信息	 -->
+	<update id="updateById" parameterType="com.muck.domain.CarDriver">
+		update t_car_driver
+		<set>
+			<if test="driverName != null">
+				driver_name = #{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="driverSex != null">
+				driver_sex = #{driverSex,jdbcType=VARCHAR},
+			</if>
+			<if test="driverBirth != null">
+				driver_birth = #{driverBirth,jdbcType=VARCHAR},
+			</if>
+			<if test="isMarry != null">
+				is_marry = #{isMarry,jdbcType=VARCHAR},
+			</if>
+			<if test="driverNation != null">
+				driver_nation = #{driverNation,jdbcType=VARCHAR},
+			</if>
+			<if test="driverEducation != null">
+				driver_education = #{driverEducation,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumber != null">
+				id_number = #{idNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carCode != null">
+				car_code = #{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="headPath != null">
+				head_path = #{headPath,jdbcType=VARCHAR},
+			</if>
+			<if test="liveAddress != null">
+				live_address = #{liveAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="driverPhone != null">
+				driver_phone = #{driverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="resume != null">
+				resume = #{resume,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorModel != null">
+				operator_model = #{operatorModel,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="statusType != null">
+				status_type = #{statusType,jdbcType=INTEGER},
+			</if>
+			<if test="reason != null">
+				reason = #{reason,jdbcType=VARCHAR},
+			</if>
+			<if test="idNumberAddress != null">
+				id_number_address = #{idNumberAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="driverLicenseFileNumber != null">
+				driver_license_file_number = #{driverLicenseFileNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<sql id="Base_Column_List" >
+	    tcd.id as id, tcd.driver_name, tcd.driver_sex, tcd.driver_birth, tcd.is_marry, tcd.driver_nation, tcd.driver_education, 
+	    tcd.id_number_address, tcd.id_number, tcd.driver_license_file_number, tcd.car_code, tcd.head_path, tcd.live_address, tcd.driver_phone, tcd.company_id, 
+	    tcd.company_name, tcd.status_type, tcd.reason, tcd.resume, tcd.memo,
+	    tcdfm.name,
+	    tcdfm.phone,
+	    tcdfm.relation,
+	    tcdfm.work_unit
+	</sql>
+	
+	<!-- 根据驾驶员id查询驾驶员详情 -->
+	<select id="selectById" parameterType="string" resultMap="CarDriverResultMap">
+		select 
+			<include refid="Base_Column_List" />
+		from
+			t_car_driver tcd
+		left join t_car_driver_family_member tcdfm
+		on tcd.id = tcdfm.driver_id
+		where
+			tcd.id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			tcd.deleted = 1	
+	</select>
+	
+	<!-- 根据驾驶员身份证号查询驾驶员详情 -->
+	<select id="queryByIdNumber" parameterType="string" resultMap="CarDriverResultMap">
+		select 
+			<include refid="Base_Column_List" />
+		from
+			t_car_driver tcd
+		left join t_car_driver_family_member tcdfm
+		on tcd.id = tcdfm.driver_id
+		where
+			tcd.id_number = #{idNumber,jdbcType=VARCHAR} and
+			tcd.deleted = 1	
+	</select>
+	
+	<!-- 根据驾驶员身份证号查询驾驶员详情 -->
+	<select id="queryByCarCode" parameterType="string" resultMap="CarDriverResultMap">
+		select 
+			<include refid="Base_Column_List" />
+		from
+			t_car_driver tcd
+		left join t_car_driver_family_member tcdfm
+		on tcd.id = tcdfm.driver_id
+		where
+			tcd.car_code = #{carCode,jdbcType=VARCHAR} and
+			tcd.deleted = 1	
+	</select>
+	
+	<!-- 根据驾驶员身份证号查询驾驶员详情 -->
+	<select id="queryByPhone" parameterType="string" resultMap="CarDriverResultMap">
+		select 
+			<include refid="Base_Column_List" />
+		from
+			t_car_driver tcd
+		left join t_car_driver_family_member tcdfm
+		on tcd.id = tcdfm.driver_id
+		where
+			tcd.driver_phone = #{phone,jdbcType=VARCHAR} and
+			tcd.deleted = 1	
+	</select>
+	<!-- 根据驾驶员id删除驾驶员 -->
+	<update id="deleteById" parameterType="string">
+		update
+			t_car_driver
+		set
+			deleted = 0
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="CarDriverResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="CarDriverResultMap">
+		${sql}
+	</select>
+	
+</mapper>

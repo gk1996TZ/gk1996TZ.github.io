@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.ColorMapper">
+	
+	<resultMap id="ColorResultMap" type="com.muck.domain.Color">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="color_name_zh" property="colorNameZh" jdbcType="VARCHAR" />
+		<result column="color_name_en" property="colorNameEn" jdbcType="VARCHAR" />
+		<result column="color_code" property="colorCode" jdbcType="INTEGER" />
+		<result column="color_value" property="colorValue" jdbcType="VARCHAR" />
+		<result column="color_occupancy" property="colorOccupancy" jdbcType="TINYINT" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, color_name_zh, color_name_en, color_code, color_value,
+		color_occupancy, deleted,
+		memo
+	</sql>
+	<update id="updateByPrimaryKey" parameterType="com.muck.domain.Color">
+		update t_color
+		set color_name_zh = #{colorNameZh,jdbcType=VARCHAR},
+		color_name_en = #{colorNameEn,jdbcType=VARCHAR},
+		color_code = #{colorCode,jdbcType=INTEGER},
+		color_value = #{colorValue,jdbcType=VARCHAR},
+		color_occupancy = #{colorOccupancy,jdbcType=TINYINT},
+		deleted = #{deleted,jdbcType=TINYINT},
+		memo = #{memo,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="ColorResultMap">
+		${sql}
+	</select>
+</mapper>

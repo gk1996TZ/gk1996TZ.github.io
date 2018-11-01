@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.PrivilegeGroupMapper">
+	<resultMap id="PrivilegeGroupResultMap" type="com.muck.domain.PrivilegeGroup">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="privilege_group_name" property="privilegeGroupName"
+			jdbcType="VARCHAR" />
+		<result column="privilege_group_degree" property="privilegeGroupDegree"
+			jdbcType="VARCHAR" />
+		<result column="tpgmemo" property="memo" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+
+		<!-- 权限组权限信息 -->
+		<collection property="privileges" javaType="com.muck.domain.Privilege">
+			<id column="tpId" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="privilege_name" property="privilegeName"
+				jdbcType="VARCHAR" />
+			<result column="privilege_url" property="privilegeUrl"
+				jdbcType="VARCHAR" />
+			<result column="is_common" property="isCommon" jdbcType="TINYINT" />
+			<result column="privilege_model" property="privilegeModel"
+				jdbcType="VARCHAR" />
+			<result column="tpmemo" property="memo" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+
+	<!-- 根据id查询权限组 -->
+	<select id="selectById" resultMap="PrivilegeGroupResultMap"
+		parameterType="java.lang.Long">
+		select
+		tpg.id, tpg.privilege_group_name,tpg.privilege_group_degree, tpg.memo as tpgmemo,
+		tpg.created_time, tpg.updated_time,
+		tp.id as tpId,tp.privilege_name,tp.privilege_url,tp.is_common,tp.privilege_model,tp.memo as tpmemo
+		from
+		t_privilege_group tpg
+		left join t_privilegegroup_privilege tpp on tpg.id=tpp.privilege_group_id
+		left join t_privilege tp on tpp.privilege_id=tp.id
+		where
+		tpg.id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+		and tpg.deleted=1
+	</select>
+
+	<!-- 根据权限组名称校验权限组是否存在 -->
+	<select id="validateExistPrivilegeGroup" parameterType="string"
+		resultType="long">
+		select
+		count(id)
+		from
+		t_privilege_group
+		where
+		privilege_group_name = #{pgName,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 增加权限组 -->
+	<insert id="insert" parameterType="com.muck.domain.PrivilegeGroup">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_privilege_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="privilegeGroupName != null">
+				privilege_group_name,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="privilegeGroupDegree !=null">
+				privilege_group_degree,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="privilegeGroupName != null">
+				#{privilegeGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeGroupDegree != null">
+				#{privilegeGroupDegree,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateById" parameterType="com.muck.domain.PrivilegeGroup">
+		update t_privilege_group
+		<set>
+			<if test="privilegeGroupName != null">
+				privilege_group_name =
+				#{privilegeGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeGroupDegree != null">
+				privilege_group_degree=
+				#{privilegeGroupDegree,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id真实删除 -->
+	<update id="deleteByIdReal" parameterType="long">
+		delete from t_privilege_group
+		where id=#{privilegeGroupId,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="PrivilegeGroupResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+
+	<!-- 根据用户id查询权限组 -->
+	<select id="selectByManagerId" parameterType="string"
+		resultMap="PrivilegeGroupResultMap">
+		SELECT
+		tpg.id,
+		tpg.privilege_group_name
+		FROM
+		t_manager_privilegegroup tmp,t_privilege_group tpg
+		WHERE
+		tmp.privilege_group_id = tpg.id AND
+		tmp.manager_id = #{managerId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+</mapper>

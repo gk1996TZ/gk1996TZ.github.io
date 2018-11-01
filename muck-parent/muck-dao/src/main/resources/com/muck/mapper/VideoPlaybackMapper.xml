@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.VideoPlaybackMapper">
+	
+	<resultMap id="VideoPlaybackResultMap" type="com.muck.domain.VideoPlayback" >
+	    <id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+	    <result column="video_playback_path" property="videoPlaybackPath" jdbcType="VARCHAR" />
+	    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 根据id查询视频回放记录 -->
+	<select id="selectById" parameterType="string" resultMap="VideoPlaybackResultMap">
+		select
+			id,
+			video_playback_path,
+			created_time,
+			updated_time
+		from 
+			t_video_playback
+		where 
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			deleted = 1
+	</select>
+	
+	<!-- 	添加视频回放	 -->
+	<insert id="insert" parameterType="com.muck.domain.VideoPlayback">
+		insert into t_video_playback
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="videoPlaybackPath != null">
+				video_playback_path,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="videoPlaybackPath != null">
+				#{videoPlaybackPath,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据id删除视频回放记录(逻辑删除) -->
+	<update id="deleteById" parameterType="long">
+		update
+			t_video_playback
+		set
+			deleted = 0
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_video_playback
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="VideoPlaybackResultMap">
+		${sql}
+	</select>
+	
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	
+</mapper>

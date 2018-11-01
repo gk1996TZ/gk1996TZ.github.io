@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SiteMapper">
+	<resultMap id="SiteResultMap" type="com.muck.domain.Site">
+
+		<!-- 映射工地的基本信息 -->
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_id" property="siteId" jdbcType="VARCHAR" />
+		<result column="site_name" property="siteName" jdbcType="VARCHAR" />
+		<result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+		<result column="site_address" property="siteAddress" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="BIT" />
+		<result column="operator_id" property="operatorId" jdbcType="INTEGER" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+
+		<result column="site_cleaner_name" property="siteCleanerName"
+			jdbcType="VARCHAR" />
+		<result column="site_cleaner_phone" property="siteCleanerPhone"
+			jdbcType="VARCHAR" />
+		<result column="site_project_manager_one" property="siteProjectManagerOne"
+			jdbcType="VARCHAR" />
+		<result column="site_project_manager_phone_one" property="siteProjectManagerPhoneOne"
+			jdbcType="VARCHAR" />
+		<result column="site_project_manager_two" property="siteProjectManagerTwo"
+			jdbcType="VARCHAR" />
+		<result column="site_project_manager_phone_two" property="siteProjectManagerPhoneTwo"
+			jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="site_process_memo" property="siteProcessMemo"
+			jdbcType="VARCHAR" />
+		<result column="site_group_name" property="siteGroupName"
+			jdbcType="VARCHAR" />
+		<result column="site_register_code" property="siteRegisterCode"
+			jdbcType="VARCHAR" />
+
+		<!-- 映射关联信息(区域、企业) -->
+		<result column="area_id" property="area.id"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_code" property="area.areaCode" jdbcType="VARCHAR" />
+		<result column="area_name" property="area.areaName" jdbcType="VARCHAR" />
+		<result column="company_id" property="company.id"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="company.companyName"
+			jdbcType="VARCHAR" />
+
+		<association property="siteProjectInfo" column="id"
+			select="com.muck.mapper.SiteProjectInfoMapper.querySiteProjectInfoBySiteId1">
+			<result column="tbspiId" property="id"
+				typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="project_name" property="projectName" jdbcType="VARCHAR" />
+			<result column="project_address" property="projectAddress"
+				jdbcType="VARCHAR" />
+			<result column="project_introduce" property="projectIntroduce"
+				jdbcType="VARCHAR" />
+			<result column="project_scale" property="projectScale"
+				jdbcType="VARCHAR" />
+			<result column="project_period" property="projectPeriod"
+				jdbcType="VARCHAR" />
+			<result column="build_unit" property="buildUnit" jdbcType="VARCHAR" />
+			<result column="build_unit_manager" property="buildUnitManager"
+				jdbcType="VARCHAR" />
+			<result column="build_unit_manager_phone" property="buildUnitManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="construction_unit" property="constructionUnit"
+				jdbcType="VARCHAR" />
+			<result column="construction_unit_manager" property="constructionUnitManager"
+				jdbcType="VARCHAR" />
+			<result column="construction_unit_manager_phone" property="constructionUnitManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="supervision_unit" property="supervisionUnit"
+				jdbcType="VARCHAR" />
+			<result column="supervision_unit_manager" property="supervisionUnitManager"
+				jdbcType="VARCHAR" />
+			<result column="supervision_unit_manager_phone" property="supervisionUnitManagerPhone"
+				jdbcType="CHAR" />
+			<result column="earthwork_unit" property="earthworkUnit"
+				jdbcType="VARCHAR" />
+			<result column="earthwork_unit_manager" property="earthworkUnitManager"
+				jdbcType="VARCHAR" />
+			<result column="earthwork_unit_manager_phone" property="earthworkUnitManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="transport_unit" property="transportUnit"
+				jdbcType="VARCHAR" />
+			<result column="transport_unit_manager" property="transportUnitManager"
+				jdbcType="VARCHAR" />
+			<result column="transport_unit_manager_phone" property="transportUnitManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="entrance_cleaners" property="entranceCleaners"
+				jdbcType="VARCHAR" />
+			<result column="entrance_cleaners_manager" property="entranceCleanersManager"
+				jdbcType="VARCHAR" />
+			<result column="entrance_cleaners_manager_phone" property="entranceCleanersManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="video_surveillance" property="videoSurveillance"
+				jdbcType="VARCHAR" />
+			<result column="video_surveillance_manager" property="videoSurveillanceManager"
+				jdbcType="VARCHAR" />
+			<result column="video_surveillance_manager_phone" property="videoSurveillanceManagerPhone"
+				jdbcType="VARCHAR" />
+			<result column="tbspiMemo" property="memo" jdbcType="VARCHAR" />
+		</association>
+
+	</resultMap>
+
+
+	<!-- 根据id查询工地信息 -->
+	<select id="selectById" parameterType="long" resultMap="SiteResultMap">
+		select
+		site.id, site.site_id, site.site_name, site.site_address,site.site_register_code,
+		site.created_time, site.updated_time,
+		site.site_cleaner_name,
+		site.site_cleaner_phone,
+		site.site_project_manager_one,
+		site.site_project_manager_phone_one,
+		site.site_project_manager_two,
+		site.site_project_manager_phone_two, site.memo,
+		site.area_id,
+		site.area_code, site.area_name, site.company_id, site.company_name,
+		site.site_process_memo,
+		tbspi.id as
+		tbspiId,tbspi.project_name,tbspi.project_address,tbspi.project_introduce,
+		tbspi.project_scale,tbspi.project_period,tbspi.build_unit,
+		tbspi.build_unit_manager,tbspi.build_unit_manager_phone,
+		tbspi.construction_unit,tbspi.construction_unit_manager,tbspi.construction_unit_manager_phone,
+		tbspi.supervision_unit,tbspi.supervision_unit_manager,tbspi.supervision_unit_manager_phone,
+		tbspi.earthwork_unit,tbspi.earthwork_unit_manager,tbspi.earthwork_unit_manager_phone,
+		tbspi.transport_unit,tbspi.transport_unit_manager,tbspi.transport_unit_manager_phone,
+		tbspi.entrance_cleaners,tbspi.entrance_cleaners_manager,tbspi.entrance_cleaners_manager_phone,
+		tbspi.video_surveillance,tbspi.video_surveillance_manager,tbspi.video_surveillance_manager_phone,
+		tbspi.memo as tbspiMemo
+		from
+		t_site site
+		left join
+		t_biz_site_project_info tbspi ON site.id = tbspi.site_id
+		where
+		site.id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		site.deleted = 1
+	</select>
+
+	<!-- 添加工地 -->
+	<insert id="insert" parameterType="com.muck.domain.Site">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_site
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="siteId != null">
+				site_id,
+			</if>
+			<if test="siteName != null">
+				site_name,
+			</if>
+			<if test="siteAddress != null">
+				site_address,
+			</if>
+			<if test="area != null">
+				area_id,
+			</if>
+			<if test="area != null">
+				area_code,
+			</if>
+			<if test="area != null">
+				area_name,
+			</if>
+			<if test="company != null">
+				company_id,
+			</if>
+			<if test="company != null">
+				company_name,
+			</if>
+			<if test="siteCleanerName != null">
+				site_cleaner_name,
+			</if>
+			<if test="siteCleanerPhone != null">
+				site_cleaner_phone,
+			</if>
+			<if test="siteRegisterCode != null">
+				site_register_code,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="siteProjectManagerOne != null">
+				site_project_manager_one,
+			</if>
+			<if test="siteProjectManagerPhoneOne != null">
+				site_project_manager_phone_one,
+			</if>
+			<if test="siteProjectManagerTwo != null">
+				site_project_manager_two,
+			</if>
+			<if test="siteProjectManagerPhoneTwo != null">
+				site_project_manager_phone_two,
+			</if>
+			<if test="siteProcessMemo != null">
+				site_process_memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="siteId != null">
+				#{siteId,jdbcType=VARCHAR},
+			</if>
+			<if test="siteName != null">
+				#{siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteAddress != null">
+				#{siteAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="area != null">
+				#{area.areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area.areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				#{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="company != null">
+				#{company.companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteCleanerName != null">
+				#{siteCleanerName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteCleanerPhone != null">
+				#{siteCleanerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="siteRegisterCode != null">
+				#{siteRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=BIT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="siteProjectManagerOne != null">
+				#{siteProjectManagerOne,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerPhoneOne != null">
+				#{siteProjectManagerPhoneOne,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerTwo != null">
+				#{siteProjectManagerTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerPhoneTwo != null">
+				#{siteProjectManagerPhoneTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProcessMemo != null">
+				#{siteProcessMemo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id删除工地 -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_site
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_site
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改工地 -->
+	<update id="updateById" parameterType="com.muck.domain.Site">
+		update t_site
+		<set>
+			<if test="siteId != null">
+				site_id = #{siteId,jdbcType=VARCHAR},
+			</if>
+			<if test="siteName != null">
+				site_name = #{siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteAddress != null">
+				site_address = #{siteAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				area_id =
+				#{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="area != null">
+				area_code = #{area.areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				area_name = #{area.areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				company_id =
+				#{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="company != null">
+				company_name = #{company.companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteCleanerName != null">
+				site_cleaner_name = #{siteCleanerName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteCleanerPhone != null">
+				site_cleaner_phone =
+				#{siteCleanerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerOne != null">
+				site_project_manager_one =
+				#{siteProjectManagerOne,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerPhoneOne != null">
+				site_project_manager_phone_one =
+				#{siteProjectManagerPhoneOne,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerTwo != null">
+				site_project_manager_two =
+				#{siteProjectManagerTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="siteProjectManagerPhoneTwo != null">
+				site_project_manager_phone_two =
+				#{siteProjectManagerPhoneTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="siteProcessMemo != null">
+				site_process_memo = #{siteProcessMemo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="SiteResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="SiteResultMap">
+		${sql}
+	</select>
+	<select id="getSiteIdsByManagerIds" parameterType="string"
+		resultType="string">
+		select
+		site_id
+		from
+		t_site_principal
+		<where>
+			manager_id in (#{managerIds})
+		</where>
+	</select>
+	<!-- 获取所有的工地id -->
+	<select id="getSiteIdsAll" resultType="string">
+		select
+		site_id
+		from
+		t_site
+	</select>
+
+
+	<!-- 根据通道号查询工地 <select id="selectSiteInfoByChannelCode" parameterType="string" 
+		resultType="map"> SELECT ta.area_name areaName, ts.site_name siteName, tsd.device_code 
+		deviceCode, ts.site_address siteAddress, ts.site_cleaner_name siteCleannerName, 
+		ts.site_cleaner_phone siteCleannerPhone, tc.company_name companyName, GROUP_CONCAT(tsm.site_manager) 
+		siteManager, GROUP_CONCAT(tsm.site_manager_phone) siteManagerPhone FROM t_site_device 
+		tsd, t_device_channel tdc, t_site ts, t_area ta, t_company_device tcd, t_company 
+		tc, t_site_manager tsm WHERE tsd.device_code = tdc.device_code AND tdc.channel_code 
+		= #{channelCode,jdbcType=VARCHAR} AND ts.id = tsd.site_id AND ts.area_id 
+		= ta.id AND tcd.device_code = tsd.device_code AND tc.id = tcd.company_id 
+		AND tsm.site_id = ts.id GROUP BY ts.id </select> -->
+
+	<!-- 根据通道编号查询工地详情 -->
+	<select id="selectSiteInfoByChannelCode" parameterType="string"
+		resultMap="SiteResultMap">
+		select
+		site_name,
+		site_register_code
+		from
+		t_site 
+		where
+		site_id =
+		#{channelCode,jdbcType=VARCHAR} and
+		deleted = 1
+	</select>
+
+	<!-- 通过设备编号查询工地id -->
+	<select id="querySiteIdByDeviceCode" parameterType="string"
+		resultType="string">
+		select
+		site_id
+		from
+		t_site_device
+		where
+		device_code =
+		#{deviceCode}
+	</select>
+	<!-- 通过工地id查询当前工地下所有的设备的所有的通道号 -->
+	<resultMap type="com.muck.domain.Channel" id="ChannelMap">
+		<result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+		<result column="channel_code" property="channelCode" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryChannelBySiteId" parameterType="string"
+		resultType="com.muck.domain.Channel">
+		select
+		tc.channel_name channelName,tc.channel_code
+		channelCode
+		from
+		t_site_device tsd,t_device_channel tdc,t_channel tc
+		where
+		tsd.site_id = #{siteId} and
+		tsd.device_code = tdc.device_code and
+		tdc.channel_code = tc.channel_code
+	</select>
+
+	<!-- 根据id查询工地的基本信息 -->
+	<resultMap id="SimpleSiteResultMap" type="com.muck.response.SimpleSiteTreeDataResponse">
+		<!-- 映射car的基本信息 -->
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_name" property="siteName" jdbcType="VARCHAR" />
+		<!-- 在这里呢,将工地的site_id编码作为通道号 -->
+		<result column="site_id" property="channelCode" jdbcType="VARCHAR" />
+		<result column="device_code" property="deviceCode" jdbcType="VARCHAR" />
+		<result column="site_register_code" property="siteRegisterCode"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 根据id查询工地信息 -->
+	<select id="selectByIdSimple" parameterType="string"
+		resultMap="SimpleSiteResultMap">
+		select
+		id, site_name
+		from
+		t_site
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		deleted = 1
+	</select>
+
+	<!-- 根据注册码查询工地id -->
+	<select id="getIdByRegisterCode" parameterType="string" resultType="int">
+		select id
+		from
+		t_site
+		where
+		site_register_code=#{registerCode,jdbcType=VARCHAR}
+
+	</select>
+
+	<!-- 根据区域id查询区域下面所有的工地 -->
+	<select id="selectByAreaId" parameterType="string" resultMap="SimpleSiteResultMap">
+		SELECT
+		ts.id,
+		ts.site_name,
+		ts.site_id,
+		ts.site_register_code,
+		tdc.device_code
+		FROM
+		t_site ts
+		LEFT JOIN t_device_channel tdc
+		ON
+		ts.site_id = tdc.channel_code
+		where
+		ts.area_id =
+		#{areaId,typeHandler=com.muck.handler.IdTypeHandler} and
+		ts.deleted = 1
+	</select>
+
+	<!-- 设置维护工地和区域的关系 -->
+	<update id="setSiteAndAreaRelation">
+		UPDATE t_site
+		INNER JOIN (SELECT id,area_code FROM
+		t_area) area ON area.area_code =
+		t_site.area_code
+		SET t_site.area_id =
+		area.id
+	</update>
+
+	<!-- 批量添加工地 -->
+	<insert id="insertBatch">
+		insert into t_site (site_id, site_name, area_id, area_code,
+		area_name,
+		deleted, operator_id,
+		operator_name, created_time, updated_time
+		)
+		values
+		<foreach collection="sites" item="site" separator=",">
+			(
+			#{site.siteId,jdbcType=VARCHAR},
+			#{site.siteName,jdbcType=VARCHAR},
+			#{site.area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			#{site.area.areaCode,jdbcType=VARCHAR},
+			#{site.area.areaName,jdbcType=VARCHAR},
+			#{site.deleted,jdbcType=TINYINT},
+			#{site.operatorId,jdbcType=BIGINT},
+			#{site.operatorName,jdbcType=VARCHAR},
+			#{site.createdTime,jdbcType=TIMESTAMP},
+			#{site.updatedTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		site_id = values(site_id),
+		site_name =
+		values(site_name),
+		area_id = values(area_id),
+		area_code = values(area_code),
+		area_name = values(area_name),
+		deleted = values(deleted),
+		operator_id =
+		values(operator_id),
+		operator_name = values(operator_name),
+		created_time = values(created_time),
+		updated_time =
+		values(updated_time)
+	</insert>
+	
+	<!-- 批量更新 -->
+	<update id="updateBatch" >
+	update 
+	t_site
+	set
+	site_register_code=#{registerCode,jdbcType=VARCHAR}
+	where 
+	site_id
+	 in
+	${channelCodes}
+	</update>
+
+</mapper>

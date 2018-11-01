@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>My WebSocket</title>
+<style type="text/css">
+body, html, #GPSMap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+</style>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=XN8GkjTOlzqdiMclqSjw6DXOyazp3hDC"></script>
+</head>
+<body>
+	<div id="GPSMap"></div>
+</body>
+
+<script type="text/javascript">
+	//创建地图实例  
+	var map = new BMap.Map("GPSMap");
+
+	// 创建点坐标  
+	var point = new BMap.Point(119.65061, 29.10419);
+
+	// 初始化地图，设置中心点坐标和地图级别
+	map.centerAndZoom(point, 15);
+
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);
+	
+	var websocket = null;
+
+	//判断当前浏览器是否支持WebSocket
+	if ('WebSocket' in window) {
+		websocket = new WebSocket("ws://192.168.0.108:9999/websocket");
+	} else {
+		alert('Not support websocket')
+	}
+
+	//连接发生错误的回调方法
+	websocket.onerror = function() {
+		//alert("error");
+	};
+
+	//连接成功建立的回调方法
+	websocket.onopen = function(event) {
+		websocket.send("我来了");
+	}
+
+	//接收到消息的回调方法
+	websocket.onmessage = function(event) {
+
+		// 重点在在这里
+		map.clearOverlays();
+
+		var value = event.data;
+		
+		strValue = JSON.parse(value);
+		
+		console.info(strValue);
+		
+		for(var i = 0 ; i < strValue.length ; i++){
+			var xx = strValue[i];
+			var x = xx.latitude / 1000000;
+			var y = xx.longitude / 1000000;
+			var z = xx.location;
+			
+			var p1 = new BMap.Point(y,x);
+			var marker = new BMap.Marker(p1);
+			map.addOverlay(marker);
+		}
+		
+		// 创建标注 
+	}
+
+	//连接关闭的回调方法
+	websocket.onclose = function() {
+		//setMessageInnerHTML("close");
+		alert("关闭啦");
+	}
+
+	//监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+	window.onbeforeunload = function() {
+		websocket.close();
+	}
+</script>
+</html>

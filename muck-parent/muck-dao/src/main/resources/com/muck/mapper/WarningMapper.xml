@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.WarningMapper">
+
+	<resultMap id="WarningResultMap" type="com.muck.domain.Warning">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="device_code" property="deviceCode" jdbcType="VARCHAR" />
+		<result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+		<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+		<result column="warning_name" property="warningName" jdbcType="VARCHAR" />
+		<result column="warning_type" property="warningType" jdbcType="INTEGER" />
+		<result column="warning_time" property="warningTime" jdbcType="TIMESTAMP" />
+		<result column="warning_content" property="warningContent"
+			jdbcType="VARCHAR" />
+		<result column="warning_address" property="warningAddress"
+			jdbcType="VARCHAR" />
+		<result column="warning_status" property="warningStatus"
+			jdbcType="INTEGER" />
+		<result column="handle_time" property="handleTime" jdbcType="TIMESTAMP" />
+		<result column="is_handle" property="isHandle" jdbcType="TINYINT" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+
+		<!-- 映射工地信息 -->
+		<association property="site" javaType="com.muck.domain.Site">
+			<id column="site_id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="site_name" property="siteName" jdbcType="VARCHAR" />
+			<!-- 映射工地的区域 -->
+			<association property="area" javaType="com.muck.domain.Area">
+				<result column="site_area_name" property="areaName" jdbcType="VARCHAR" />
+			</association>
+			<!-- 映射工地的详细数据 -->
+			<association property="siteProjectInfo" javaType="com.muck.domain.SiteProjectInfo">
+				<result column="construction_unit_manager" property="constructionUnitManager"
+					jdbcType="VARCHAR" />
+				<result column="construction_unit_manager_phone" property="constructionUnitManagerPhone"
+					jdbcType="VARCHAR" />
+			</association>
+		</association>
+
+		<!-- 映射处置场信息 -->
+		<association property="disposal" javaType="com.muck.domain.Disposal">
+			<id column="disposal_id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="disposal_name" property="disposalName"
+				jdbcType="VARCHAR" />
+			<result column="disposal_area_name" property="areaName"
+				jdbcType="VARCHAR" />
+		</association>
+
+		<!-- 映射停车场信息 -->
+		<association property="carPark" javaType="com.muck.domain.CarPark">
+			<id column="car_park_id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		</association>
+
+		<!-- 映射车辆信息 -->
+		<association property="car" javaType="com.muck.domain.Car">
+			<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+			<result column="car_owner_of_vehicle" property="carOwnerOfVehicle"
+				jdbcType="VARCHAR" />
+			<result column="car_area_name" property="areaName" jdbcType="VARCHAR" />
+		</association>
+
+		<!-- 映射企业信息 -->
+		<association property="company" javaType="com.muck.domain.Company">
+			<result column="company_name" property="companyName" />
+			<result column="company_legal_representative" property="companyLegalRepresentative"
+				jdbcType="VARCHAR" />
+			<result column="company_legal_representative_phone" property="companyLegalRepresentativePhone"
+				jdbcType="VARCHAR" />
+		</association>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,
+		device_code,device_name,site_id,disposal_id,car_park_id,car_code,warning_name,
+		warning_type, warning_time, warning_content,
+		warning_address,warning_status, handle_time, is_handle,
+		memo, deleted,
+		created_time
+	</sql>
+
+	<!-- 根据告警id查询具体告警信息 -->
+	<select id="selectById" parameterType="string" resultMap="WarningResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		t_warnings
+		where
+		id = #{id, typeHandler=com.muck.handler.IdTypeHandler } and
+		deleted = 1
+	</select>
+
+
+	<!-- 增加告警 -->
+	<insert id="insert" parameterType="com.muck.domain.Warning">
+		insert into t_warnings
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="deviceCode != null">
+				device_code,
+			</if>
+			<if test="deviceName != null">
+				device_name,
+			</if>
+			<if test="siteId != null">
+				site_id,
+			</if>
+			<if test="disposalId != null">
+				disposal_id,
+			</if>
+			<if test="carParkId != null">
+				car_park_id,
+			</if>
+			<if test="carCode != null">
+				car_code,
+			</if>
+			<if test="warningName != null">
+				warning_name,
+			</if>
+			<if test="warningType != null">
+				warning_type,
+			</if>
+			<if test="warningTime != null">
+				warning_time,
+			</if>
+			<if test="warningContent != null">
+				warning_content,
+			</if>
+			<if test="warningAddress != null">
+				warning_address,
+			</if>
+			<if test="warningTime != null">
+				warning_time,
+			</if>
+			<if test="warningStatus != null">
+				warning_status,
+			</if>
+			<if test="isHandle != null">
+				is_handle,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="deviceCode != null">
+				#{deviceCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				#{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteId != null">
+				#{siteId, typeHandler=com.muck.handler.IdTypeHandler },
+			</if>
+			<if test="disposalId != null">
+				#{disposalId, typeHandler=com.muck.handler.IdTypeHandler
+				},
+			</if>
+			<if test="carParkId != null">
+				#{carParkId, typeHandler=com.muck.handler.IdTypeHandler
+				},
+			</if>
+			<if test="carCode != null">
+				#{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="warningName != null">
+				#{warningName,jdbcType=VARCHAR},
+			</if>
+			<if test="warningType != null">
+				#{warningType,jdbcType=INTEGER},
+			</if>
+			<if test="warningTime != null">
+				#{warningTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="warningContent != null">
+				#{warningContent,jdbcType=VARCHAR},
+			</if>
+			<if test="warningAddress != null">
+				#{warningAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="warningTime != null">
+				#{warningTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="warningStatus != null">
+				#{warningStatus,jdbcType=INTEGER},
+			</if>
+			<if test="isHandle != null">
+				#{isHandle,jdbcType=TINYINT},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+
+	<!-- 根据id修改告警信息 -->
+	<update id="updateById" parameterType="com.muck.domain.Warning">
+		update t_warnings
+		<set>
+			<if test="deviceCode != null">
+				device_code = #{deviceCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceName != null">
+				device_name = #{deviceName,jdbcType=VARCHAR},
+			</if>
+			<if test="siteId != null">
+				site_id = #{siteId,jdbcType=BIGINT},
+			</if>
+			<if test="disposalId != null">
+				disposal_id = #{disposalId,jdbcType=BIGINT},
+			</if>
+			<if test="carParkId != null">
+				car_park_id = #{carParkId,jdbcType=BIGINT},
+			</if>
+			<if test="carCode != null">
+				car_code = #{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="warningName != null">
+				warning_name = #{warningName,jdbcType=VARCHAR},
+			</if>
+			<if test="warningType != null">
+				warning_type = #{warningType,jdbcType=INTEGER},
+			</if>
+			<if test="warningTime != null">
+				warning_time = #{warningTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="warningContent != null">
+				warning_content = #{warningContent,jdbcType=VARCHAR},
+			</if>
+			<if test="warningAddress != null">
+				warning_address = #{warningAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="warningStatus != null">
+				warning_status = #{warningStatus,jdbcType=INTEGER},
+			</if>
+			<if test="handleTime != null">
+				handle_time = #{handleTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isHandle != null">
+				is_handle = #{isHandle,jdbcType=TINYINT},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id, typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+
+
+
+
+
+
+
+	<!-- 获取所有的告警信息的总数 -->
+	<select id="queryWarningCount" resultType="long">
+		select count(id) from t_warnings where deleted = 1
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="queryData" parameterType="string" resultMap="WarningResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="WarningResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+
+	<!-- 通过告警名称查询告警信息 -->
+	<select id="queryByWarningName" parameterType="string"
+		resultMap="WarningResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		t_warnings
+		where
+		warning_name = #{warningName,jdbcType=VARCHAR} and
+		deleted = 1
+	</select>
+</mapper>

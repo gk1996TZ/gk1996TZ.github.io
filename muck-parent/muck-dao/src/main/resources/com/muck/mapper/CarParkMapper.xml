@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarParkMapper">
+	<resultMap id="CarParkResultMap" type="com.muck.domain.CarPark">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_park_code" property="carParkCode" jdbcType="VARCHAR" />
+		<result column="car_park_name" property="carParkName" jdbcType="VARCHAR" />
+		<result column="area_id" property="areaId" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 根据id查询停车场 -->
+	<select id="selectById" parameterType="long" resultMap="CarParkResultMap">
+		select
+		id, car_park_code, car_park_name, area_id,area_code, area_name, company_id,
+		company_name, deleted, operator_id, operator_name, created_time,
+		updated_time, memo
+		from
+		t_car_park
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+
+	<!-- 添加停车场 -->
+	<insert id="insert" parameterType="com.muck.domain.CarPark">
+		insert into t_car_park
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="carParkCode != null">
+				car_park_code,
+			</if>
+			<if test="carParkName != null">
+				car_park_name,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaCode != null">
+				area_code,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="carParkCode != null">
+				#{carParkCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carParkName != null">
+				#{carParkName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaCode != null">
+				#{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 添加所有的停车场 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_car_park
+		(
+		id,
+		car_park_code,
+		car_park_name,
+		area_id,
+		area_code,
+		area_name,
+		company_id,
+		company_name,
+		deleted,
+		operator_id,
+		operator_name,
+		created_time,
+		updated_time,
+		memo
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator="," close=";">
+			(
+			#{item.id,jdbcType=BIGINT},
+			#{item.carParkCode,jdbcType=VARCHAR},
+			#{item.carParkName,jdbcType=VARCHAR},
+			#{item.areaCode,jdbcType=VARCHAR},
+			#{item.areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.areaName,jdbcType=VARCHAR},
+			#{item.companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			#{item.companyName,jdbcType=VARCHAR},
+			#{item.deleted,jdbcType=TINYINT},
+			#{item.operatorId,jdbcType=BIGINT},
+			#{item.operatorName,jdbcType=VARCHAR},
+			#{item.createdTime,jdbcType=TIMESTAMP},
+			#{item.updatedTime,jdbcType=TIMESTAMP},
+			#{item.memo,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+	<!-- 根据id删除停车场（逻辑删除） -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_car_park
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_car_park
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改停车场信息 -->
+	<update id="updateById" parameterType="com.muck.domain.CarPark">
+		update t_car_park
+		<set>
+			<if test="carParkCode != null">
+				car_park_code = #{carParkCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carParkName != null">
+				car_park_name = #{carParkName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaCode != null">
+				area_code = #{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="CarParkResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="CarParkResultMap">
+		${sql}
+	</select>
+	
+	
+	
+	<!-- 停车场树结果 -->
+	<resultMap id="CarParkTreeResultMap" type="com.muck.domain.Area">
+		<id column="areaid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<!-- 映射车辆组信息 -->
+		<collection property="carParks" javaType="com.muck.domain.CarPark">
+			<result column="carparkid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="car_park_name" property="carParkName" javaType = "string" />
+		</collection>
+	</resultMap>
+	<!-- 查询停车场树 -->
+	<select id="queryCarParkTree"  resultMap="CarParkTreeResultMap">
+		select
+			area.id areaid,
+			area.area_name,
+			car_park.id carparkid,
+			car_park.car_park_name
+		from
+			t_area area,t_car_park car_park
+		where
+			area.id = car_park.area_id and 
+			car_park.deleted = 1
+	</select>
+</mapper>

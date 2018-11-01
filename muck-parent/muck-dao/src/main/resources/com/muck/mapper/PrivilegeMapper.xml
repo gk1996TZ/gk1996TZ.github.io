@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.PrivilegeMapper">
+
+	<resultMap id="PrivilegeResultMap" type="com.muck.domain.Privilege">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="privilege_name" property="privilegeName" jdbcType="VARCHAR" />
+		<result column="privilege_url" property="privilegeUrl" jdbcType="VARCHAR" />
+		<result column="is_common" property="isCommon" jdbcType="TINYINT" />
+		<result column="privilege_model" property="privilegeModel" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 查询顶级权限 -->
+	<select id="selectTopPrivileges" resultMap="PrivilegeResultMap">
+		select 
+			id, privilege_name, privilege_url, is_common, privilege_model, memo
+		from
+			t_privilege
+		where
+			parent_id is null		
+	</select>
+
+	<!-- 根据id查询权限 -->
+	<select id="selectById" resultMap="PrivilegeResultMap" parameterType="string">
+		select
+			id, privilege_name, privilege_url, is_common, privilege_model, memo
+		from 
+			t_privilege
+		where 
+			id = #{id, typeHandler=com.muck.handler.IdTypeHandler } and
+			deleted = 1
+	</select>
+	
+	<!-- 根据父权限查询下面所有的子权限 -->
+	<select id="selectSubPrivilegesByParentId" parameterType="string" resultMap="PrivilegeResultMap">
+		select
+			id, privilege_name, privilege_url, is_common, privilege_model, memo
+		from
+			t_privilege
+		where
+			parent_id = #{parentId,typeHandler=com.muck.handler.IdTypeHandler } and
+			deleted = 1
+	</select>
+	
+	
+	<!-- 根据id删除权限 -->
+	<delete id="deleteById" parameterType="string">
+		update
+			t_privilege
+		set
+			deleted = 0
+		where
+			id = #{privilegeId, typeHandler=com.muck.handler.IdTypeHandler }
+	</delete>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_privilege
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 插入权限	 -->
+	<insert id="insert" parameterType="com.muck.domain.Privilege">
+		insert into t_privilege
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="privilegeName != null">
+				privilege_name,
+			</if>
+			<if test="privilegeUrl != null">
+				privilege_url,
+			</if>
+			<if test="isCommon != null">
+				is_common,
+			</if>
+			<if test="privilegeModel != null">
+				privilege_model,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="parent != null">
+				parent_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="privilegeName != null">
+				#{privilegeName,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeUrl != null">
+				#{privilegeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="isCommon != null">
+				#{isCommon,jdbcType=TINYINT},
+			</if>
+			<if test="privilegeModel != null">
+				#{privilegeModel,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="parent != null">
+				#{parent.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 根据id更新权限信息 -->
+	<update id="updateById" parameterType="com.muck.domain.Privilege">
+		update t_privilege
+		<set>
+			<if test="privilegeName != null">
+				privilege_name = #{privilegeName,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeUrl != null">
+				privilege_url = #{privilegeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="isCommon != null">
+				is_common = #{isCommon,jdbcType=TINYINT},
+			</if>
+			<if test="privilegeModel != null">
+				privilege_model = #{privilegeModel,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="parent != null">
+				parent_id = #{parent.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="PrivilegeResultMap">
+		${sql}
+	</select>
+	
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string" resultType="long">
+		${sql}
+	</select>
+	
+</mapper>

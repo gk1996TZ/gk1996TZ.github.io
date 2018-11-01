@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.AccreditMapper">
+	
+	<!-- 根据用户ids删除此用户下面的权限 	-->
+	<delete id="deleteBatch" parameterType="string">
+		delete from t_manager_privilegegroup where
+		manager_id = #{managerId,typeHandler=com.muck.handler.IdTypeHandler} and
+		privilege_group_id in
+		<foreach collection="privilegeGroupIds" item="pgId" open="("  separator="," close=")">  
+            #{pgId,typeHandler=com.muck.handler.IdTypeHandler}  
+        </foreach>  
+	</delete>
+	
+	<!-- 批量添加数据 -->
+	<insert id="insertBatch">
+		insert into t_manager_privilegegroup(manager_id,privilege_group_id)
+		values
+		<foreach collection="privilegeGroupIds" item="pgId" separator=",">
+			(#{managerId,typeHandler=com.muck.handler.IdTypeHandler},
+ 				 #{pgId,typeHandler=com.muck.handler.IdTypeHandler}
+ 				)
+		</foreach>
+	</insert>
+	
+	<!-- 根据权限组id查询是否有用户有该权限组 -->
+	<select id="selectByPrivilegeGroupId" parameterType="long" resultType="int">
+	select count(id) 
+	from t_manager_privilegegroup
+	where privilege_group_id=#{privilegeGroupId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+	
+</mapper>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SnapshotImageMapper">
+	<resultMap id="SnapshotImageResultMap" type="com.muck.domain.SnapshotImage">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="snapshot_time" property="snapshotTime"
+			jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="snapshot_image_path" property="snapshotImagePath"
+			jdbcType="VARCHAR" />
+		<result column="site_id" property="siteId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_name" property="siteName"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="disposal_id" property="disposalId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="disposal_name" property="disposalName"
+			jdbcType="VARCHAR" />
+		<result column="car_park_id" property="carParkId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_park_name" property="carParkName" jdbcType="VARCHAR" />
+		<result column="area_id" property="areaId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="snapshot_type" property="snapshotType"
+			jdbcType="VARCHAR" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 根据id查询视频抓拍图片 -->
+	<select id="selectById" parameterType="string" resultMap="SnapshotImageResultMap">
+		select
+		id,
+		snapshot_time,
+		snapshot_image_path,
+		site_id,
+		site_name,
+		disposal_id,
+		disposal_name,
+		car_park_id,
+		car_park_name,
+		area_id,
+		area_name,
+		company_id,
+		company_name,
+		snapshot_type,
+		operator_id,
+		operator_name,
+		created_time,
+		updated_time,
+		memo
+		from
+		t_snapshot_image
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		deleted = 1
+	</select>
+
+	<!-- 添加抓拍图片 -->
+	<insert id="insert" parameterType="com.muck.domain.SnapshotImage">
+		insert into t_snapshot_image
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="snapshotTime != null">
+				snapshot_time,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="snapshotImagePath != null">
+				snapshot_image_path,
+			</if>
+			<if test="siteId != null">
+				site_id,
+			</if>
+			<if test="siteName != null">
+				site_name,
+			</if>
+			<if test="disposalId != null">
+				disposal_id,
+			</if>
+			<if test="disposalName != null">
+				disposal_name,
+			</if>
+			<if test="carParkId != null">
+				car_park_id,
+			</if>
+			<if test="carParkName != null">
+				car_park_name,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="snapshotType != null">
+				snapshot_type,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="snapshotTime != null">
+				#{snapshotTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="snapshotImagePath != null">
+				#{snapshotImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="siteId != null">
+				#{siteId,jdbcType=BIGINT},
+			</if>
+			<if test="siteName != null">
+				#{siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalId != null">
+				#{disposalId,jdbcType=BIGINT},
+			</if>
+			<if test="disposalName != null">
+				#{disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="carParkId != null">
+				#{carParkId,jdbcType=BIGINT},
+			</if>
+			<if test="carParkName != null">
+				#{carParkName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				#{areaId,jdbcType=BIGINT},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotType != null">
+				#{snapshotType,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id删除抓拍的图片，逻辑删除 -->
+	<delete id="deleteById" parameterType="long">
+		update
+		t_snapshot_image
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_snapshot_image
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+
+	<!-- 根据id修改抓拍图片 -->
+	<update id="updateById" parameterType="com.muck.domain.SnapshotImage">
+		update t_snapshot_image
+		<set>
+			<if test="snapshotTime != null">
+				snapshot_time = #{snapshotTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="snapshotImagePath != null">
+				snapshot_image_path = #{snapshotImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="siteId != null">
+				site_id = #{siteId,jdbcType=BIGINT},
+			</if>
+			<if test="siteName != null">
+				site_name = #{siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalId != null">
+				disposal_id = #{disposalId,jdbcType=BIGINT},
+			</if>
+			<if test="disposalName != null">
+				disposal_name = #{disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="carParkId != null">
+				car_park_id = #{carParkId,jdbcType=BIGINT},
+			</if>
+			<if test="carParkName != null">
+				car_park_name = #{carParkName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				area_id = #{areaId,jdbcType=BIGINT},
+			</if>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotType != null">
+				snapshot_type = #{snapshotType,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 根据条件查询 -->
+	<select id="queryData" parameterType="string" resultMap="SnapshotImageResultMap">
+	${sql}
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="SnapshotImageResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+</mapper>

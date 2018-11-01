@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.DeviceChannelMapper">
+
+
+	<!-- 根据设备查询通道 -->
+	<select id="selectChannelByDeviceCode" parameterType="string" resultType="string">
+		select channel_code
+		from t_device_channel
+		where
+		device_code=#{deviceCode,jdbcType=VARCHAR}
+	</select>
+	<!-- 设备通道批量插入 -->
+	<insert id="insertBatch">
+		insert into t_device_channel
+		(device_code,channel_code,deleted,created_time,is_syn_dahua)
+		values
+		<foreach collection="channels" item="channel" separator=",">
+			(#{channel.device.deviceCode},#{channel.channelCode},#{channel.deleted},#{channel.createdTime},#{channel.isSynDaHua})
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		device_code = values(device_code),
+		channel_code = values(channel_code),
+		deleted = values(deleted),
+		created_time = values(created_time),
+		is_syn_dahua = values(is_syn_dahua)
+	</insert>
+	<!-- 批量删除(大华的数据) -->
+	<update id="deleteBatchDaHuaSynData">
+		update
+		t_device_channel
+		set
+		deleted = 0
+		where
+		is_syn_dahua = 1
+	</update>
+
+</mapper>

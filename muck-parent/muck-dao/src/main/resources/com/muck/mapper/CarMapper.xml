@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarMapper">
+	<!-- 映射车辆信息 -->
+	<resultMap id="CarResultMap" type="com.muck.domain.Car">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" jdbcType="VARCHAR" property="carCode" />
+		<result column="car_card_color" jdbcType="VARCHAR" property="carCardColor" />
+		<result column="car_driver_name" jdbcType="VARCHAR" property="carDriverName" />
+		<result column="car_driver_phone" jdbcType="VARCHAR" property="carDriverPhone" />
+		<result column="car_driver_id_number" jdbcType="VARCHAR" property="carDriverIdNumber" />
+		<result column="car_owner_of_vehicle" jdbcType="VARCHAR" property="carOwnerOfVehicle" />
+		<result column="car_type" jdbcType="VARCHAR" property="carType" />
+		<result column="car_color" jdbcType="VARCHAR" property="carColor" />
+		<result column="car_image_path" jdbcType="VARCHAR" property="carImagePath" />
+		<result column="area_id" typeHandler="com.muck.handler.IdTypeHandler"  property="areaId" />
+		<result column="area_name" jdbcType="VARCHAR" property="areaName" />
+		<result column="company_id"  typeHandler="com.muck.handler.IdTypeHandler"  property="companyId" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+		<result column="company_principal_name" jdbcType="VARCHAR"
+			property="companyPrincipalName" />
+		<result column="company_principal_phone" jdbcType="VARCHAR"
+			property="companyPrincipalPhone" />
+		<result column="company_contact" jdbcType="VARCHAR"
+			property="companyContact" />
+		<result column="car_group_id"  typeHandler="com.muck.handler.IdTypeHandler"  property="carGroupId" />
+		<result column="car_group_name" jdbcType="VARCHAR" property="carGroupName" />
+		<result column="car_gps_machine_number" jdbcType="VARCHAR"
+			property="carGpsMachineNumber" />
+		<result column="car_vehicle_model" jdbcType="VARCHAR" property="carVehicleModel" />
+		<result column="is_lock" jdbcType="TINYINT" property="isLock" />
+		<result column="is_running" jdbcType="TINYINT" property="isRunning" />
+		<result column="car_engine_number" jdbcType="VARCHAR" property="carEngineNumber" />
+		<result column="car_use_nature" jdbcType="VARCHAR" property="carUseNature" />
+		<result column="car_wpmi" jdbcType="VARCHAR" property="carWpmi" />
+		<result column="force_scrap" jdbcType="TIMESTAMP" property="forceScrap" />
+		<result column="car_closing_date" jdbcType="TIMESTAMP" property="carClosingDate" />
+		<result column="vouch_payload" jdbcType="VARCHAR" property="vouchPayload" />
+		<result column="outline_size" jdbcType="VARCHAR" property="outlineSize" />
+		<result column="brand_model" jdbcType="VARCHAR" property="brandModel" />
+		<result column="registration_date" jdbcType="TIMESTAMP"
+			property="registrationDate" />
+		<result column="road_transport_license_number" jdbcType="VARCHAR"
+			property="roadTransportLicenseNumber" />
+		<result column="certificate_date" jdbcType="TIMESTAMP"
+			property="certificateDate" />
+		<result column="obturator" jdbcType="VARCHAR" property="obturator" />
+		<result column="cargps" jdbcType="VARCHAR" property="cargps" />
+		<result column="reflect_light_number" jdbcType="VARCHAR"
+			property="reflectLightNumber" />
+		<result column="jet_printing_company_name" jdbcType="VARCHAR"
+			property="jetPrintingCompanyName" />
+		<result column="paste_reflect_stickers" jdbcType="VARCHAR"
+			property="pasteReflectStickers" />
+		<result column="install_spray_system" jdbcType="VARCHAR"
+			property="installSpraySystem" />
+		<result column="memo" jdbcType="VARCHAR" property="memo" />
+		<result column="deleted" jdbcType="TINYINT" property="deleted" />
+		<result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+		<result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+		<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+		
+		<!-- 映射车辆下的驾驶员信息 -->
+		<collection property="carDrivers" ofType="com.muck.domain.CarDriver">
+			<result column = "driver_name" property="driverName"/>
+			<result column = "driver_phone" property="driverPhone"/>
+			<result column = "id_number" property="idNumber"/>
+		</collection>
+	</resultMap>
+	<!-- 根据企业id或者是车辆组id统计总数-->
+    <resultMap type="Statistics" id="statisticsMap">
+    	<result column="id"  typeHandler="com.muck.handler.IdTypeHandler"  property="id" />
+    	<result column="count"  property="count"/>
+    </resultMap>
+	<!-- 根据id查询车辆 -->
+	<select id="selectById" parameterType="string" resultMap="CarResultMap">
+		select
+		id, car_code, car_card_color, car_driver_name, car_driver_phone, car_driver_id_number,car_owner_of_vehicle, car_type,
+		car_color, car_image_path,
+		area_id, area_name, company_id,
+		company_name, company_principal_name,
+		company_principal_phone,company_contact,
+		car_group_id, car_group_name, car_gps_machine_number,
+		car_vehicle_model, is_lock,
+		is_running, car_engine_number,
+		car_use_nature, car_wpmi, force_scrap,car_closing_date,
+		vouch_payload,
+		outline_size,
+		brand_model, registration_date, road_transport_license_number,
+		certificate_date,
+		obturator, cargps, reflect_light_number,
+		jet_printing_company_name,
+		install_spray_system, memo, deleted,
+		operator_id, operator_name,
+		created_time
+		from
+		t_car
+		<where>
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			deleted = 1
+		</where>
+	</select>
+
+		<!-- 根据驾驶员身份证号查询车辆 -->
+	<select id="queryByIdNumber" parameterType="string" resultMap="CarResultMap">
+		select
+		id, car_code, car_card_color, car_driver_name, car_driver_phone, car_driver_id_number,car_owner_of_vehicle, car_type,
+		car_color, car_image_path,
+		area_id, area_name, company_id,
+		company_name, company_principal_name,
+		company_principal_phone,company_contact,
+		car_group_id, car_group_name, car_gps_machine_number,
+		car_vehicle_model, is_lock,
+		is_running, car_engine_number,
+		car_use_nature, car_wpmi, force_scrap,car_closing_date,
+		vouch_payload,
+		outline_size,
+		brand_model, registration_date, road_transport_license_number,
+		certificate_date,
+		obturator, cargps, reflect_light_number,
+		jet_printing_company_name,
+		install_spray_system, memo, deleted,
+		operator_id, operator_name,
+		created_time
+		from
+		t_car
+		<where>
+			car_driver_id_number = #{idNumber,jdbcType=VARCHAR} and
+			deleted = 1
+		</where>
+	</select>
+	
+	
+	
+
+	<!-- 添加车辆 -->
+	<insert id="insert" parameterType="com.muck.domain.Car">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_car
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="carCode != null">
+				car_code,
+			</if>
+			<if test="carCardColor != null">
+				car_card_color,
+			</if>
+			<if test="carDriverName != null">
+				car_driver_name,
+			</if>
+			<if test="carDriverPhone != null">
+				car_driver_phone,
+			</if>
+			<if test="carDriverIdNumber != null">
+				car_driver_id_number,
+			</if>
+			<if test="carOwnerOfVehicle != null">
+				car_owner_of_vehicle,
+			</if>
+			<if test="carType != null">
+				car_type,
+			</if>
+			<if test="carColor != null">
+				car_color,
+			</if>
+			<if test="carImagePath != null">
+				car_image_path,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="companyPrincipalName != null">
+				company_principal_name,
+			</if>
+			<if test="companyPrincipalPhone != null">
+				company_principal_phone,
+			</if>
+			<if test="companyContact != null">
+				company_contact,
+			</if>
+			<if test="carGroupId != null">
+				car_group_id,
+			</if>
+			<if test="carGroupName != null">
+				car_group_name,
+			</if>
+			<if test="carGpsMachineNumber != null">
+				car_gps_machine_number,
+			</if>
+			<if test="carVehicleModel != null">
+				car_vehicle_model,
+			</if>
+			<if test="isLock != null">
+				is_lock,
+			</if>
+			<if test="isRunning != null">
+				is_running,
+			</if>
+			<if test="carEngineNumber != null">
+				car_engine_number,
+			</if>
+			<if test="carUseNature != null">
+				car_use_nature,
+			</if>
+			<if test="carWpmi != null">
+				car_wpmi,
+			</if>
+			<if test="forceScrap != null">
+				force_scrap,
+			</if>
+			<if test="carClosingDate != null">
+				car_closing_date,
+			</if>
+			<if test="vouchPayload != null">
+				vouch_payload,
+			</if>
+			<if test="outlineSize != null">
+				outline_size,
+			</if>
+			<if test="brandModel != null">
+				brand_model,
+			</if>
+			<if test="registrationDate != null">
+				registration_date,
+			</if>
+			<if test="roadTransportLicenseNumber != null">
+				road_transport_license_number,
+			</if>
+			<if test="certificateDate != null">
+				certificate_date,
+			</if>
+			<if test="obturator != null">
+				obturator,
+			</if>
+			<if test="cargps != null">
+				cargps,
+			</if>
+			<if test="reflectLightNumber != null">
+				reflect_light_number,
+			</if>
+			<if test="jetPrintingCompanyName != null">
+				jet_printing_company_name,
+			</if>
+			<if test="pasteReflectStickers != null">
+				paste_reflect_stickers,
+			</if>
+			<if test="installSpraySystem != null">
+				install_spray_system,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="carCode != null">
+				#{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carCardColor != null">
+				#{carCardColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverName != null">
+				#{carDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverPhone != null">
+				#{carDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverIdNumber != null">
+				#{carDriverIdNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carOwnerOfVehicle != null">
+				#{carOwnerOfVehicle,jdbcType=VARCHAR},
+			</if>
+			<if test="carType != null">
+				#{carType,jdbcType=VARCHAR},
+			</if>
+			<if test="carColor != null">
+				#{carColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carImagePath != null">
+				#{carImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalName != null">
+				#{companyPrincipalName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalPhone != null">
+				#{companyPrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyContact != null">
+				#{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="carGroupId != null">
+				#{carGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carGroupName != null">
+				#{carGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="carGpsMachineNumber != null">
+				#{carGpsMachineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carVehicleModel != null">
+				#{carVehicleModel,jdbcType=VARCHAR},
+			</if>
+			<if test="isLock != null">
+				#{isLock,jdbcType=TINYINT},
+			</if>
+			<if test="isRunning != null">
+				#{isRunning,jdbcType=TINYINT},
+			</if>
+			<if test="carEngineNumber != null">
+				#{carEngineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carUseNature != null">
+				#{carUseNature,jdbcType=VARCHAR},
+			</if>
+			<if test="carWpmi != null">
+				#{carWpmi,jdbcType=VARCHAR},
+			</if>
+			<if test="forceScrap != null">
+				#{forceScrap,jdbcType=TIMESTAMP},
+			</if>
+			<if test="carClosingDate != null">
+				#{carClosingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="vouchPayload != null">
+				#{vouchPayload,jdbcType=VARCHAR},
+			</if>
+			<if test="outlineSize != null">
+				#{outlineSize,jdbcType=VARCHAR},
+			</if>
+			<if test="brandModel != null">
+				#{brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="registrationDate != null">
+				#{registrationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roadTransportLicenseNumber != null">
+				#{roadTransportLicenseNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="certificateDate != null">
+				#{certificateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="obturator != null">
+				#{obturator,jdbcType=VARCHAR},
+			</if>
+			<if test="cargps != null">
+				#{cargps,jdbcType=VARCHAR},
+			</if>
+			<if test="reflectLightNumber != null">
+				#{reflectLightNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="jetPrintingCompanyName != null">
+				#{jetPrintingCompanyName,jdbcType=VARCHAR},
+			</if>
+			<if test="pasteReflectStickers != null">
+				#{pasteReflectStickers,jdbcType=VARCHAR},
+			</if>
+			<if test="installSpraySystem != null">
+				#{installSpraySystem,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_car
+		(
+		car_id,
+		car_code,
+		car_card_color,
+		car_driver_name,
+		car_driver_phone,
+		car_driver_id_number,
+		car_owner_of_vehicle,
+		car_trade_mark,
+		car_type,
+		car_color,
+		car_image_path,
+		area_id,
+		area_name,
+		company_id,
+		company_name,
+		company_principal_name,
+		company_principal_phone,
+		company_contact,
+		car_group_id,
+		car_group_name,
+		car_gps_machine_number,
+		car_vehicle_model,
+		is_lock,
+		is_running,
+		car_engine_number,
+		car_use_nature,
+		car_wpmi,
+		force_scrap,
+		car_closing_date,
+		vouch_payload,
+		outline_size,
+		brand_model,
+		registration_date,
+		road_transport_license_number,
+		certificate_date,
+		obturator,
+		cargps,
+		reflect_light_number,
+		jet_printing_company_name,
+		paste_reflect_stickers,
+		install_spray_system,
+		memo,
+		deleted,
+		operator_id,
+		operator_name,
+		created_time
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+				#{item.carId,jdbcType=VARCHAR},
+				#{item.carCode,jdbcType=VARCHAR},
+				#{item.carCardColor,jdbcType=VARCHAR},
+				#{item.carDriverName,jdbcType=VARCHAR},
+				#{item.carDriverPhone,jdbcType=VARCHAR},
+				#{item.carDriverIdNumber,jdbcType=VARCHAR},
+				#{item.carOwnerOfVehicle,jdbcType=VARCHAR},
+				#{item.carTradeMark,jdbcType=VARCHAR},
+				#{item.carType,jdbcType=VARCHAR},
+				#{item.carColor,jdbcType=VARCHAR},
+				#{item.carImagePath,jdbcType=VARCHAR},
+				#{item.areaId,typeHandler=com.muck.handler.IdTypeHandler},
+				#{item.areaName,jdbcType=VARCHAR},
+				#{item.companyId,typeHandler=com.muck.handler.IdTypeHandler},
+				#{item.companyName,jdbcType=VARCHAR},
+				#{item.companyPrincipalName,jdbcType=VARCHAR},
+				#{item.companyPrincipalPhone,jdbcType=VARCHAR},
+				#{item.companyContact,jdbcType=VARCHAR},
+				#{item.carGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+				#{item.carGroupName,jdbcType=VARCHAR},
+				#{item.carGpsMachineNumber,jdbcType=VARCHAR},
+				#{item.carVehicleModel,jdbcType=VARCHAR},
+				#{item.isLock,jdbcType=TINYINT},
+				#{item.isRunning,jdbcType=TINYINT},
+				#{item.carEngineNumber,jdbcType=VARCHAR},
+				#{item.carUseNature,jdbcType=VARCHAR},
+				#{item.carWpmi,jdbcType=VARCHAR},
+				#{item.forceScrap,jdbcType=TIMESTAMP},
+				#{item.carClosingDate,jdbcType=TIMESTAMP},
+				#{item.vouchPayload,jdbcType=VARCHAR},
+				#{item.outlineSize,jdbcType=VARCHAR},
+				#{item.brandModel,jdbcType=VARCHAR},
+				#{item.registrationDate,jdbcType=TIMESTAMP},
+				#{item.roadTransportLicenseNumber,jdbcType=VARCHAR},
+				#{item.certificateDate,jdbcType=TIMESTAMP},
+				#{item.obturator,jdbcType=VARCHAR},
+				#{item.cargps,jdbcType=VARCHAR},
+				#{item.reflectLightNumber,jdbcType=VARCHAR},
+				#{item.jetPrintingCompanyName,jdbcType=VARCHAR},
+				#{item.pasteReflectStickers,jdbcType=VARCHAR},
+				#{item.installSpraySystem,jdbcType=VARCHAR},
+				#{item.memo,jdbcType=VARCHAR},
+				#{item.deleted,jdbcType=TINYINT},
+				#{item.operatorId,jdbcType=BIGINT},
+				#{item.operatorName,jdbcType=VARCHAR},
+				#{item.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		car_id = values(car_id),
+		car_code = values(car_code),
+		car_card_color = values(car_card_color),
+		car_driver_name = values(car_driver_name),
+		car_driver_phone = values(car_driver_phone),
+		car_driver_id_number = values(car_driver_id_number),
+		car_owner_of_vehicle = values(car_owner_of_vehicle),
+		car_trade_mark = values(car_trade_mark),
+		car_type = values(car_type),
+		car_color = values(car_color),
+		car_image_path = values(car_image_path),
+		area_id = values(area_id),
+		area_name = values(area_name),
+		company_id = values(company_id),
+		company_name = values(company_name),
+		company_principal_name = values(company_principal_name),
+		company_principal_phone = values(company_principal_phone),
+		company_contact = values(company_contact),
+		car_group_id = values(car_group_id),
+		car_group_name = values(car_group_name),
+		car_gps_machine_number = values(car_gps_machine_number),
+		car_vehicle_model = values(car_vehicle_model),
+		is_lock = values(is_lock),
+		is_running = values(is_running),
+		car_engine_number = values(car_engine_number),
+		car_use_nature = values(car_use_nature),
+		car_wpmi = values(car_wpmi),
+		force_scrap = values(force_scrap),
+		car_closing_date = values(car_closing_date),
+		vouch_payload = values(vouch_payload),
+		outline_size = values(outline_size),
+		brand_model = values(brand_model),
+		registration_date = values(registration_date),
+		road_transport_license_number = values(road_transport_license_number),
+		certificate_date = values(certificate_date),
+		obturator = values(obturator),
+		cargps = values(cargps),
+		reflect_light_number = values(reflect_light_number),
+		jet_printing_company_name = values(jet_printing_company_name),
+		paste_reflect_stickers = values(paste_reflect_stickers),
+		install_spray_system = values(install_spray_system),
+		memo = values(memo),
+		deleted = values(deleted),
+		operator_id = values(operator_id),
+		operator_name = values(operator_name),
+		created_time = values(created_time)
+	</insert>
+	
+	<!-- 设置维护企业和车辆的关系 -->
+	<update id="setCompanyAndCarRelation">
+		UPDATE t_car
+		INNER JOIN (SELECT id,company_name FROM
+		t_company) company ON company.company_name =
+		t_car.company_name
+		SET t_car.company_id =
+		company.id
+	</update>
+	
+	
+	<!-- 根据id删除（逻辑删除）车辆 -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_car
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除）车辆 -->
+	<delete id="deleteByIdReal" parameterType="long">
+	    delete from
+	    t_car
+	    where
+	    id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<!-- 根据id修改车辆 -->
+	<update id="updateById" parameterType="com.muck.domain.Car">
+		update t_car
+		<set>
+			<if test="carCode != null">
+				car_code = #{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carCardColor != null">
+				car_card_color = #{carCardColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverName != null">
+				car_driver_name = #{carDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverPhone != null">
+				car_driver_phone = #{carDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverIdNumber != null">
+				car_driver_id_number = #{carDriverIdNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carOwnerOfVehicle != null">
+				car_owner_of_vehicle = #{carOwnerOfVehicle,jdbcType=VARCHAR},
+			</if>
+			<if test="carType != null">
+				car_type = #{carType,jdbcType=VARCHAR},
+			</if>
+			<if test="carColor != null">
+				car_color = #{carColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carImagePath != null">
+				car_image_path = #{carImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalName != null">
+				company_principal_name =
+				#{companyPrincipalName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalPhone != null">
+				company_principal_phone =
+				#{companyPrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyContact != null">
+				company_contact =
+				#{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="carGroupId != null">
+				car_group_id = #{carGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carGroupName != null">
+				car_group_name = #{carGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="carGpsMachineNumber != null">
+				car_gps_machine_number =
+				#{carGpsMachineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carVehicleModel != null">
+				car_vehicle_model = #{carVehicleModel,jdbcType=VARCHAR},
+			</if>
+			<if test="isLock != null">
+				is_lock = #{isLock,jdbcType=TINYINT},
+			</if>
+			<if test="isRunning != null">
+				is_running = #{isRunning,jdbcType=TINYINT},
+			</if>
+			<if test="carEngineNumber != null">
+				car_engine_number = #{carEngineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carUseNature != null">
+				car_use_nature = #{carUseNature,jdbcType=VARCHAR},
+			</if>
+			<if test="carWpmi != null">
+				car_wpmi = #{carWpmi,jdbcType=VARCHAR},
+			</if>
+			<if test="forceScrap != null">
+				force_scrap = #{forceScrap,jdbcType=TIMESTAMP},
+			</if>
+			<if test="carClosingDate != null">
+				car_closing_date = #{carClosingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="vouchPayload != null">
+				vouch_payload = #{vouchPayload,jdbcType=VARCHAR},
+			</if>
+			<if test="outlineSize != null">
+				outline_size = #{outlineSize,jdbcType=VARCHAR},
+			</if>
+			<if test="brandModel != null">
+				brand_model = #{brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="registrationDate != null">
+				registration_date =
+				#{registrationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roadTransportLicenseNumber != null">
+				road_transport_license_number =
+				#{roadTransportLicenseNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="certificateDate != null">
+				certificate_date = #{certificateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="obturator != null">
+				obturator = #{obturator,jdbcType=VARCHAR},
+			</if>
+			<if test="cargps != null">
+				cargps = #{cargps,jdbcType=VARCHAR},
+			</if>
+			<if test="reflectLightNumber != null">
+				reflect_light_number =
+				#{reflectLightNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="jetPrintingCompanyName != null">
+				jet_printing_company_name =
+				#{jetPrintingCompanyName,jdbcType=VARCHAR},
+			</if>
+			<if test="pasteReflectStickers != null">
+				paste_reflect_stickers =
+				#{pasteReflectStickers,jdbcType=VARCHAR},
+			</if>
+			<if test="installSpraySystem != null">
+				install_spray_system =
+				#{installSpraySystem,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据车牌号修改车辆 -->
+	<update id="editByCarCode" parameterType="com.muck.domain.Car">
+		update t_car
+		<set>
+			<if test="carCode != null">
+				car_code = #{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carCardColor != null">
+				car_card_color = #{carCardColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverName != null">
+				car_driver_name = #{carDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverPhone != null">
+				car_driver_phone = #{carDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="carDriverIdNumber != null">
+				car_driver_id_number = #{carDriverIdNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carOwnerOfVehicle != null">
+				car_owner_of_vehicle = #{carOwnerOfVehicle,jdbcType=VARCHAR},
+			</if>
+			<if test="carType != null">
+				car_type = #{carType,jdbcType=VARCHAR},
+			</if>
+			<if test="carColor != null">
+				car_color = #{carColor,jdbcType=VARCHAR},
+			</if>
+			<if test="carImagePath != null">
+				car_image_path = #{carImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalName != null">
+				company_principal_name = #{companyPrincipalName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalPhone != null">
+				company_principal_phone = #{companyPrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyContact != null">
+				company_contact = #{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="carGroupId != null">
+				car_group_id = #{carGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carGroupName != null">
+				car_group_name = #{carGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="carGpsMachineNumber != null">
+				car_gps_machine_number = #{carGpsMachineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carVehicleModel != null">
+				car_vehicle_model = #{carVehicleModel,jdbcType=VARCHAR},
+			</if>
+			<if test="isLock != null">
+				is_lock = #{isLock,jdbcType=TINYINT},
+			</if>
+			<if test="isRunning != null">
+				is_running = #{isRunning,jdbcType=TINYINT},
+			</if>
+			<if test="carEngineNumber != null">
+				car_engine_number = #{carEngineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="carUseNature != null">
+				car_use_nature = #{carUseNature,jdbcType=VARCHAR},
+			</if>
+			<if test="carWpmi != null">
+				car_wpmi = #{carWpmi,jdbcType=VARCHAR},
+			</if>
+			<if test="forceScrap != null">
+				force_scrap = #{forceScrap,jdbcType=TIMESTAMP},
+			</if>
+			<if test="carClosingDate != null">
+				car_closing_date = #{carClosingDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="vouchPayload != null">
+				vouch_payload = #{vouchPayload,jdbcType=VARCHAR},
+			</if>
+			<if test="outlineSize != null">
+				outline_size = #{outlineSize,jdbcType=VARCHAR},
+			</if>
+			<if test="brandModel != null">
+				brand_model = #{brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="registrationDate != null">
+				registration_date = #{registrationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roadTransportLicenseNumber != null">
+				road_transport_license_number = #{roadTransportLicenseNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="certificateDate != null">
+				certificate_date = #{certificateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="obturator != null">
+				obturator = #{obturator,jdbcType=VARCHAR},
+			</if>
+			<if test="cargps != null">
+				cargps = #{cargps,jdbcType=VARCHAR},
+			</if>
+			<if test="reflectLightNumber != null">
+				reflect_light_number = #{reflectLightNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="jetPrintingCompanyName != null">
+				jet_printing_company_name = #{jetPrintingCompanyName,jdbcType=VARCHAR},
+			</if>
+			<if test="pasteReflectStickers != null">
+				paste_reflect_stickers = #{pasteReflectStickers,jdbcType=VARCHAR},
+			</if>
+			<if test="installSpraySystem != null">
+				install_spray_system = #{installSpraySystem,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where car_code = #{carCode,jdbcType=VARCHAR}
+	</update>
+
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="CarResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	
+	
+	
+	
+	
+	
+	<!-- 映射车辆信息 -->
+	<resultMap id="CarDistinctResultMap" type="com.muck.domain.Car">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" jdbcType="VARCHAR" property="carCode" />
+		<result column="car_card_color" jdbcType="VARCHAR" property="carCardColor" />
+		<!-- <result column="car_driver_name" jdbcType="VARCHAR" property="carDriverName" />
+		<result column="car_driver_phone" jdbcType="VARCHAR" property="carDriverPhone" /> -->
+		<result column="car_driver_id_number" jdbcType="VARCHAR" property="carDriverIdNumber" />
+		<result column="car_owner_of_vehicle" jdbcType="VARCHAR" property="carOwnerOfVehicle" />
+		<result column="car_type" jdbcType="VARCHAR" property="carType" />
+		<result column="car_color" jdbcType="VARCHAR" property="carColor" />
+		<result column="car_image_path" jdbcType="VARCHAR" property="carImagePath" />
+		<result column="area_id" typeHandler="com.muck.handler.IdTypeHandler"  property="areaId" />
+		<result column="area_name" jdbcType="VARCHAR" property="areaName" />
+		<result column="company_id"  typeHandler="com.muck.handler.IdTypeHandler"  property="companyId" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+		<result column="company_principal_name" jdbcType="VARCHAR"
+			property="companyPrincipalName" />
+		<result column="company_principal_phone" jdbcType="VARCHAR"
+			property="companyPrincipalPhone" />
+		<result column="company_contact" jdbcType="VARCHAR"
+			property="companyContact" />
+		<result column="car_group_id"  typeHandler="com.muck.handler.IdTypeHandler"  property="carGroupId" />
+		<result column="car_group_name" jdbcType="VARCHAR" property="carGroupName" />
+		<result column="car_gps_machine_number" jdbcType="VARCHAR"
+			property="carGpsMachineNumber" />
+		<result column="car_vehicle_model" jdbcType="VARCHAR" property="carVehicleModel" />
+		<result column="is_lock" jdbcType="TINYINT" property="isLock" />
+		<result column="is_running" jdbcType="TINYINT" property="isRunning" />
+		<result column="car_engine_number" jdbcType="VARCHAR" property="carEngineNumber" />
+		<result column="car_use_nature" jdbcType="VARCHAR" property="carUseNature" />
+		<result column="car_wpmi" jdbcType="VARCHAR" property="carWpmi" />
+		<result column="force_scrap" jdbcType="TIMESTAMP" property="forceScrap" />
+		<result column="car_closing_date" jdbcType="TIMESTAMP" property="carClosingDate" />
+		<result column="vouch_payload" jdbcType="VARCHAR" property="vouchPayload" />
+		<result column="outline_size" jdbcType="VARCHAR" property="outlineSize" />
+		<result column="brand_model" jdbcType="VARCHAR" property="brandModel" />
+		<result column="registration_date" jdbcType="TIMESTAMP"
+			property="registrationDate" />
+		<result column="road_transport_license_number" jdbcType="VARCHAR"
+			property="roadTransportLicenseNumber" />
+		<result column="certificate_date" jdbcType="TIMESTAMP"
+			property="certificateDate" />
+		<result column="obturator" jdbcType="VARCHAR" property="obturator" />
+		<result column="cargps" jdbcType="VARCHAR" property="cargps" />
+		<result column="reflect_light_number" jdbcType="VARCHAR"
+			property="reflectLightNumber" />
+		<result column="jet_printing_company_name" jdbcType="VARCHAR"
+			property="jetPrintingCompanyName" />
+		<result column="paste_reflect_stickers" jdbcType="VARCHAR"
+			property="pasteReflectStickers" />
+		<result column="install_spray_system" jdbcType="VARCHAR"
+			property="installSpraySystem" />
+		<result column="memo" jdbcType="VARCHAR" property="memo" />
+		<result column="deleted" jdbcType="TINYINT" property="deleted" />
+		<result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+		<result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+		<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+		
+		<!-- 映射车辆下的驾驶员信息 -->
+		<collection property="carDrivers" ofType="com.muck.domain.CarDriver">
+			<result column = "driver_name" property="driverName"/>
+			<result column = "driver_phone" property="driverPhone"/>
+			<result column = "id_number" property="idNumber"/>
+		</collection>
+	</resultMap>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="CarDistinctResultMap">
+		${sql}
+	</select>
+	
+	<resultMap id="CarForElectricFenceResultMap" type="com.muck.domain.Car">
+		<result column="car_code" jdbcType="VARCHAR" property="carCode" />
+		<result column="car_card_color" jdbcType="VARCHAR" property="carCardColor" />
+		<result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+		<result column="car_owner_of_vehicle" jdbcType="VARCHAR" property="carOwnerOfVehicle" />
+		<result column="company_contact" jdbcType="VARCHAR" property="companyContact" />
+		<result column="electric_fence_id" typeHandler="com.muck.handler.IdTypeHandler" property="electricFenceId" />
+		<result column="electric_fence_name" jdbcType="VARCHAR" property="electricFenceName" />
+	</resultMap>
+	
+	<!-- 查询数据列表 -->
+	<select id="queryDataForElectricFence" parameterType="string" resultMap="CarForElectricFenceResultMap">
+		${sql}
+	</select>
+
+
+	<!-- 简单内容的封装,不包括关联信息 -->
+	<resultMap id="SimpleCarResultMap" type="com.muck.domain.Car">
+		<!-- 映射car的基本信息 -->
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+		<result column="car_card_color" property="carCardColor" jdbcType="VARCHAR" />
+		<result column="car_driver_name" property="carDriverName"
+			jdbcType="VARCHAR" />
+		<result column="car_driver_phone" property="carDriverPhone"
+			jdbcType="VARCHAR" />
+		<result column="car_driver_id_number" property="carDriverIdNumber"
+			jdbcType="VARCHAR" />
+		<result column="car_owner_of_vehicle" property="carOwnerOfVehicle"
+			jdbcType="VARCHAR" />
+		<result column="company_id"  typeHandler="com.muck.handler.IdTypeHandler"  property="companyId" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+	</resultMap>
+
+	<!-- 根据车辆id查询车辆 -->
+	<select id="selectByIdSimple" parameterType="string" resultMap="SimpleCarResultMap">
+		select
+		id,
+		car_code,
+		car_card_color,
+		car_driver_name,
+		car_driver_phone,
+		car_driver_id_number,
+		car_owner_of_vehicle
+		from
+		t_car
+		where
+		id =
+		#{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		deleted = 1
+	</select>
+
+	<!-- 根据车辆id查询车辆 -->
+	<select id="queryCarByCarCodes" parameterType="string" resultMap="SimpleCarResultMap">
+		select
+		id,
+		car_code,
+		car_card_color,
+		car_driver_name,
+		car_driver_phone,
+		car_driver_id_number,
+		car_owner_of_vehicle,
+		company_id,
+		company_name
+		from
+		t_car
+		where
+		car_code in (${carCodes})
+		and
+		deleted = 1
+	</select>
+	<!-- 根据车牌号查询车辆 -->
+	<select id="queryByCarCode" parameterType="string" resultMap="CarResultMap">
+		SELECT
+			car.id, 
+			car.car_code, 
+			car.car_card_color, 
+			car.car_owner_of_vehicle, car.car_type,
+			car.car_color, car.car_image_path,
+			car.area_id, car.area_name, car.company_id,
+			car.company_name, car.company_principal_name,
+			car.company_principal_phone,car.company_contact,
+			car.car_group_id, car.car_group_name, car.car_gps_machine_number,
+			car.car_vehicle_model, car.is_lock,
+			car.is_running, car.car_engine_number,
+			car.car_use_nature, car.car_wpmi, car.force_scrap,car.car_closing_date,
+			car.vouch_payload,
+			car.outline_size,
+			car.brand_model, car.registration_date, car.road_transport_license_number,
+			car.certificate_date,
+			car.obturator, car.cargps, car.reflect_light_number,
+			car.jet_printing_company_name,
+			car.paste_reflect_stickers,
+			car.install_spray_system, car.memo,
+			carDriver.driver_name,carDriver.driver_phone,carDriver.id_number
+		FROM
+			t_car car
+		LEFT JOIN t_car_driver carDriver ON car.car_code = carDriver.car_code
+		WHERE
+			car.car_code = #{carCode,jdbcType=VARCHAR} and
+			car.deleted = 1
+			
+	</select>
+	
+	<!-- 根据车牌号查询车辆 -->
+	<select id="selectCarByCarCodeAndColor" resultMap="CarResultMap">
+		SELECT
+			car.id, 
+			car.car_code, 
+			car.car_card_color, 
+			car.car_owner_of_vehicle, car.car_type,
+			car.car_color, car.car_image_path,
+			car.area_id, car.area_name, car.company_id,
+			car.company_name, car.company_principal_name,
+			car.company_principal_phone,car.company_contact,
+			car.car_group_id, car.car_group_name, car.car_gps_machine_number,
+			car.car_vehicle_model, car.is_lock,
+			car.is_running, car.car_engine_number,
+			car.car_use_nature, car.car_wpmi, car.force_scrap,car.car_closing_date,
+			car.vouch_payload,
+			car.outline_size,
+			car.brand_model, car.registration_date, car.road_transport_license_number,
+			car.certificate_date,
+			car.obturator, car.cargps, car.reflect_light_number,
+			car.jet_printing_company_name,
+			car.paste_reflect_stickers,
+			car.install_spray_system, car.memo,
+			carDriver.driver_name,carDriver.driver_phone,carDriver.id_number
+		FROM
+			t_car car
+		LEFT JOIN t_car_driver carDriver ON car.car_code = carDriver.car_code
+		WHERE
+			car.car_code = #{carCode,jdbcType=VARCHAR} and car.car_card_color = #{carColor,jdbcType=VARCHAR} and
+			car.deleted = 1
+			
+	</select>
+	
+	<!-- 根据车牌号查询车辆 -->
+    <select id="selectCarByCarCodeAndCarCardColor" resultMap="CarResultMap">
+        SELECT
+            car.id, 
+            car.car_code, 
+            car.car_card_color, 
+            car.car_owner_of_vehicle, car.car_type,
+            car.car_color, car.car_image_path,
+            car.area_id, car.area_name, car.company_id,
+            car.company_name, car.company_principal_name,
+            car.company_principal_phone,car.company_contact,
+            car.car_group_id, car.car_group_name, car.car_gps_machine_number,
+            car.car_vehicle_model, car.is_lock,
+            car.is_running, car.car_engine_number,
+            car.car_use_nature, car.car_wpmi, car.force_scrap,car.car_closing_date,
+            car.vouch_payload,
+            car.outline_size,
+            car.brand_model, car.registration_date, car.road_transport_license_number,
+            car.certificate_date,
+            car.obturator, car.cargps, car.reflect_light_number,
+            car.jet_printing_company_name,
+            car.paste_reflect_stickers,
+            car.install_spray_system, car.memo,
+            carDriver.driver_name,carDriver.driver_phone,carDriver.id_number
+        FROM
+            t_car car
+        LEFT JOIN t_car_driver carDriver ON car.car_code = carDriver.car_code
+        WHERE
+            car.car_code = #{carCode,jdbcType=VARCHAR} and car.car_card_color = #{carCardColor,jdbcType=VARCHAR} and
+            car.deleted = 1
+            
+    </select>
+	
+	
+	<!-- 前台 -->
+	
+	<resultMap id="FrontSimpleCarListResultMap" type="com.muck.domain.Car">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" jdbcType="VARCHAR" property="carCode" />
+		<result column="car_card_color" jdbcType="VARCHAR" property="carCardColor" />
+		<result column="company_id" typeHandler="com.muck.handler.IdTypeHandler" property="companyId" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+
+		<result column="is_running" jdbcType="TINYINT" property="isRunning" />
+
+		<result column="company_contact" jdbcType="VARCHAR" property="companyContact" />
+		<result column="car_owner_of_vehicle" jdbcType="VARCHAR" property="carOwnerOfVehicle" />
+		<result column="electric_fence_id" typeHandler="com.muck.handler.IdTypeHandler" property="electricFenceId" />
+		<result column="electric_fence_name" jdbcType="VARCHAR" property="electricFenceName" />
+
+	</resultMap>
+	
+	
+	<!-- 根据企业id,车牌号查询车辆列表(不带分页) -->
+	<select id="selectCarsByCondition" parameterType="com.muck.query.CarQueryForm" resultMap="FrontSimpleCarListResultMap">
+		SELECT
+			car.id,
+			car.car_code,
+			car.car_card_color,
+			car.company_id,
+			car.company_name,
+			car.car_owner_of_vehicle,
+			car.is_running
+		FROM
+			t_car car
+		<where>
+			<if test="carCode != null and carCode != ''">
+				and car.car_code like CONCAT('%', #{carCode,jdbcType=VARCHAR} ,'%')
+			</if>
+			<if test="companyId != null and companyId != ''">
+				and car.company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			<if test="carGroupId != null and carGroupId != ''">
+				and car.car_group_id = #{carGroupId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			and car.deleted = 1
+			order by car.is_running  desc
+		</where>
+	</select>
+	
+	<!-- 获取车辆的车牌号和车辆颜色的车辆List集合,主要是组装获取车辆GPS数据的请求参数	 -->
+	<select id="selectCarNoAndColorList" parameterType="integer" resultType="map">
+		select
+			car_code as VehicleNO,
+			car_color as VehicleColor
+		from
+			t_car
+		where
+			deleted = 1
+			<if test="typey!=null">
+				and factory_type = #{typey,jdbcType=INTEGER}
+			</if>
+	</select>
+	
+
+	<!-- 查询所有的车辆 -->
+	<select id="queryAll" resultMap="CarResultMap">
+	select * from t_car
+	</select>
+	<!-- 根据企业统计车的总数 -->
+	<select id="statisticsCompCarCout" resultMap="statisticsMap">
+	select company_id id,count(*) count from
+	t_car group by company_id
+	</select>
+	<!-- 根据企业统计车的总数 -->
+	<select id="statisticsCarGroupCout" resultMap="statisticsMap">
+	select car_group_id id,count(*) count from
+	t_car group by car_group_id
+	</select>
+	
+	<!-- 更新运行状态 -->
+	<update id="updateRunning" >
+		update t_car set is_running=#{isRunning,jdbcType=TINYINT}
+	</update>
+
+	<!-- 根据车牌号批量修改车辆是否运行 -->
+	<update id="updateCarsIsRunning">
+		update t_car set is_running = #{isRunning,jdbcType=TINYINT} where car_code in (${carCodes});
+	</update>
+	
+
+</mapper>

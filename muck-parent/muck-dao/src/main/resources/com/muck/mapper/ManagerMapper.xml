@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.ManagerMapper">
+
+	<resultMap id="ManagerResultMap" type="com.muck.domain.Manager">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="manager_name" property="managerName" jdbcType="VARCHAR" />
+		<result column="manager_password" property="managerPassword" jdbcType="VARCHAR" />
+		<result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
+		<result column="manager_card_no" property="managerCardNo" jdbcType="VARCHAR" />
+		<result column="manager_email" property="managerEmail" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="manager_company_id" property="company.id" typeHandler="com.muck.handler.IdTypeHandler" />
+	    <result column="manager_company_name" property="company.companyName" jdbcType="VARCHAR" />
+	    <result column="manager_area_id" property="area.id" typeHandler="com.muck.handler.IdTypeHandler" />
+	    <result column="manager_area_name" property="area.areaName" jdbcType="VARCHAR" />
+	    <result column="manager_site_id" property="site.id" typeHandler="com.muck.handler.IdTypeHandler"/>
+	    <result column="manager_site_name" property="site.siteName" jdbcType="VARCHAR" />
+	    <result column="manager_disposal_id" property="disposal.id" typeHandler="com.muck.handler.IdTypeHandler"/>
+	    <result column="manager_disposal_name" property="disposal.disposalName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 根据id查询系统用户 -->
+	<select id="selectById" parameterType="string" resultMap="ManagerResultMap">
+		select
+			tm.id ,
+			tm.manager_name,
+			tm.manager_password ,
+			tm.manager_phone,
+			tm.memo,
+			manager_card_no,
+			tm.manager_email,
+			tm.manager_company_id,
+			tm.manager_company_name,
+			tm.manager_area_id,
+			tm.manager_area_name,
+			tm.manager_disposal_id,
+			tm.manager_disposal_name,
+			tm.manager_site_id,
+			tm.manager_site_name,
+			tm.operator_name,
+			tm.created_time
+		from
+			t_manager tm
+		where
+			tm.id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			tm.deleted = 1
+	</select>
+
+	<!-- 添加系统用户 -->
+	<insert id="insert" parameterType="com.muck.domain.Manager">
+		insert into t_manager
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="managerName != null">
+				manager_name,
+			</if>
+			<if test="managerPassword != null">
+				manager_password,
+			</if>
+			<if test="managerPhone != null">
+				manager_phone,
+			</if>
+			<if test="managerCardNo != null">
+				manager_card_no,
+			</if>
+			<if test="managerEmail != null">
+				manager_email,
+			</if>
+			<if test="company != null">
+				manager_company_id,
+			</if>
+			<if test="company != null">
+				manager_company_name,
+			</if>
+			<if test="area != null">
+				manager_area_id,
+			</if>
+			<if test="area != null">
+				manager_area_name,
+			</if>
+			<if test="site != null">
+				manager_site_id,
+			</if>
+			<if test="site != null">
+				manager_site_name,
+			</if>
+			<if test="disposal != null">
+				manager_disposal_id,
+			</if>
+			<if test="disposal != null">
+				manager_disposal_name,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="managerName != null">
+				#{managerName,jdbcType=VARCHAR},
+			</if>
+			<if test="managerPassword != null">
+				#{managerPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="managerPhone != null">
+				#{managerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="managerCardNo != null">
+				#{managerCardNo,jdbcType=VARCHAR},
+			</if>
+			<if test="managerEmail != null">
+				#{managerEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				#{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="company != null">
+				#{company.companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="area != null">
+				#{area.areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				#{site.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="site != null">
+				#{site.siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposal != null">
+				#{disposal.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="disposal != null">
+				#{disposal.disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id删除系统用户(逻辑删除) -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_manager
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_manager
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改用户 -->
+	<update id="updateById" parameterType="com.muck.domain.Manager" >
+    update t_manager
+    <set >
+      <if test="managerName != null" >
+        manager_name = #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPassword != null" >
+        manager_password = #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPhone != null" >
+        manager_phone = #{managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="managerCardNo != null" >
+        manager_card_no = #{managerCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managerEmail != null" >
+        manager_email = #{managerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        manager_company_id = #{company.id,typeHandler=com.muck.handler.IdTypeHandler},
+      </if>
+      <if test="company != null" >
+        manager_company_name = #{company.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        manager_area_id = #{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+      </if>
+      <if test="area != null" >
+        manager_area_name = #{area.areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="site != null" >
+        manager_site_id = #{site.id,typeHandler=com.muck.handler.IdTypeHandler},
+      </if>
+      <if test="site != null" >
+        manager_site_name = #{site.siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="disposal != null" >
+        manager_disposal_id = #{disposal.id,typeHandler=com.muck.handler.IdTypeHandler},
+      </if>
+      <if test="disposal != null" >
+        manager_disposal_name = #{disposal.disposalName,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null" >
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+  </update>
+
+	<!-- 根据条件查询一条数据 -->
+	<select id="selectOneByCondition" parameterType="map"
+		resultMap="ManagerResultMap">
+		select
+		id ,
+		manager_name,
+		manager_password ,
+		manager_phone,
+		manager_card_no,
+		manager_email
+		from
+		t_manager
+		<where>
+			<if test="managerPhone != null">
+				and manager_phone = #{managerPhone,jdbcType=VARCHAR}
+			</if>
+			<if test="managerPassword != null">
+				and manager_password =
+				#{managerPassword,jdbcType=VARCHAR}
+			</if>
+			and deleted = 1
+		</where>
+	</select>
+	<!-- 查询数据列表，根据姓名模糊查询 -->
+	<select id="selectByName" parameterType="string" resultMap="ManagerResultMap">
+		select
+		id ,
+		manager_name,
+		manager_password ,
+		manager_phone,
+		manager_card_no,
+		manager_email
+		from
+		t_manager
+		<where>
+			<if test="managerName != null">
+				and manager_name like #{managerName,jdbcType=VARCHAR}
+			</if>
+			and deleted = 1
+		</where>
+	</select>
+	<!-- 查询数据列表，根据联系方式模糊查询 -->
+	<select id="selectByPhone" parameterType="string" resultMap="ManagerResultMap">
+		select
+		id ,
+		manager_name,
+		manager_password ,
+		manager_phone,
+		manager_card_no,
+		manager_email
+		from
+		t_manager
+		<where>
+			<if test="managerPhone != null">
+				and manager_phone like #{managerPhone,jdbcType=VARCHAR}
+			</if>
+			and deleted = 1
+		</where>
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="ManagerResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="ManagerResultMap">
+		${sql}
+	</select>
+
+
+</mapper>

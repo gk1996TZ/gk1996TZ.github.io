@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.AreaMapper">
+
+	<resultMap id="AreaResultMap" type="com.muck.domain.Area">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+		<result column="area_longitude" property="areaLongitude" jdbcType="DECIMAL" />
+		<result column="area_latitude" property="areaLatitude" jdbcType="DECIMAL" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="parent_code" property="parentCode" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 根据id查询区域 -->
+	<select id="selectById" parameterType="string" resultMap="AreaResultMap">
+		select
+			id , area_name , area_code , area_longitude , area_latitude,created_time,updated_time
+		from
+			t_area
+		where
+			id = #{id, typeHandler=com.muck.handler.IdTypeHandler } and
+			deleted = 1
+	</select>
+	
+	<!-- 添加区域 -->
+	<insert id="insert" parameterType="com.muck.domain.Area">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into t_area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="areaLongitude != null">
+				area_longitude,
+			</if>
+			<if test="areaLatitude != null">
+				area_latitude,
+			</if>
+			<if test="parent != null">
+				parent_id,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="areaCode != null">
+				area_code,
+			</if>
+			<if test="isSynDaHua != null">
+				is_syn_dahua,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="areaLongitude != null">
+				#{areaLongitude,jdbcType=DECIMAL},
+			</if>
+			<if test="areaLatitude != null">
+				#{areaLatitude,jdbcType=DECIMAL},
+			</if>
+			<if test="parent != null">
+				#{parent.id,typeHandler=com.muck.handler.IdTypeHandler },
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaCode != null">
+				#{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="isSynDaHua != null">
+				#{isSynDaHua,jdbcType=TINYINT},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+
+	<!-- 批量添加区域 -->
+	<insert id="insertBatch" parameterType="list" useGeneratedKeys="true" keyProperty="idRaw">
+		 insert into t_area (area_code, area_name, deleted, 
+	      	parent_id, operator_id, operator_name, 
+	      	created_time, updated_time, is_syn_dahua,parent_code,
+	      	validate_flag
+	     )
+	     values
+	     <foreach collection="list" item="area" separator=",">  
+         	(#{area.areaCode,jdbcType=VARCHAR},
+         	 #{area.areaName,jdbcType=VARCHAR},
+         	 #{area.deleted,jdbcType=TINYINT},#{area.parent.id,typeHandler=com.muck.handler.IdTypeHandler},
+         	 #{area.operatorId,jdbcType=BIGINT}, #{area.operatorName,jdbcType=VARCHAR},
+         	 #{area.createdTime,jdbcType=TIMESTAMP}, #{area.updatedTime,jdbcType=TIMESTAMP}, 
+         	 #{area.isSynDaHua,jdbcType=TINYINT},#{area.parentCode,jdbcType=VARCHAR},
+         	 #{area.validateFlag,jdbcType=INTEGER}
+         	) 
+       	</foreach>
+       	ON DUPLICATE KEY UPDATE
+       	area_code = values(area_code),
+       	area_name = values(area_name),
+       	deleted = values(deleted),
+       	parent_id = values(parent_id),
+       	operator_id  = values(operator_id),
+       	operator_name = values(operator_name),
+       	created_time = values(created_time),
+       	updated_time = values(updated_time),
+       	is_syn_dahua = values(is_syn_dahua),
+       	parent_code = values(parent_code)
+	</insert>
+
+	<!-- 根据id删除区域(逻辑删除) -->
+	<delete id="deleteById" parameterType="long">
+		delete from
+			t_area
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<!-- 批量删除大华的那边同步的数据(逻辑删除) -->
+	<update id="deleteBatchDaHuaSynData">
+		update
+			t_area
+		set
+			deleted = 0
+		where
+			is_syn_dahua = 1
+	</update>
+
+	<!-- 根据id修改区域 -->
+	<update id="updateById" parameterType="com.muck.domain.Area">
+		update t_area
+		<set>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="parent != null">
+				parent_id = #{parent.id,typeHandler=com.muck.handler.IdTypeHandler },
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="areaLongitude != null">
+				area_longitude = #{areaLongitude,jdbcType=DECIMAL},
+			</if>
+			<if test="areaLatitude != null">
+				area_latitude = #{areaLatitude,jdbcType=DECIMAL},
+			</if>
+			<if test="areaCode != null">
+				area_code = #{areaCode,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 查询顶级区域(一级区域) -->
+	<select id="selectTopAreas" resultMap="AreaResultMap">
+		 select
+		 	id,
+		 	area_name,
+		 	area_code,
+		 	area_longitude , 
+		 	area_latitude,
+		 	created_time,
+		 	updated_time
+		 from
+		 	t_area
+		 where
+		 	parent_id is null and 
+		 	deleted = 1
+	</select>
+	
+	
+	<!-- 根据父区域id查询此区域下面所有的子区域  -->
+	<select id="selectSubAreasByParentId" resultMap="AreaResultMap">
+	 	select
+		 	id,
+		 	area_name,
+		 	area_code,
+		 	area_longitude , 
+		 	area_latitude,
+		 	created_time,
+		 	updated_time,
+		 	parent_code
+		 from
+		 	t_area
+		 where
+		 	parent_id = #{parentId,typeHandler=com.muck.handler.IdTypeHandler} and 
+		 	deleted = 1 
+		 	<if test="areaType != null">
+		 		and validate_flag = #{areaType , jdbcType = INTEGER}
+		 	</if>
+	</select>
+	
+	<!-- 根据父区域id查询此区域下面所有的子区域  -->
+	<select id="selectSubAreaIdsByParentId" parameterType="string" resultType="string">
+	 	select getChildLst(#{parentId,typeHandler=com.muck.handler.IdTypeHandler});
+	</select>
+	<!-- 根据父区域id查询此区域下面所有的子区域  -->
+	<select id="querySubAreaCodesByParentCode" parameterType="string" resultType="string">
+	 	select getChildAreaByCode(#{parentCode});
+	</select>
+	
+	<!-- 根据区域id查询此区域下面的子区域的个数  -->
+	<select id="selectSubAreaCount" parameterType="string" resultType="long">
+		select
+		 	count(id)
+		from
+		 	t_area
+		where
+		 	parent_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler} and 
+		 	deleted = 1
+	</select>
+	
+	<resultMap id="AllAreaResultMap" type="com.muck.domain.Area">
+		
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		
+		<!-- 设置关联信息 -->
+		<association property="parent" javaType="com.muck.domain.Area">
+			<id column="ta1_id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="ta1_area_ame" property="areaName" jdbcType="VARCHAR" />
+		</association>
+	</resultMap>
+	
+	<select id="selectAllAreas" resultMap="AllAreaResultMap">
+		SELECT
+			ta.id,
+			ta.area_name,
+			ta.created_time,
+			ta.updated_time,
+			ta1.id AS ta1_id,
+			ta1.area_name AS ta1_area_ame
+		FROM
+			t_area ta
+		LEFT JOIN 
+			t_area ta1
+		ON
+			ta.parent_id = ta1.id
+		WHERE
+			ta.deleted = 1
+	</select>
+	
+	<!-- 根据区域编号查询区域信息 -->
+	<select id = "queryByAreaCode" parameterType="string" resultMap = "AreaResultMap">
+	    select
+		 	id,
+		 	area_name,
+		 	area_code,
+		 	area_longitude , 
+		 	area_latitude,
+		 	created_time,
+		 	updated_time,
+		 	parent_code
+		 from
+		 	t_area
+		 where
+		 	area_code = #{areaCode,jdbcType=VARCHAR} and 
+		 	deleted = 1
+	</select>
+	
+	<!-- 维护区域树的关系 -->
+	<update id="setAreaRelation">
+		UPDATE t_area 
+			INNER JOIN (SELECT id,area_code FROM t_area) area ON area.area_code = t_area.parent_code
+		SET t_area.parent_id = area.id
+	</update>
+</mapper>

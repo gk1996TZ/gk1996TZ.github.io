@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CarSnapshotInOutImageMapper">
+
+	<resultMap id="CarSnapshotInOutImageResultMap" type="com.muck.domain.CarSnapshotInOutImage">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_code" property="carCode" jdbcType="VARCHAR" />
+		<result column="car_card_color" jdbcType="VARCHAR" property="carCardColor" />
+		<result column="device_id" property="deviceId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="device_register_id" property="deviceRegisterId"
+			jdbcType="VARCHAR" />
+		<result column="snapshot_time" property="snapshotTime"
+			jdbcType="TIMESTAMP" />
+		<result column="snapshot_big_image_path" property="snapshotBigImagePath"
+			jdbcType="VARCHAR" />
+		<result column="snapshot_smail_image_path" property="snapshotSmailImagePath"
+			jdbcType="VARCHAR" />
+		<result column="site_id" property="siteId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_name" property="siteName" jdbcType="VARCHAR" />
+		<result column="disposal_id" property="disposalId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="disposal_name" property="disposalName"
+			jdbcType="VARCHAR" />
+		<result column="car_park_id" property="carParkId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="car_park_name" property="carParkName" jdbcType="VARCHAR" />
+		<result column="area_id" property="areaId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="company_contact" property="companyContact" jdbcType="VARCHAR" />
+		<result column="snapshot_image_group_id" property="snapshotImageGroupId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="snapshot_image_group_name" property="snapshotImageGroupName"
+			jdbcType="VARCHAR" />
+		<result column="snapshot_type" property="snapshotType"
+			jdbcType="VARCHAR" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, car_code, car_card_color, device_id, device_register_id, snapshot_time,
+		snapshot_big_image_path,snapshot_smail_image_path,
+		site_id, site_name, disposal_id, disposal_name,
+		car_park_id, car_park_name, area_id,
+		area_name, company_id,
+		company_name, company_contact,snapshot_image_group_id, snapshot_image_group_name,
+		snapshot_type, operator_id, operator_name, deleted, created_time,
+		updated_time, memo
+	</sql>
+
+	<select id="selectById" resultMap="CarSnapshotInOutImageResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from t_car_snapshot_in_out_image
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+
+	<!-- 添加车辆进入进出工地处置场数据 -->
+	<insert id="insert" parameterType="com.muck.domain.CarSnapshotInOutImage">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+	    insert into t_car_snapshot_in_out_image
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="carCode != null">
+				car_code,
+			</if>
+			<if test="carCardColor != null">
+				car_card_color,
+			</if>
+			<if test="deviceId != null">
+				device_id,
+			</if>
+			<if test="deviceRegisterId != null">
+				device_register_id,
+			</if>
+			<if test="snapshotTime != null">
+				snapshot_time,
+			</if>
+			<if test="snapshotBigImagePath != null">
+				snapshot_big_image_path,
+			</if>
+			<if test="snapshotSmailImagePath != null">
+				snapshot_smail_image_path,
+			</if>
+			<if test="siteId != null">
+				site_id,
+			</if>
+			<if test="siteName != null">
+				site_name,
+			</if>
+			<if test="disposalId != null">
+				disposal_id,
+			</if>
+			<if test="disposalName != null">
+				disposal_name,
+			</if>
+			<if test="carParkId != null">
+				car_park_id,
+			</if>
+			<if test="carParkName != null">
+				car_park_name,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="companyContact != null">
+			    company_contact,
+			</if>
+			<if test="snapshotImageGroupId != null">
+				snapshot_image_group_id,
+			</if>
+			<if test="snapshotImageGroupName != null">
+				snapshot_image_group_name,
+			</if>
+			<if test="snapshotType != null">
+				snapshot_type,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carCode != null">
+				#{carCode,jdbcType=VARCHAR},
+			</if>
+			<if test="carCardColor != null">
+				#{carCardColor,jdbcType=VARCHAR},
+			</if>
+			<if test="deviceId != null">
+				#{deviceId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deviceRegisterId != null">
+				#{deviceRegisterId,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotTime != null">
+				#{snapshotTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="snapshotBigImagePath != null">
+				#{snapshotBigImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotSmailImagePath != null">
+				#{snapshotSmailImagePath,jdbcType=VARCHAR},
+			</if>
+			<if test="siteId != null">
+				#{siteId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="siteName != null">
+				#{siteName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalId != null">
+				#{disposalId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="disposalName != null">
+				#{disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="carParkId != null">
+				#{carParkId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="carParkName != null">
+				#{carParkName,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyContact != null">
+				#{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotImageGroupId != null">
+				#{snapshotImageGroupId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="snapshotImageGroupName != null">
+				#{snapshotImageGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="snapshotType != null">
+				#{snapshotType,jdbcType=VARCHAR},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		ON DUPLICATE KEY UPDATE
+		id=values(id), 
+		car_code=values(car_code), 
+		car_card_color=values(car_card_color), 
+		device_id=values(device_id), 
+		device_register_id=values(device_register_id), 
+		snapshot_time=values(snapshot_time),
+        snapshot_big_image_path=values(snapshot_big_image_path),
+        snapshot_smail_image_path=values(snapshot_smail_image_path),
+        site_id=values(site_id), 
+        site_name=values(site_name), 
+        disposal_id=values(disposal_id), 
+        disposal_name=values(disposal_name),
+        car_park_id=values(car_park_id), 
+        car_park_name=values(car_park_name), 
+        area_id=values(area_id),
+        area_name=values(area_name), 
+        company_id=values(company_id),
+        company_name=values(company_name), 
+        company_contact=values(company_contact),
+        snapshot_image_group_id=values(snapshot_image_group_id), 
+        snapshot_image_group_name=values(snapshot_image_group_name),
+        snapshot_type=values(snapshot_type), 
+        operator_id=values(operator_id), 
+        operator_name=values(operator_name), 
+        deleted=values(deleted), 
+        created_time=values(created_time),
+        updated_time=values(updated_time), 
+        memo=values(memo)
+	</insert>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="CarSnapshotInOutImageResultMap">
+		${sql}
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="queryData" parameterType="string"
+		resultMap="CarSnapshotInOutImageResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	
+	<select id="queryCarSnapshotCountOneDay" resultType="int">
+	    select count(id) from t_car_snapshot_in_out_image 
+	    where 
+	    car_code = #{carCode,jdbcType=VARCHAR} and 
+	    snapshot_type = #{relevantName,jdbcType=VARCHAR} and
+	    created_time like '#{day}%'
+	</select>
+	
+	<resultMap type="com.muck.response.CarSnapshotResponse" id="CarSnapshotResponseResultMap">
+	    <id column="id" property="id" typeHandler = "com.muck.handler.IdTypeHandler"/>
+	    <result column="snapshot_type" property="typeName" jdbcType="VARCHAR" />
+	    <result column="type_id" property="typeId" typeHandler = "com.muck.handler.IdTypeHandler"/>
+		<result	column="relevant_name" property="relevantName" jdbcType="VARCHAR"/>
+		<result column="car_code" property="carCode" jdbcType="VARCHAR"/>
+		<result column="car_card_color" property="carCardColor" jdbcType="VARCHAR"/>
+		<result column="company_id" property="companyId" typeHandler = "com.muck.handler.IdTypeHandler"/>
+		<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+		<result column="company_contact" property="companyContact" jdbcType="VARCHAR" />
+		<result column="snapshot_big_image_path" property="bigImage" jdbcType="VARCHAR"/>
+		<result column="snapshot_smail_image_path" property="smailImage" jdbcType="VARCHAR"/>
+		<result column="snapshot_time" property="time" javaType="string"/>
+	</resultMap>
+	
+	<!-- 获取十条最新的抓拍记录 -->
+	<select id = "getTopTen" resultMap = "CarSnapshotResponseResultMap">
+	    select 
+		    id, 
+		    car_code,
+		    car_card_color, 
+		    device_id, 
+		    device_register_id, 
+		    DATE_FORMAT(snapshot_time,'%Y-%m-%d %H:%i:%s') as snapshot_time,
+			snapshot_big_image_path,
+			snapshot_smail_image_path,
+			(CASE snapshot_type
+			WHEN '工地' THEN
+				site_id
+			WHEN '处置场' THEN
+				disposal_id
+			WHEN '停车场' THEN
+				car_park_id
+			ELSE
+				site_id
+			END) as type_id,
+			(CASE snapshot_type
+			WHEN '工地' THEN
+				site_name
+			WHEN '处置场' THEN
+				disposal_name
+			WHEN '停车场' THEN
+				car_park_name
+			ELSE
+				site_name
+			END) as relevant_name,
+			area_id,
+			area_name, 
+			company_id,
+			company_name, 
+			company_contact,
+			snapshot_image_group_id, 
+			snapshot_image_group_name,
+			snapshot_type, 
+			operator_id, 
+			operator_name, 
+			deleted, 
+			created_time,
+			updated_time, 
+			memo
+		from 
+			t_car_snapshot_in_out_image
+		where
+			deleted = 1
+		order by 
+			created_time desc limit 0,10
+	</select>
+</mapper>

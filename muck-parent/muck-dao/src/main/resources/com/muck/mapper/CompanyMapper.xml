@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CompanyMapper">
+
+	<resultMap id="CompanyResultMap" type="com.muck.domain.Company">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="company_registered_address" property="companyRegisteredAddress"
+			jdbcType="VARCHAR" />
+		<result column="area_id" property="areaId"
+			typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_acreage" property="companyAcreage"
+			jdbcType="VARCHAR" />
+		<result column="company_own_lease" property="companyOwnLease"
+			jdbcType="VARCHAR" />
+		<result column="company_car_park_address" property="companyCarParkAddress"
+			jdbcType="VARCHAR" />
+		<result column="company_car_park_acreage" property="companyCarParkAcreage"
+			jdbcType="VARCHAR" />
+		<result column="company_car_park_own_lease" property="companyCarParkOwnLease"
+			jdbcType="VARCHAR" />
+		<result column="company_business_license" property="companyBusinessLicense" jdbcType="VARCHAR" />
+		<result column="company_business_license_close_date" property="companyBusinessLicenseCloseDate" jdbcType="TIMESTAMP" />
+		<result column="company_road_license" property="companyRoadLicense" jdbcType="VARCHAR" />
+		<result column="company_road_license_close_date" property="companyRoadLicenseCloseDate" jdbcType="TIMESTAMP" />
+		<result column="company_type" property="companyType" jdbcType="VARCHAR" />
+		<result column="company_category" property="companyCategory" jdbcType="VARCHAR" />
+		<result column="company_creation_time" property="companyCreationTime" jdbcType="TIMESTAMP" />
+		<result column="company_contact" property="companyContact"
+			jdbcType="VARCHAR" />
+		<result column="company_facsimile" property="companyFacsimile"
+			jdbcType="VARCHAR" />
+		<result column="company_url" property="companyUrl" jdbcType="VARCHAR" />
+		<result column="company_email" property="companyEmail"
+			jdbcType="VARCHAR" />
+		<result column="company_legal_representative" property="companyLegalRepresentative"
+			jdbcType="VARCHAR" />
+		<result column="company_legal_representative_phone" property="companyLegalRepresentativePhone"
+			jdbcType="VARCHAR" />
+		<result column="company_director" property="companyDirector"
+			jdbcType="VARCHAR" />
+		<result column="company_director_phone" property="companyDirectorPhone"
+			jdbcType="VARCHAR" />
+		<result column="company_motorcade_principal" property="companyMotorcadePrincipal"
+			jdbcType="VARCHAR" />
+		<result column="company_motorcade_principal_phone" property="companyMotorcadePrincipalPhone"
+			jdbcType="VARCHAR" />
+		<result column="company_employee_number" property="companyEmployeeNumber"
+			jdbcType="INTEGER" />
+		<result column="company_administrator_number" property="companyAdministratorNumber"
+			jdbcType="INTEGER" />
+		<result column="company_general_number" property="companyGeneralNumber"
+			jdbcType="INTEGER" />
+		<result column="company_driver_number" property="companyDriverNumber"
+			jdbcType="INTEGER" />
+		<result column="company_general_number" property="companyGeneralNumber"
+			jdbcType="INTEGER" />
+		<result column="company_car_number" property="companyCarNumber"
+		    jdbcType="INTEGER" />
+		<result column="company_car_yellow_card_number" property="companyCarYellowCardNumber"
+		    jdbcType="INTEGER" />
+		<result column="company_car_blue_card_number" property="companyCarBlueCardNumber"
+		    jdbcType="INTEGER" />
+		<result column="company_principal_name" property="companyPrincipalName"
+			jdbcType="VARCHAR" />
+		<result column="company_principal_phone" property="companyPrincipalPhone"
+			jdbcType="VARCHAR" />
+		<result column="company_scale" property="companyScale"
+			jdbcType="VARCHAR" />
+		<result column="company_logo" property="companyLogo" jdbcType="VARCHAR" />
+		<result column="company_arrival_time" property="companyArrivalTime"
+			jdbcType="TIMESTAMP" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="driver_total" property="driverTotal" jdbcType="VARCHAR" />
+		<result column="car_total" property="carTotal" jdbcType="VARCHAR" />
+		<!-- 映射企业下的车辆信息 -->
+		<collection property="cars" ofType="com.muck.domain.Car">
+			<result column = "car_code" property="carCode"/>
+			<result column = "car_group_name" property="carGroupName"/>
+			<!-- 映射车辆下的驾驶员信息 -->
+			<collection property="carDrivers" ofType="com.muck.domain.CarDriver">
+				<result column = "driver_name" property="driverName"/>
+				<result column = "driver_phone" property="driverPhone"/>
+			</collection>
+		</collection>
+	</resultMap>
+
+	<!-- 根据id查询企业,返回的是一个实体对象 -->
+	<select id="selectById" parameterType="string" resultMap="CompanyResultMap">
+		select
+		company.id, 
+		company.company_name, 
+		company.company_registered_address,
+		company.area_id,
+		company.area_name,
+		company.company_acreage,
+		company.company_own_lease,
+		company.company_car_park_address,
+		company.company_car_park_acreage,
+		company.company_car_park_own_lease,
+		company.company_business_license,
+		company.company_business_license_close_date,
+		company.company_road_license,
+		company.company_road_license_close_date,
+		company.company_type, 
+		company.company_category, 
+		company.company_creation_time,
+		company.company_contact,
+		company.company_facsimile, 
+		company.company_url, 
+		company.company_email,
+		company.company_legal_representative,
+		company.company_legal_representative_phone,
+		company.company_director, 
+		company.company_director_phone,
+		company.company_motorcade_principal,
+		company.company_motorcade_principal_phone, 
+		company.company_employee_number,
+		company.company_administrator_number,
+		company.company_driver_number,
+		company.company_general_number,
+		company.company_car_number,
+		company.company_car_yellow_card_number,
+		company.company_car_blue_card_number,
+		company.company_principal_name,
+		company.company_principal_phone, 
+		company.company_scale,
+		company.company_logo, 
+		company.company_arrival_time, 
+		company.operator_id, 
+		company.operator_name,
+		company.created_time,
+		company.updated_time,
+		(select count(id) from t_car_driver car_driver where car_driver.company_id = company.id) as driver_total,
+		(select count(id) from t_car car where car.company_id = company.id) as car_total
+		from
+		t_company company
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+		company.deleted = 1
+	</select>
+
+
+
+    <!-- 根据id查询企业,返回的是一个实体对象 -->
+    <select id="queryByName" parameterType="string" resultMap="CompanyResultMap">
+       select
+        company.id, 
+        company.company_name, 
+        company.company_registered_address,
+        company.area_id,
+        company.area_name,
+        company.company_acreage,
+        company.company_own_lease,
+        company.company_car_park_address,
+        company.company_car_park_acreage,
+        company.company_car_park_own_lease,
+        company.company_business_license,
+        company.company_business_license_close_date,
+        company.company_road_license,
+        company.company_road_license_close_date,
+        company.company_type, 
+        company.company_category, 
+        company.company_creation_time,
+        company.company_contact,
+        company.company_facsimile, 
+        company.company_url, 
+        company.company_email,
+        company.company_legal_representative,
+        company.company_legal_representative_phone,
+        company.company_director, 
+        company.company_director_phone,
+        company.company_motorcade_principal,
+        company.company_motorcade_principal_phone, 
+        company.company_employee_number,
+        company.company_administrator_number,
+        company.company_driver_number,
+        company.company_general_number,
+        company.company_car_number,
+        company.company_car_yellow_card_number,
+        company.company_car_blue_card_number,
+        company.company_principal_name,
+        company.company_principal_phone, 
+        company.company_scale,
+        company.company_logo, 
+        company.company_arrival_time, 
+        company.operator_id, 
+        company.operator_name,
+        company.created_time,
+        company.updated_time,
+        (select count(id) from t_car_driver car_driver where car_driver.company_id = company.id) as driver_total,
+        (select count(id) from t_car car where car.company_id = company.id) as car_total
+        from
+        t_company company
+        where
+        company_name = #{companyName,jdbcType=VARCHAR} and
+        company.deleted = 1
+    </select>
+
+
+	<!-- 添加企业 -->
+	<insert id="insert" parameterType="com.muck.domain.Company">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_company
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="companyRegisteredAddress != null">
+				company_registered_address,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="companyAcreage != null">
+				company_acreage,
+			</if>
+			<if test="companyOwnLease != null">
+				company_own_lease,
+			</if>
+			<if test="companyCarParkAddress != null">
+				company_car_park_address,
+			</if>
+			<if test="companyCarParkAcreage != null">
+				company_car_park_acreage,
+			</if>
+			<if test="companyCarParkOwnLease != null">
+				company_car_park_own_lease,
+			</if>
+			<if test="companyBusinessLicense != null">
+				company_business_license,
+			</if>
+			<if test="companyBusinessLicenseCloseDate != null">
+				company_business_license_close_date,
+			</if>
+			<if test="companyRoadLicense != null">
+				company_road_license,
+			</if>
+			<if test="companyRoadLicenseCloseDate != null">
+				company_road_license_close_date,
+			</if>
+			<if test="companyType != null">
+				company_type,
+			</if>
+			<if test="companyCategory != null">
+				company_category,
+			</if>
+			<if test="companyCreationTime != null">
+				company_creation_time,
+			</if>
+			<if test="companyContact != null">
+				company_contact,
+			</if>
+			<if test="companyFacsimile != null">
+				company_facsimile,
+			</if>
+			<if test="companyUrl != null">
+				company_url,
+			</if>
+			<if test="companyEmail != null">
+				company_email,
+			</if>
+			<if test="companyLegalRepresentative != null">
+				company_legal_representative,
+			</if>
+			<if test="companyLegalRepresentativePhone != null">
+				company_legal_representative_phone,
+			</if>
+			<if test="companyDirector != null">
+				company_director,
+			</if>
+			<if test="companyDirectorPhone != null">
+				company_director_phone,
+			</if>
+			<if test="companyMotorcadePrincipal != null">
+				company_motorcade_principal,
+			</if>
+			<if test="companyMotorcadePrincipalPhone != null">
+				company_motorcade_principal_phone,
+			</if>
+			<if test="companyEmployeeNumber != null">
+				company_employee_number,
+			</if>
+			<if test="companyAdministratorNumber != null">
+				company_administrator_number,
+			</if>
+			<if test="companyDriverNumber != null">
+				company_driver_number,
+			</if>
+			<if test="companyGeneralNumber != null">
+				company_general_number,
+			</if>
+			<if test="companyCarNumber != null">
+			    company_car_number,
+			</if>
+			<if test="companyCarYellowCardNumber != null">
+			    company_car_yellow_card_number,
+			</if>
+			<if test="companyCarBlueCardNumber != null">
+			    company_car_blue_card_number,
+			</if>
+			<if test="companyPrincipalName != null">
+				company_principal_name,
+			</if>
+			<if test="companyPrincipalPhone != null">
+				company_principal_phone,
+			</if>
+			<if test="companyScale != null">
+				company_scale,
+			</if>
+			<if test="companyLogo != null">
+				company_logo,
+			</if>
+			<if test="companyArrivalTime != null">
+				company_arrival_time,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyRegisteredAddress != null">
+				#{companyRegisteredAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyAcreage != null">
+				#{companyAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="companyOwnLease != null">
+				#{companyOwnLease,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkAddress != null">
+				#{companyCarParkAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkAcreage != null">
+				#{companyCarParkAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkOwnLease != null">
+				#{companyCarParkOwnLease,jdbcType=VARCHAR},
+			</if>
+			<if test="companyBusinessLicense != null">
+				#{companyBusinessLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="companyBusinessLicenseCloseDate != null">
+				#{companyBusinessLicenseCloseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyRoadLicense != null">
+				#{companyRoadLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="companyRoadLicenseCloseDate != null">
+				#{companyRoadLicenseCloseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyType != null">
+				#{companyType,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCategory != null">
+				#{companyCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCreationTime != null">
+				#{companyCreationTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyContact != null">
+				#{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="companyFacsimile != null">
+				#{companyFacsimile,jdbcType=VARCHAR},
+			</if>
+			<if test="companyUrl != null">
+				#{companyUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="companyEmail != null">
+				#{companyEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLegalRepresentative != null">
+				#{companyLegalRepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLegalRepresentativePhone != null">
+				#{companyLegalRepresentativePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyDirector != null">
+				#{companyDirector,jdbcType=VARCHAR},
+			</if>
+			<if test="companyDirectorPhone != null">
+				#{companyDirectorPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyMotorcadePrincipal != null">
+				#{companyMotorcadePrincipal,jdbcType=VARCHAR},
+			</if>
+			<if test="companyMotorcadePrincipalPhone != null">
+				#{companyMotorcadePrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyEmployeeNumber != null">
+				#{companyEmployeeNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyAdministratorNumber != null">
+				#{companyAdministratorNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyDriverNumber != null">
+				#{companyDriverNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyGeneralNumber != null">
+				#{companyGeneralNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarNumber != null">
+				#{companyCarNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarYellowCardNumber != null">
+				#{companyCarYellowCardNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarBlueCardNumber != null">
+				#{companyCarBlueCardNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyPrincipalName != null">
+				#{companyPrincipalName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalPhone != null">
+				#{companyPrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyScale != null">
+				#{companyScale,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLogo != null">
+				#{companyLogo,jdbcType=VARCHAR},
+			</if>
+			<if test="companyArrivalTime != null">
+				#{companyArrivalTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+		</trim>
+		ON DUPLICATE KEY UPDATE
+		company_name=values(company_name),
+		company_registered_address=values(company_registered_address),
+		area_id=values(area_id),
+		area_name=values(area_name),
+		company_acreage=values(company_acreage),
+		company_own_lease=values(company_own_lease),
+		company_car_park_address=values(company_car_park_address),
+		company_car_park_acreage=values(company_car_park_acreage),
+		company_car_park_own_lease=values(company_car_park_own_lease),
+		company_business_license=values(company_business_license),
+		company_business_license_close_date=values(company_business_license_close_date),
+		company_road_license=values(company_road_license),
+		company_road_license_close_date=values(company_road_license_close_date),
+		company_type=values(company_type),
+		company_category=values(company_category), 
+		company_creation_time=values(company_creation_time),
+		company_contact=values(company_contact),
+		company_facsimile=values(company_facsimile),
+		company_email=values(company_email),
+		company_legal_representative=values(company_legal_representative),
+		company_legal_representative_phone=values(company_legal_representative_phone),
+		company_director=values(company_director),
+		company_director_phone=values(company_director_phone),
+		company_motorcade_principal=values(company_motorcade_principal),
+		company_motorcade_principal_phone=values(company_motorcade_principal_phone),
+		company_employee_number=values(company_employee_number),
+		company_administrator_number=values(company_administrator_number),
+		company_driver_number=values(company_driver_number),
+		company_general_number=values(company_general_number),
+		company_car_number=values(company_car_number),
+		company_car_yellow_card_number=values(company_car_yellow_card_number),
+		company_car_blue_card_number=values(company_car_blue_card_number),
+		company_principal_name=values(company_principal_name),
+		company_principal_phone=values(company_principal_phone),
+		company_scale=values(company_scale),
+		company_logo=values(company_logo),
+		company_arrival_time=values(company_arrival_time),
+		operator_id=values(operator_id),
+		operator_name=values(operator_name),
+		created_time=values(created_time),
+		updated_time=values(updated_time),
+		deleted=values(deleted)
+	</insert>
+	<!-- 批量添加企业 -->
+	<insert id="insertAll" parameterType="java.util.List">
+		insert into t_company
+		(
+		id,
+		company_name,
+		company_registered_address,
+		area_id,area_name,
+		company_acreage,
+		company_own_lease,
+		company_car_park_address,
+		company_car_park_acreage,
+		company_car_park_own_lease,
+		company_business_license,
+		company_business_license_close_date,
+		company_road_license,
+		company_road_license_close_date,
+		company_type,
+		company_category,
+		company_creation_time,
+		company_contact,
+		company_facsimile,
+		company_url,
+		company_email,
+		company_legal_representative,
+		company_legal_representative_phone,
+		company_director,
+		company_director_phone,
+		company_motorcade_principal,
+		company_motorcade_principal_phone,
+		company_employee_number,
+		company_administrator_number,
+		company_driver_number,
+		company_general_number,
+		company_car_number,
+		company_car_yellow_card_number,
+		company_car_blue_card_number,
+		company_principal_name,
+		company_principal_phone,
+		company_scale,
+		company_logo,
+		company_arrival_time,
+		operator_id,
+		operator_name,
+		created_time,
+		updated_time,
+		deleted
+		)
+		values
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+				#{item.id,jdbcType=BIGINT},
+				#{item.companyName,jdbcType=VARCHAR},
+				#{item.companyRegisteredAddress,jdbcType=VARCHAR},
+				#{item.areaId,typeHandler=com.muck.handler.IdTypeHandler},
+				#{item.areaName,jdbcType=VARCHAR},
+				#{item.companyAcreage,jdbcType=VARCHAR},
+				#{item.companyOwnLease,jdbcType=VARCHAR},
+				#{item.companyCarParkAddress,jdbcType=VARCHAR},
+				#{item.companyCarParkAcreage,jdbcType=VARCHAR},
+				#{item.companyCarParkOwnLease,jdbcType=VARCHAR},
+				#{item.companyBusinessLicense,jdbcType=VARCHAR},
+				#{item.companyBusinessLicenseCloseDate,jdbcType=TIMESTAMP},
+				#{item.companyRoadLicense,jdbcType=VARCHAR},
+				#{item.companyRoadLicenseCloseDate,jdbcType=TIMESTAMP},
+				#{item.companyType,jdbcType=VARCHAR},
+				#{item.companyCategory,jdbcType=VARCHAR},
+				#{item.companyCreationTime,jdbcType=TIMESTAMP},
+				#{item.companyContact,jdbcType=VARCHAR},
+				#{item.companyFacsimile,jdbcType=VARCHAR}, 
+				#{item.companyUrl,jdbcType=VARCHAR},
+				#{item.companyEmail,jdbcType=VARCHAR},
+				#{item.companyLegalRepresentative,jdbcType=VARCHAR},
+				#{item.companyLegalRepresentativePhone,jdbcType=VARCHAR},
+				#{item.companyDirector,jdbcType=VARCHAR},
+				#{item.companyDirectorPhone,jdbcType=VARCHAR},
+				#{item.companyMotorcadePrincipal,jdbcType=VARCHAR},
+				#{item.companyMotorcadePrincipalPhone,jdbcType=VARCHAR},
+				#{item.companyEmployeeNumber,jdbcType=INTEGER},
+				#{item.companyAdministratorNumber,jdbcType=INTEGER},
+				#{item.companyDriverNumber,jdbcType=INTEGER},
+				#{item.companyGeneralNumber,jdbcType=INTEGER},
+				#{item.companyCarNumber,jdbcType=INTEGER},
+				#{item.companyCarYellowCardNumber,jdbcType=INTEGER},
+				#{item.companyCarBlueCardNumber,jdbcType=INTEGER},
+				#{item.companyPrincipalName,jdbcType=VARCHAR},
+				#{item.companyPrincipalPhone,jdbcType=VARCHAR},
+				#{item.companyScale,jdbcType=VARCHAR}, 
+				#{item.companyLogo,jdbcType=VARCHAR},
+				#{item.companyArrivalTime,jdbcType=TIMESTAMP},
+				#{item.operatorId,jdbcType=BIGINT}, 
+				#{item.operatorName,jdbcType=VARCHAR},
+				#{item.createdTime,jdbcType=TIMESTAMP}, 
+				#{item.updatedTime,jdbcType=TIMESTAMP},
+				#{item.deleted,jdbcType=TINYINT}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		company_name=values(company_name),
+		company_registered_address=values(company_registered_address),
+		area_id=values(area_id),
+		area_name=values(area_name),
+		company_acreage=values(company_acreage),
+		company_own_lease=values(company_own_lease),
+		company_car_park_address=values(company_car_park_address),
+		company_car_park_acreage=values(company_car_park_acreage),
+		company_car_park_own_lease=values(company_car_park_own_lease),
+		company_business_license=values(company_business_license),
+		company_business_license_close_date=values(company_business_license_close_date),
+		company_road_license=values(company_road_license),
+		company_road_license_close_date=values(company_road_license_close_date),
+		company_type=values(company_type),
+		company_category=values(company_category), 
+		company_creation_time=values(company_creation_time),
+		company_contact=values(company_contact),
+		company_facsimile=values(company_facsimile),
+		company_email=values(company_email),
+		company_legal_representative=values(company_legal_representative),
+		company_legal_representative_phone=values(company_legal_representative_phone),
+		company_director=values(company_director),
+		company_director_phone=values(company_director_phone),
+		company_motorcade_principal=values(company_motorcade_principal),
+		company_motorcade_principal_phone=values(company_motorcade_principal_phone),
+		company_employee_number=values(company_employee_number),
+		company_administrator_number=values(company_administrator_number),
+		company_driver_number=values(company_driver_number),
+		company_general_number=values(company_general_number),
+		company_car_number=values(company_car_number),
+		company_car_yellow_card_number=values(company_car_yellow_card_number),
+		company_car_blue_card_number=values(company_car_blue_card_number),
+		company_principal_name=values(company_principal_name),
+		company_principal_phone=values(company_principal_phone),
+		company_scale=values(company_scale),
+		company_logo=values(company_logo),
+		company_arrival_time=values(company_arrival_time),
+		operator_id=values(operator_id),
+		operator_name=values(operator_name),
+		created_time=values(created_time),
+		updated_time=values(updated_time),
+		deleted=values(deleted)
+	</insert>
+
+
+
+
+
+	<!-- 根据id删除企业(逻辑删除) -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_company
+		set
+		deleted
+		= 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_company
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据id修改企业 -->
+	<update id="updateById" parameterType="com.muck.domain.Company">
+		update t_company
+		<set>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyRegisteredAddress != null">
+				company_registered_address =
+				#{companyRegisteredAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="areaId != null">
+				area_id =
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				area_name =
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyAcreage != null">
+				company_acreage = #{companyAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="companyOwnLease != null">
+				company_own_lease = #{companyOwnLease,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkAddress != null">
+				company_car_park_address =
+				#{companyCarParkAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkAcreage != null">
+				company_car_park_acreage =
+				#{companyCarParkAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCarParkOwnLease != null">
+				company_car_park_own_lease =
+				#{companyCarParkOwnLease,jdbcType=VARCHAR},
+			</if>
+			<if test="companyBusinessLicense != null">
+				company_business_license =
+				#{companyBusinessLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="companyBusinessLicenseCloseDate != null">
+				company_business_license_close_date =
+				#{companyBusinessLicenseCloseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyRoadLicense != null">
+				company_road_license =
+				#{companyRoadLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="companyRoadLicenseCloseDate != null">
+				company_road_license_close_date =
+				#{companyRoadLicenseCloseDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyType != null">
+				company_type = #{companyType,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCategory != null">
+				company_category = #{companyCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="companyCreationTime != null">
+				company_creation_time =
+				#{companyCreationTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyContact != null">
+				company_contact = #{companyContact,jdbcType=VARCHAR},
+			</if>
+			<if test="companyFacsimile != null">
+				company_facsimile = #{companyFacsimile,jdbcType=VARCHAR},
+			</if>
+			<if test="companyUrl != null">
+				company_url = #{companyUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="companyEmail != null">
+				company_email = #{companyEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLegalRepresentative != null">
+				company_legal_representative =
+				#{companyLegalRepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLegalRepresentativePhone != null">
+				company_legal_representative_phone =
+				#{companyLegalRepresentativePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyDirector != null">
+				company_director = #{companyDirector,jdbcType=VARCHAR},
+			</if>
+			<if test="companyDirectorPhone != null">
+				company_director_phone =
+				#{companyDirectorPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyMotorcadePrincipal != null">
+				company_motorcade_principal =
+				#{companyMotorcadePrincipal,jdbcType=VARCHAR},
+			</if>
+			<if test="companyMotorcadePrincipalPhone != null">
+				company_motorcade_principal_phone =
+				#{companyMotorcadePrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyEmployeeNumber != null">
+				company_employee_number =
+				#{companyEmployeeNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyAdministratorNumber != null">
+				company_administrator_number =
+				#{companyAdministratorNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyDriverNumber != null">
+				company_driver_number =
+				#{companyDriverNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyGeneralNumber != null">
+				company_general_number =
+				#{companyGeneralNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarNumber != null">
+			    company_car_number =
+				#{companyCarNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarYellowCardNumber != null">
+			    company_car_yellow_card_number =
+				#{companyCarYellowCardNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyCarBlueCardNumber != null">
+			    company_car_blue_card_number =
+				#{companyCarBlueCardNumber,jdbcType=INTEGER},
+			</if>
+			<if test="companyPrincipalName != null">
+				company_principal_name =
+				#{companyPrincipalName,jdbcType=VARCHAR},
+			</if>
+			<if test="companyPrincipalPhone != null">
+				company_principal_phone =
+				#{companyPrincipalPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="companyScale != null">
+				company_scale = #{companyScale,jdbcType=VARCHAR},
+			</if>
+			<if test="companyLogo != null">
+				company_logo = #{companyLogo,jdbcType=VARCHAR},
+			</if>
+			<if test="companyArrivalTime != null">
+				company_arrival_time =
+				#{companyArrivalTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<resultMap id="StatisticsCompanyListResultMap" type="com.muck.response.StatisticsCompany">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="company_legal_representative" property="companyLegalRepresentative"
+			jdbcType="VARCHAR" />
+		<result column="company_legal_representative_phone" property="companyLegalRepresentativePhone"
+			jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="company_car_number" property="companyCarNumber" javaType="int" />
+	</resultMap>
+
+
+	<!-- 统计企业列表(1、包括企业基本信息 , 2、工程中正在使用的车辆数) -->
+	<select id="statisticsCompanyList" resultMap="StatisticsCompanyListResultMap">
+		SELECT
+		c.id,
+		c.company_name,
+		c.company_legal_representative,
+		c.company_legal_representative_phone,
+		c.company_arrival_time,
+		c.memo,
+		a.area_name,
+		c.company_car_number
+		FROM
+		t_company c,t_area
+		a,t_company_area ca
+		where
+		c.id = ca.company_id and
+		ca.area_code =
+		a.area_code
+	</select>
+
+
+	<!-- 根据区域编码查询企业 -->
+	<select id="selectCompanyByAreaCode" parameterType="string"
+		resultMap="CompanyResultMap">
+		select
+		id ,
+		company_name ,
+		company_principal_name ,
+		company_principal_phone ,
+		area_name,
+		company_logo ,
+		company_arrival_time,created_time,updated_time,memo
+		from
+		t_company tc
+		where
+		tc.id in (
+		select company_id from t_company_area where area_code =
+		#{areaCode,jdbcType=VARCHAR}
+		)
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string"
+		resultMap="StatisticsCompanyListResultMap">
+		${sql}
+	</select>
+	<!-- 查询数据 -->
+	<select id="queryData" parameterType="string"
+		resultMap="CompanyResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+
+	<resultMap id="SimpleCompanyResultMap" type="com.muck.response.SimpleCompanyResponse">
+		<id	column="company_id" property="companyId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="company_name" property="companyName"/>
+		<collection property="cars" ofType="java.lang.String">
+			<result column="car_code" property="carCode" jdbcType="VARCHAR"/>
+		</collection>
+		<collection property="carGroups" ofType="com.muck.response.SimpleCarGroupResponse">
+			<result column="car_group_id" property="carGroupId" jdbcType="VARCHAR"/>
+			<result column="group_name" property="carGroupName" jdbcType="VARCHAR"/>
+		</collection>
+	</resultMap>
+
+	<select id="statisticsGroupCars" resultMap="SimpleCompanyResultMap">
+		SELECT
+			company.id as company_id,
+			company.company_name,
+			t_car.car_code,
+			car_group.id as car_group_id,
+			car_group.group_name
+		from
+			t_company company
+		LEFT JOIN
+			t_car
+		ON
+			t_car.company_id = company.id
+		LEFT JOIN
+			t_car_group car_group
+		ON
+			company.id = car_group.company_id
+		WHERE
+			company.deleted = 1
+			and t_car.factory_type=2
+	</select>
+	
+	<!-- 根据企业id查询企业名称 -->
+	<select id="queryCompanyNameById" parameterType="string" resultType="string">
+		select company_name from t_company where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+
+</mapper>

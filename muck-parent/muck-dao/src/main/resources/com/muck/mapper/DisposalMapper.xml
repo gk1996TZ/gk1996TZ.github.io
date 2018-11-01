@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.DisposalMapper">
+	<resultMap id="DisposalResultMap" type="com.muck.domain.Disposal">
+		<!-- 映射Disposal的基本信息 -->
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="disposal_id" property="disposalId" jdbcType="VARCHAR" />
+		<result column="disposal_name" property="disposalName"
+			jdbcType="VARCHAR" />
+		<result column="disposal_muck_capacity" property="disposalMuckCapacity"
+			jdbcType="INTEGER" />
+		<result column="area_id" property="areaId" typeHandler="com.muck.handler.IdTypeHandler"/>
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<result column="disposal_address" property="disposalAddress" jdbcType="VARCHAR" />
+		<result column="company_id" property="companyId" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="disposal_register_code" property="disposalRegisterCode" jdbcType="VARCHAR"/>
+		<result column="disposal_principal_name1" property="disposalPrincipalName1"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_phone1" property="disposalPrincipalPhone1"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_name2" property="disposalPrincipalName2"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_phone2" property="disposalPrincipalPhone2"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_name3" property="disposalPrincipalName3"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_phone3" property="disposalPrincipalPhone3"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_name4" property="disposalPrincipalName4"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_phone4" property="disposalPrincipalPhone4"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_name5" property="disposalPrincipalName5"
+			jdbcType="VARCHAR" />
+		<result column="disposal_principal_phone5" property="disposalPrincipalPhone5"
+			jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="BIT" />
+		<result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+
+	</resultMap>
+
+	<!-- 根据id查询处置场信息 -->
+	<select id="selectById" parameterType="long" resultMap="DisposalResultMap">
+		select
+			disposal.id, 
+			disposal.disposal_id,
+			disposal.disposal_name,
+			disposal.area_id,
+			disposal.area_name,
+			disposal.disposal_address,
+			disposal.company_id,
+			disposal.company_name,
+			disposal.disposal_register_code,
+			disposal.disposal_principal_name1,
+			disposal.disposal_principal_phone1,
+			disposal.disposal_principal_name2,
+			disposal.disposal_principal_phone2,
+			disposal.disposal_principal_name3,
+			disposal.disposal_principal_phone3,
+			disposal.disposal_principal_name4,
+			disposal.disposal_principal_phone4,
+			disposal.disposal_principal_name5,
+			disposal.disposal_principal_phone5,
+			disposal.memo,disposal.deleted,disposal.operator_id,disposal.operator_name,
+			disposal.created_time,disposal.updated_time,
+			disposal.memo
+		from
+			t_disposal disposal
+		left join t_area area on disposal.area_id = area.id
+		left join t_company company on disposal.company_id = company.id
+		<where>
+			disposal.id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+			and disposal.deleted = 1
+		</where>
+	</select>
+
+	<!-- 添加处置场 -->
+	<insert id="insert" parameterType="com.muck.domain.Disposal">
+		insert into t_disposal
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="disposalId != null">
+				disposal_id,
+			</if>
+			<if test="disposalName != null">
+				disposal_name,
+			</if>
+			<if test="disposalMuckCapacity != null">
+				disposal_muck_capacity,
+			</if>
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="areaName != null">
+				area_name,
+			</if>
+			<if test="disposalAddress != null">
+				disposal_address,
+			</if>
+			<if test="companyId != null">
+				company_id,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="disposalPrincipalName1 != null">
+				disposal_principal_name1,
+			</if>
+			<if test="disposalPrincipalPhone1 != null">
+				disposal_principal_phone1,
+			</if>
+			<if test="disposalPrincipalName2 != null">
+				disposal_principal_name2,
+			</if>
+			<if test="disposalPrincipalPhone2 != null">
+				disposal_principal_phone2,
+			</if>
+			<if test="disposalPrincipalName3 != null">
+				disposal_principal_name3,
+			</if>
+			<if test="disposalPrincipalPhone3 != null">
+				disposal_principal_phone3,
+			</if>
+			<if test="disposalPrincipalName4 != null">
+				disposal_principal_name4,
+			</if>
+			<if test="disposalPrincipalPhone4 != null">
+				disposal_principal_phone4,
+			</if>
+			<if test="disposalPrincipalName5 != null">
+				disposal_principal_name5,
+			</if>
+			<if test="disposalPrincipalPhone5 != null">
+				disposal_principal_phone5,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="operatorId != null">
+				operator_id,
+			</if>
+			<if test="operatorName != null">
+				operator_name,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="disposalId != null">
+				#{disposalId,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalName != null">
+				#{disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalMuckCapacity != null">
+				#{disposalMuckCapacity,jdbcType=INTEGER},
+			</if>
+			<if test="areaId != null">
+				#{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				#{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalAddress != null">
+				#{disposalAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				#{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName1 != null">
+				#{disposalPrincipalName1,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone1 != null">
+				#{disposalPrincipalPhone1,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName2 != null">
+				#{disposalPrincipalName2,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone2 != null">
+				#{disposalPrincipalPhone2,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName3 != null">
+				#{disposalPrincipalName3,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone3 != null">
+				#{disposalPrincipalPhone3,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName4 != null">
+				#{disposalPrincipalName4,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone4 != null">
+				#{disposalPrincipalPhone4,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName5 != null">
+				#{disposalPrincipalName5,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone5 != null">
+				#{disposalPrincipalPhone5,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				#{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id删除处置场 -->
+	<update id="deleteById" parameterType="long">
+		update
+		t_disposal
+		set
+		deleted = 0
+		where
+		id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	<!-- 根据id删除处置场（真实删除） -->
+	<delete id = "deleteByIdReal" parameterType="long">
+		delete from
+			t_disposal
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</delete>
+	
+	<!-- 根据id修改处置场 -->
+	<update id="updateById" parameterType="com.muck.domain.Disposal">
+		update t_disposal
+		<set>
+			<if test="disposalId != null">
+				disposal_id = #{disposalId,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalName != null">
+				disposal_name = #{disposalName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalMuckCapacity != null">
+				disposal_muck_capacity = #{disposalMuckCapacity,jdbcType=INTEGER},
+			</if>
+			<if test="areaId != null">
+				area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="areaName != null">
+				area_name = #{areaName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalAddress != null">
+				disposal_address = #{disposalAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="companyId != null">
+				company_id = #{companyId,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalRegisterCode != null">
+				disposal_register_code = #{disposalRegisterCode,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName1 != null">
+				disposal_principal_name1 = #{disposalPrincipalName1,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone1 != null">
+				disposal_principal_phone1 = #{disposalPrincipalPhone1,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName2 != null">
+				disposal_principal_name2 = #{disposalPrincipalName2,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone2 != null">
+				disposal_principal_phone2 = #{disposalPrincipalPhone2,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName3 != null">
+				disposal_principal_name3 = #{disposalPrincipalName3,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone3 != null">
+				disposal_principal_phone3 = #{disposalPrincipalPhone3,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName4 != null">
+				disposal_principal_name4 = #{disposalPrincipalName4,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone4 != null">
+				disposal_principal_phone4 = #{disposalPrincipalPhone4,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalName5 != null">
+				disposal_principal_name5 = #{disposalPrincipalName5,jdbcType=VARCHAR},
+			</if>
+			<if test="disposalPrincipalPhone5 != null">
+				disposal_principal_phone5 = #{disposalPrincipalPhone5,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="operatorId != null">
+				operator_id = #{operatorId,jdbcType=BIGINT},
+			</if>
+			<if test="operatorName != null">
+				operator_name = #{operatorName,jdbcType=VARCHAR},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="DisposalResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="DisposalResultMap">
+		${sql}
+	</select>
+	<select id="queryDisposalIdsAll" resultType="string">
+		select
+		disposal_id
+		from
+		t_disposal
+	</select>
+	
+	<!-- 简单内容的封装,不包括关联信息 -->
+	<resultMap id="SimpleDisposalResultMap" type="com.muck.domain.Disposal">
+		
+		<!-- 映射Disposal的基本信息 -->
+	    <id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+	    <result column="disposal_name" property="disposalName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 根据id查询处置场信息 ，不涉及到对象的关联,仅仅是基础信息	-->
+	<select id="selectByIdSimple" parameterType="string" resultMap="SimpleDisposalResultMap">
+		select
+			id, 
+			disposal_name
+		from
+			t_disposal
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			deleted = 1
+	</select>
+	
+	<resultMap id="DisposalTreeResultMap" type="com.muck.domain.Area">
+		<id column="areaid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+		<!-- 映射处置场信息 -->
+		<collection property="disposals" javaType="com.muck.domain.Disposal">
+			<result column="disposalid" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+			<result column="disposal_name" property="disposalName" jdbcType="VARCHAR" />
+			<result column="channel_code" property="channelCode" jdbcType="VARCHAR"  />
+			<result column="device_code" property="deviceCode" jdbcType="VARCHAR"  />
+		</collection>
+	</resultMap>
+	
+	<select id="queryDisposalTree" resultMap = "DisposalTreeResultMap">
+		select
+			area.id areaid,
+			area.area_name,
+			disposal.id disposalid,
+			disposal.disposal_name,
+			disposal.disposal_id channel_code,
+			SUBSTRING(disposal.disposal_id,1,7) device_code
+		from
+			t_area area,t_disposal disposal
+		where
+			area.id = disposal.area_id and
+			area.deleted = 1 and
+			disposal.deleted = 1
+	</select>
+
+	<!-- 批量添加处置场 -->
+	<insert id="insertBatch">
+		insert into t_disposal 
+			(disposal_id,disposal_name,area_id,area_name,area_code,disposal_address,
+			 deleted,created_time,updated_time
+	        )
+	    values 
+	     <foreach collection="disposals" item="dis" separator=",">  
+		    (
+		    	#{dis.disposalId,jdbcType=VARCHAR}, 
+		    	#{dis.disposalName,jdbcType=VARCHAR}, 
+      			#{dis.areaId,typeHandler=com.muck.handler.IdTypeHandler}, 
+		      	#{dis.areaName,jdbcType=VARCHAR},
+		      	#{dis.areaCode,jdbcType=VARCHAR}, 
+		      	#{dis.disposalAddress,jdbcType=VARCHAR}, 
+		     	#{dis.deleted,jdbcType=TINYINT}, 
+		      	#{dis.createdTime,jdbcType=TIMESTAMP}, 
+		      	#{dis.updatedTime,jdbcType=TIMESTAMP}
+		    )
+       	</foreach>
+       	ON DUPLICATE KEY UPDATE
+       	disposal_id = values(disposal_id), 
+       	disposal_name = values(disposal_name), 
+		area_id = values(area_id), 
+		area_name = values(area_name), 
+		area_code = values(area_code), 
+		disposal_address = values(disposal_address), 
+		deleted = values(deleted), 
+		created_time = values(created_time), 
+		updated_time = values(updated_time)
+	</insert>
+	
+	<!-- 批量更新 -->
+	<update id="updateBatch" >
+	update 
+	t_disposal
+	set
+	diposal_register_code=#{registerCode,jdbcType=VARCHAR}
+	where 
+	disposal_id in ${channelCodes}
+	</update>
+	
+	<!-- 将处置场中的区域维护(主要是维护区域的id)-->
+	<update id="setDisposalAndAreaRelation">
+		UPDATE t_disposal 
+			INNER JOIN (SELECT id,area_code FROM t_area) area ON area.area_code = t_disposal.area_code
+		SET t_disposal.area_id = area.id
+	</update>
+	
+	<!-- 根据通道号查询处置场详情 -->
+	<select id="selectDisposalInfoByChannelCode" parameterType="string" resultMap="DisposalResultMap">
+		select
+			disposal.id, 
+			disposal.disposal_id,
+			disposal.disposal_name,
+			disposal.area_id,
+			disposal.area_name,
+			disposal.disposal_address,
+			disposal.company_id,
+			disposal.company_name,
+			disposal.disposal_principal_name1,
+			disposal.disposal_principal_phone1,
+			disposal.disposal_principal_name2,
+			disposal.disposal_principal_phone2,
+			disposal.disposal_principal_name3,
+			disposal.disposal_principal_phone3,
+			disposal.disposal_principal_name4,
+			disposal.disposal_principal_phone4,
+			disposal.disposal_principal_name5,
+			disposal.disposal_principal_phone5,
+			disposal.memo,disposal.deleted,disposal.operator_id,disposal.operator_name,
+			disposal.created_time,disposal.updated_time
+		from
+			t_disposal disposal
+		left join t_area area on disposal.area_id = area.id
+		left join t_company company on disposal.company_id = company.id
+		<where>
+			disposal.disposal_id = #{channelCode,jdbcType=VARCHAR}
+			and disposal.deleted = 1
+		</where>
+	</select>
+	
+</mapper>

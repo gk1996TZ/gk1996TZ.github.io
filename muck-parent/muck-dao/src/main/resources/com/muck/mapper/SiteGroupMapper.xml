@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SiteGroupMapper">
+
+	<!-- 映射关系 -->
+	<resultMap id="SiteGroupResultMap" type="com.muck.domain.SiteGroup">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_group_code" property="siteGroupCode" jdbcType="VARCHAR" />
+		<result column="site_group_name" property="siteGroupName" jdbcType="VARCHAR" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="site_group_area_id" property="area.id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 添加工地组 -->
+	<insert id="insert" parameterType="com.muck.domain.SiteGroup">
+		<selectKey resultType="long" keyProperty="idRaw">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into t_site_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="siteGroupCode != null">
+				site_group_code,
+			</if>
+			<if test="siteGroupName != null">
+				site_group_name,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="area != null">
+				site_group_area_id,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="siteGroupCode != null">
+				#{siteGroupCode,jdbcType=VARCHAR},
+			</if>
+			<if test="siteGroupName != null">
+				#{siteGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 校验工地组是否存在 -->
+	<select id="validateExist" resultType="LONG">
+		select
+		count(id)
+		from
+		t_site_group
+		<where>
+			<if test="siteGroupName != null">
+				and site_group_name = #{siteGroupName,jdbcType=VARCHAR}
+			</if>
+			<if test="areaId != null">
+				and site_group_area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler}
+			</if>
+			<if test="areaId == null">
+				and site_group_area_id is null
+			</if>
+			and deleted = 1
+		</where>
+	</select>
+
+	<!-- 根据id查询工地组 -->
+	<select id="selectById" parameterType="string" resultMap="SiteGroupResultMap">
+		select
+			id,
+			site_group_code,
+			site_group_name,
+			site_group_area_id
+		from
+			t_site_group
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler} and
+			deleted = 1
+	</select>
+	
+	<!-- 根据工作组id删除工作组 -->
+	<delete id="deleteById" parameterType="string">
+		delete
+		from 
+			t_site_group
+		where
+			id = #{id,typeHandler=com.muck.handler.IdTypeHandler} 	
+	</delete>
+
+	<!-- 根据工地组id修改工地组 -->
+	<update id="updateById" parameterType="com.muck.domain.SiteGroup">
+		update t_site_group
+		<set>
+			<if test="siteGroupCode != null">
+				site_group_code = #{siteGroupCode,jdbcType=VARCHAR},
+			</if>
+			<if test="siteGroupName != null">
+				site_group_name = #{siteGroupName,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				site_group_area_id = #{area.id,typeHandler=com.muck.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.muck.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 映射关系 -->
+	<resultMap id="SimpleSiteGroupResultMap" type="com.muck.domain.SiteGroup">
+		<id column="id" property="id" typeHandler="com.muck.handler.IdTypeHandler" />
+		<result column="site_group_code" property="siteGroupCode" jdbcType="VARCHAR" />
+		<result column="site_group_name" property="siteGroupName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 根据区域id查询区域下面所有的工作组 -->
+	<select id="selectByAreaId" parameterType="string" resultMap="SimpleSiteGroupResultMap">
+		select
+			id,
+			site_group_code,
+			site_group_name
+		from
+			t_site_group
+		where
+			site_group_area_id = #{areaId,typeHandler=com.muck.handler.IdTypeHandler} and
+			deleted = 1
+	</select>
+	<select id="querySiteIdsBySiteGroupId" parameterType="string" resultType="string">
+	    select site_id from t_site_sitegroup where site_group_id = #{siteGroupId,typeHandler=com.muck.handler.IdTypeHandler}
+	</select>
+</mapper>

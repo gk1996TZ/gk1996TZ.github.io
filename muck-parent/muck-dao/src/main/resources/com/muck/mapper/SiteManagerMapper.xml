@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.SiteManagerMapper">
+
+	<!-- 添加工地和企业的关系 -->
+	<insert id="insert" parameterType="com.muck.domain.Site">
+		insert into t_site_manager
+		(site_id,site_manager,site_manager_phone,deleted,created_time)
+		values
+		<foreach collection="siteManagers" item="sm" separator=",">   
+			(
+				#{id,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{sm.siteManager,jdbcType=VARCHAR}, 
+				#{sm.siteManagerPhone,jdbcType=VARCHAR},
+				#{deleted,jdbcType=TINYINT},
+				#{createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+	</insert>
+</mapper>

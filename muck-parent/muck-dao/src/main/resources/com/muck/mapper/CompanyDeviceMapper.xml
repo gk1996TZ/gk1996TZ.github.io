@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.CompanyDeviceMapper">
+
+	<!-- 添加工地和企业的关系 -->
+	<insert id="insert">
+		insert into t_company_device
+		(device_code,company_id,deleted,created_time)
+		values
+		<foreach collection="deviceCodes" item="deviceCode" separator=",">   
+			(
+				#{deviceCode,jdbcType=VARCHAR},
+				#{company.id,typeHandler=com.muck.handler.IdTypeHandler}, 
+				#{company.deleted,jdbcType=TINYINT},
+				#{company.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+	</insert>
+</mapper>

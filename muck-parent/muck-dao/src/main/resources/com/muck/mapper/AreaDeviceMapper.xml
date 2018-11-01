@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.muck.mapper.AreaDeviceMapper">
+
+	<!-- 区域设备批量插入 -->
+	<insert id="insertBatch">
+		insert into t_area_device
+			(area_code,device_code,deleted,created_time,is_syn_dahua)  
+       	values   
+       	<foreach collection="devices" item="device" separator=",">  
+         (#{device.area.areaCode},#{device.deviceCode},#{device.deleted},#{device.createdTime},#{device.isSynDaHua})  
+       	</foreach>    
+	</insert>
+	
+	<!-- 批量删除(大华的数据) -->
+	<update id="deleteBatchDaHuaSynData">
+		update
+			t_area_device
+		set
+			deleted = 0
+		where
+			is_syn_dahua = 1
+	</update>
+	
+</mapper>
