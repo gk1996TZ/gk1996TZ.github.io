@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.litang.mapper.UserMapper">
+	<resultMap type="com.litang.domain.User" id="UserResultMap">
+		<id column="id" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+		<result column="userphone" property="userPhone" jdbcType="VARCHAR" />
+		<result column="user_token_code" property="userTokenCode"
+			jdbcType="VARCHAR" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<result column="user_state" property="userState" jdbcType="TINYINT" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+
+		<!-- 映射用户详情 -->
+		<association property="userInfo" javaType="com.litang.domain.UserInfo">
+			<result column="user_sex" property="userSex" jdbcType="TINYINT" />
+			<result column="user_brith" property="userBrith" jdbcType="TIMESTAMP" />
+			<result column="user_realname" property="userRealName"
+				jdbcType="VARCHAR" />
+			<result column="user_head" property="userHead" jdbcType="VARCHAR" />
+			<result column="user_job" property="userJob" jdbcType="VARCHAR" />
+			<result column="user_describe" property="userDescribe"
+				jdbcType="VARCHAR" />
+			<result column="userinfophone" property="userPhone" jdbcType="VARCHAR" />
+			<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+			<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		</association>
+
+		<collection property="listRole" javaType="com.litang.domain.Role">
+			<id column="trId" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+			<result column="role_name" property="roleName" />
+			<collection property="listAuthority" javaType="com.litang.domain.Authority">
+			    <result column="authority_name" property="authorityName" jdbcType="VARCHAR"/>
+			    <result column="authority_url" property="authorityUrl" jdbcType="VARCHAR"/>
+			    <result column="authority_describe" property="authorityDescribe" jdbcType="VARCHAR"/>
+			</collection>
+		</collection>
+	</resultMap>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.litang.domain.User">
+		<selectKey resultType="long" keyProperty="idRow">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userName !=null">
+				user_name,
+			</if>
+			<if test="userPwd !=null">
+				user_pwd,
+			</if>
+			<if test="userPhone !=null">
+				user_phone,
+			</if>
+			<if test="userState !=null">
+				user_state,
+			</if>
+			<if test="userTokenCode !=null">
+				user_token_code,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="userName !=null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd !=null">
+				#{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userPhone !=null">
+				#{userPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="userState !=null">
+				#{userState,jdbcType=TINYINT},
+			</if>
+			<if test="userTokenCode !=null">
+				#{userTokenCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP}
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 插入用户角色中间表 -->
+	<insert id="setRoleForUser" >
+	insert into
+	t_user_role
+	(user_id,role_id)
+	values (#{userId,typeHandler=com.litang.handler.IdTypeHandler},#{roleId,typeHandler=com.litang.handler.IdTypeHandler})
+	</insert>
+	
+	<!-- 根据用户id修改用户角色 -->
+	<update id="updateUserRole">
+	update t_user_role
+	set
+	role_id=#{roleId,typeHandler=com.litang.handler.IdTypeHandler}
+	where user_id=#{userId,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 根据用户id删除用户角色 -->
+	<delete id="deleteUserRole" parameterType="string">
+	delete from t_user_role
+	where user_id=#{userId,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+	
+
+	<!-- 根据id查询 -->
+	<select id="queryById" parameterType="string" resultMap="UserResultMap">
+		select
+		tu.id,tu.user_name,tu.user_pwd,tu.user_phone as
+		userphone,tu.user_token_code,tu.created_time,tu.updated_time,tu.user_state,
+		userinfo.user_sex,
+		userinfo.user_brith,
+		userinfo.user_realname,
+		userinfo.user_head,
+		userinfo.user_job,
+		userinfo.user_describe,
+		userinfo.user_phone as userinfophone,
+		userinfo.created_time,
+		userinfo.updated_time,
+		tr.id as trId,tr.role_name,
+		ta.authority_name,
+		ta.authority_url,
+		ta.authority_describe
+		from t_user tu
+		left
+		join t_userinfo userinfo on tu.id = userinfo.user_id
+		left join
+		t_user_role tur on
+		tu.id=tur.user_id
+		left join t_role tr on tur.role_id=tr.id
+		left join t_role_authority tra on tra.role_id = tr.id
+		left join t_authority ta on tra.authority_id = ta.id
+		where
+		tu.id=#{id,typeHandler=com.litang.handler.IdTypeHandler} and
+		tu.deleted = 1
+	</select>
+
+	<!-- 根据用户名查询 -->
+	<select id="selectByUserName" parameterType="string" resultMap="UserResultMap">
+		select
+			user.id,
+			user.user_name,
+			user.user_pwd,
+			user.user_phone as userphone,
+			user.user_state,
+			user.user_token_code,
+			user.created_time,
+			user.updated_time,
+			userinfo.user_sex,
+			userinfo.user_brith,
+			userinfo.user_realname,
+			userinfo.user_head,
+			userinfo.user_job,
+			userinfo.user_describe,
+			userinfo.user_phone as userinfophone,
+			userinfo.created_time,
+			userinfo.updated_time,
+			tr.id as trId,
+			tr.role_name,
+			ta.authority_name,
+			ta.authority_url,
+			ta.authority_describe
+		from 
+			t_user user left join t_userinfo userinfo on user.id = userinfo.user_id
+			left join t_user_role tur on user.id=tur.user_id
+			left join t_role tr on tur.role_id=tr.id
+			left join t_role_authority tra on tra.role_id = tr.id
+			left join t_authority ta on tra.authority_id = ta.id
+		where 
+			user.user_name=#{userName,jdbcType=VARCHAR} and user.deleted = 1
+	</select>
+	
+	<!-- 根据用户TOKEN查询 -->
+	<select id="queryByUserTokenCode" parameterType="string" resultMap="UserResultMap">
+		select
+			user.id,
+			user.user_name,
+			user.user_pwd,
+			user.user_phone as userphone,
+			user.user_state,
+			user.deleted,
+			user.user_token_code,
+			user.created_time,
+			user.updated_time,
+			userinfo.user_sex,
+			userinfo.user_brith,
+			userinfo.user_realname,
+			userinfo.user_head,
+			userinfo.user_job,
+			userinfo.user_describe,
+			userinfo.user_phone as userinfophone,
+			userinfo.created_time,
+			userinfo.updated_time,
+			tr.id as trId,
+			tr.role_name,
+			ta.authority_name,
+			ta.authority_url,
+			ta.authority_describe
+		from 
+			t_user user left join t_userinfo userinfo on user.id = userinfo.user_id
+			left join t_user_role tur on user.id=tur.user_id
+			left join t_role tr on tur.role_id=tr.id
+			left join t_role_authority tra on tra.role_id = tr.id
+			left join t_authority ta on tra.authority_id = ta.id
+		where 
+			user.user_token_code=#{userTokenCode,jdbcType=VARCHAR} and user.deleted = 1
+	</select>
+
+	<update id="editById" parameterType="com.litang.domain.User">
+		update t_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPhone != null">
+				user_phone = #{userPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd != null">
+				user_pwd = #{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userState != null">
+				user_state = #{userState,jdbcType=TINYINT},
+			</if>
+			<if test="userTokenCode != null">
+				user_token_code = #{userTokenCode,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+	<!-- 根据用户状态查询用户 -->
+	<select id="selectUserByUserState" parameterType="int"
+		resultMap="UserResultMap">
+		select
+		id,user_name,user_phone,user_pwd,user_token_code,created_time,updated_time,user_state
+		from t_user
+		where
+		user_state=#{userState,jdbcType=TINYINT} and deleted=1
+	</select>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="UserResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="UserResultMap">
+		${sql}
+	</select>
+
+	<!-- 根据id删除（逻辑删除） -->
+	<update id="deleteById" parameterType="string">
+		update t_user
+		set
+		deleted = 0
+		where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 重置密码 -->
+	<update id="resetPwd">
+	    update t_user
+	    set user_pwd = #{newPwd,jdbcType=VARCHAR}
+	    where id = #{userId,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+	
+</mapper>

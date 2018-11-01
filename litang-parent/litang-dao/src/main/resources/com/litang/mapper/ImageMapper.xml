@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.litang.mapper.ImageMapper">
+	<resultMap id="ImageResultMap" type="com.litang.domain.Image">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+		<result column="image_type" property="imageType" jdbcType="TINYINT" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, image_url, image_type, deleted, created_time
+	</sql>
+
+	<!-- 根据id查询 -->
+	<select id="queryById" resultMap="ImageResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_image
+		where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</select>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.litang.domain.Image">
+		insert into t_image
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="imageUrl != null">
+				image_url,
+			</if>
+			<if test="imageType != null">
+				image_type,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="imageUrl != null">
+				#{imageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="imageType != null">
+				#{imageType,jdbcType=TINYINT},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量插入 -->
+	<insert id="insertAll" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="idRow">
+		insert into t_image 
+		(
+			id, 
+			image_url, 
+			image_url_sl,
+			image_type,
+			image_name,
+			deleted, 
+			created_time
+		)
+		values 
+		<!--item就是List里每一项的对象名，要用","分割每一条数据，最后要";"结尾 -->
+		<foreach collection="list" item="item" index="index"
+			separator="," close=";">
+			(
+				#{item.id,typeHandler=com.litang.handler.IdTypeHandler}, 
+				#{item.imageUrl,jdbcType=VARCHAR}, 
+				#{item.imageUrl_SL,jdbcType=VARCHAR},
+				#{item.imageType,jdbcType=TINYINT}, 
+				#{item.fileName,jdbcType=VARCHAR},
+				#{item.deleted,jdbcType=TINYINT}, 
+				#{item.createdTime,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+
+	</insert>
+
+
+	<!-- 根据id修改 -->
+	<update id="updateById" parameterType="com.litang.domain.Image">
+		update t_image
+		<set>
+			<if test="imageUrl != null">
+				image_url = #{imageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="imageType != null">
+				image_type = #{imageType,jdbcType=TINYINT},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id删除（逻辑删除） -->
+	<update id="deleteById" parameterType="java.lang.Long">
+		update t_image
+		set deleted
+		= 0
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="java.lang.Long">
+		delete from t_image
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+	<!-- 删除多条数据 -->
+	<update id="deleteByIds" parameterType="string">
+	update t_image
+	set deleted=0
+	where id in(${ids})
+	</update>
+
+</mapper>

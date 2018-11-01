@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.litang.mapper.PostMessageMapper">
+	<resultMap id="PostMessageResultMap" type="com.litang.domain.PostMessage">
+		<id column="id" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+		<result column="message_content" property="messageContent"
+			jdbcType="VARCHAR" />
+		<result column="message_address" property="messageAddress"
+			jdbcType="VARCHAR" />
+		<result column="message_longitude" property="messageLongitude"
+			jdbcType="BIGINT" />
+		<result column="message_latitude" property="messageLatitude"
+			jdbcType="BIGINT" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+
+		<!-- User -->
+		<association property="user" javaType="com.litang.domain.User">
+			<id column="uId" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+			<association property="userInfo" javaType="com.litang.domain.UserInfo">
+				<result column="uiId" property="id"
+					typeHandler="com.litang.handler.IdTypeHandler" />
+				<result column="user_head" property="userHead" jdbcType="VARCHAR" />
+			</association>
+		</association>
+
+		<!-- images -->
+		<collection property="images" ofType="com.litang.domain.Image">
+			<id column="imId" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+			<result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+			<result column="image_url_sl" property="imageUrl_SL" jdbcType="VARCHAR" />
+			<result column="image_type" property="imageType" jdbcType="TINYINT" />
+			<result column="image_name" property="fileName" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		tpm.id,
+		tpm.user_id,tpm.message_content,tpm.message_address,tpm.message_longitude,tpm.message_latitude,tpm.created_time,
+		ti.id as imId,ti.image_url,ti.image_url_sl,ti.image_name,ti.image_type,tu.id as
+		uId,tu.user_name,tui.id as uiId,tui.user_head
+	</sql>
+
+	<!-- 根据id查询 -->
+	<select id="queryById" resultMap="PostMessageResultMap"
+		parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from t_post_message tpm
+		left join t_post_message_image tpmi
+		on
+		tpm.id=tpmi.post_message_id
+		left join t_image ti
+		on tpmi.image_id=ti.id
+		left join t_user tu
+		on tu.id=tpm.user_id
+		left join t_userinfo tui
+		on
+		tui.user_id=tu.id
+		where tpm.id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</select>
+
+	<!-- 根据userId查询返回列表 -->
+	<select id="selectMessagesByUserId" resultMap="PostMessageResultMap"
+		parameterType="long">
+		select
+		<include refid="Base_Column_List" />
+		from t_post_message tpm
+		left join t_post_message_image tpmi
+		on
+		tpm.id=tpmi.post_message_id
+		left join t_image ti
+		on tpmi.image_id=ti.id
+		left join t_user tu
+		on tu.id=tpm.user_id
+		left join t_userinfo tui
+		on
+		tui.user_id=tu.id
+		where tpm.user_id =
+		#{userId,typeHandler=com.litang.handler.IdTypeHandler}
+	</select>
+
+	<!-- 添加单条发布信息 -->
+	<insert id="insert" parameterType="com.litang.domain.PostMessage">
+	    <selectKey resultType="long" keyProperty="idRow">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_post_message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="user.id != null">
+				user_id,
+			</if>
+			<if test="messageContent != null">
+				message_content,
+			</if>
+			<if test="messageAddress != null">
+				message_address,
+			</if>
+			<if test="messageLongitude != null">
+				message_longitude,
+			</if>
+			<if test="messageLatitude != null">
+				message_latitude,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="user.id != null">
+				#{user.id,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="messageContent != null">
+				#{messageContent,jdbcType=VARCHAR},
+			</if>
+			<if test="messageAddress != null">
+				#{messageAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="messageLongitude != null">
+				#{messageLongitude,jdbcType=BIGINT},
+			</if>
+			<if test="messageLatitude != null">
+				#{messageLatitude,jdbcType=BIGINT},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 批量添加数据 -->
+	<insert id="insertPostMessageImage">
+		insert into t_post_message_image(post_message_id,image_id)
+		values
+		<foreach collection="imageIds" item="imageId" separator=",">
+			(#{postMessageId,typeHandler=com.litang.handler.IdTypeHandler},
+			#{imageId,typeHandler=com.litang.handler.IdTypeHandler}
+			)
+		</foreach>
+	</insert>
+
+
+	<!-- 根据id修改 -->
+	<update id="updateById" parameterType="com.litang.domain.PostMessage">
+		update t_post_message
+		<set>
+			<if test="user.id != null">
+				user_id =
+				#{user.id,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="messageContent != null">
+				message_content = #{messageContent,jdbcType=VARCHAR},
+			</if>
+			<if test="messageAddress != null">
+				message_address = #{messageAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="messageLongitude != null">
+				message_longitude = #{messageLongitude,jdbcType=BIGINT},
+			</if>
+			<if test="messageLatitude != null">
+				message_latitude = #{messageLatitude,jdbcType=BIGINT},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="java.lang.Long">
+		delete from
+		t_post_message
+		where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+	<!-- 根据用户id逻辑删除用户发布信息 -->
+	<update id="deleteByUserId">
+	update t_post_message
+	set deleted=0
+	where user_id=#{userId,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="PostMessageResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+	<!-- 查询数据列表 -->
+	<select id="queryData" parameterType="string" resultMap="PostMessageResultMap">
+		${sql}
+	</select>
+
+	<!-- 根据id删除（逻辑删除） -->
+	<update id="deleteById" parameterType="string">
+		update t_post_message
+		set
+		deleted = 0
+		where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+	
+	<!-- 获取某用户在指定时间前发布的最新的一条信息 -->
+	<select id="queryTheNewestBeforeAssignTime" resultMap="PostMessageResultMap">
+	    select
+	    tpm.id,tpm.user_id,tpm.message_content,tpm.message_address,
+	    tpm.message_longitude,tpm.message_latitude,tpm.created_time,
+	    ti.id as imId,ti.image_url,ti.image_type,tu.id as uId,tu.user_name,tui.id as uiId,tui.user_head,
+	    from
+	    t_post_message tpm
+	    left join t_post_message_image tpmi on tpm.id=tpmi.post_message_id
+	    left join t_image ti on tpmi.image_id=ti.id
+	    left join t_user tu on tu.id=tpm.user_id
+	    left join t_userinfo tui on tui.user_id=tu.id
+	    where 1=1
+	    <if test="userId !=null">
+		   and tpm.user_id = #{userId,typeHandler=com.litang.handler.IdTypeHandler} 
+	    </if>
+	    <if test="date != null">
+		   and tpm.created_time &lt; #{date,jdbcType=TIMESTAMP} 
+	    </if>
+	    order by created_time desc
+	    limit 0,1
+	</select>
+</mapper>

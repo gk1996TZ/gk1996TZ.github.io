@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.litang.mapper.AuthorityMapper">
+
+	<resultMap id="AuthorityResultMap" type="com.litang.domain.Authority">
+		<id column="id" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+		<result column="authority_name" property="authorityName"
+			jdbcType="VARCHAR" />
+		<result column="authority_url" property="authorityUrl"
+			jdbcType="VARCHAR" />
+		<result column="is_common" property="isCommon" jdbcType="TINYINT" />
+		<result column="authority_describe" property="authorityDescribe"
+			jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+
+
+	<!-- 查询顶级权限 -->
+	<select id="selectTopAuthorites" resultMap="AuthorityResultMap">
+		select
+		id, authority_name,
+		authority_url, is_common,
+		authority_describe,created_time,updated_time
+		from
+		t_authority
+		where
+		parent_id is null
+	</select>
+
+	<!-- 根据父权限查询下面所有的子权限 -->
+	<select id="selectSubAuthoritesByParentId" parameterType="string"
+		resultMap="AuthorityResultMap">
+		select
+		id, authority_name, authority_url, is_common,
+		authority_describe,created_time,updated_time
+		from
+		t_authority
+		where
+		parent_id = #{parentId,typeHandler=com.litang.handler.IdTypeHandler }
+		and
+		deleted = 1
+	</select>
+	<!-- 根据id查询权限 -->
+	<select id="queryById" resultMap="AuthorityResultMap"
+		parameterType="string">
+		select
+		id, authority_name, authority_url, is_common,
+		authority_describe,created_time,updated_time
+		from
+		t_authority
+		where
+		id =
+		#{id, typeHandler=com.litang.handler.IdTypeHandler } and
+		deleted = 1
+	</select>
+
+	<!-- 查询所有权限 -->
+	<select id="getAll" resultMap="AuthorityResultMap">
+		select
+		id, authority_name,
+		authority_url, is_common,
+		authority_describe,created_time,updated_time
+		from
+		t_authority
+		where
+		deleted=1
+	</select>
+
+	<!-- 根据id删除权限 -->
+	<delete id="deleteById" parameterType="string">
+		update
+		t_authority
+		set
+		deleted = 0
+		where
+		id = #{authorityId,
+		typeHandler=com.litang.handler.IdTypeHandler }
+	</delete>
+
+	<!-- 根据id删除（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from
+		t_authority
+		where
+		id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+
+	<!-- 插入权限 -->
+	<insert id="insert" parameterType="com.litang.domain.Authority">
+		insert into t_authority
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="authorityName != null">
+				authority_name,
+			</if>
+			<if test="authorityUrl != null">
+				authority_url,
+			</if>
+			<if test="isCommon != null">
+				is_common,
+			</if>
+			<if test="authorityDescribe != null">
+				authority_describe,
+			</if>
+			<if test=" parent_id!= null">
+				parentId,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="privilegeName != null">
+				#{privilegeName,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeUrl != null">
+				#{privilegeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="isCommon != null">
+				#{isCommon,jdbcType=TINYINT},
+			</if>
+			<if test="authorityDescribe != null">
+				#{authorityDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 根据id更新权限信息 -->
+	<update id="updateById" parameterType="com.litang.domain.Authority">
+		update t_authority
+		<set>
+			<if test="privilegeName != null">
+				authority_name = #{authorityName,jdbcType=VARCHAR},
+			</if>
+			<if test="privilegeUrl != null">
+				authority_url = #{authorityUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="isCommon != null">
+				is_common = #{isCommon,jdbcType=TINYINT},
+			</if>
+			<if test="authorityDescribe != null">
+				authority_describe =
+				#{authorityDescribe,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 查询分页数据 -->
+	<select id="selectPageData" parameterType="string" resultMap="AuthorityResultMap">
+		${sql}
+	</select>
+
+	<!-- 查询总记录数 -->
+	<select id="selectTotalRecoreds" parameterType="string"
+		resultType="long">
+		${sql}
+	</select>
+
+
+</mapper>

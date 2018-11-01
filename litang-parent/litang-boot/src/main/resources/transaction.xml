@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/tx
+	    http://www.springframework.org/schema/tx/spring-tx.xsd
+	    http://www.springframework.org/schema/aop
+	    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+			
+			<!-- 所有以query开头的方法都是只读的,不需要开启事务 -->        	
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="get*" read-only="true" />
+            
+            <!-- 其他方法使用默认事务策略 -->
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+    	<!--pointcut元素定义一个切入点，execution中的第一个星号 用以匹配方法的返回类型，
+			这里星号表明匹配所有返回类型。
+			com.abc.dao.*.*(..)表明匹配com.abc.dao包下的所有类的所有方法 
+		-->
+    	<aop:pointcut id="myPointcut" expression="execution (* com.litang.service.*.*(..))"/>
+    	
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
+    </aop:config>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

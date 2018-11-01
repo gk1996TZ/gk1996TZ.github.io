@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.litang.mapper.RoleMapper">
+	<resultMap id="RoleResultMap" type="com.litang.domain.Role">
+		<id column="id" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+		<result column="role_name" property="roleName" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+		<collection property="listAuthority" ofType="com.litang.domain.Authority">
+			<id column="aId" property="id" typeHandler="com.litang.handler.IdTypeHandler" />
+			<result column="authority_name" property="authorityName"
+				jdbcType="VARCHAR" />
+			<result column="authority_url" property="authorityUrl"
+				jdbcType="VARCHAR" />
+			<result column="authority_describe" property="authorityDescribe"
+				jdbcType="VARCHAR" />
+			<result column="is_common" property="isCommon" jdbcType="TINYINT" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		tr.id, tr.role_name, tr.deleted, tr.created_time,
+		tr.updated_time,
+		ta.id as
+		aId,ta.authority_name,ta.authority_url,ta.authority_url,ta.is_common
+	</sql>
+
+	<!-- 根据id查询 -->
+	<select id="queryById" resultMap="RoleResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from t_role tr
+		left join t_role_authority tra
+		on tr.id=tra.role_id
+		left
+		join t_authority ta
+		on tra.authority_id=ta.id
+		where tr.id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</select>
+	
+	<select id="queryByIdSimple" resultMap="RoleResultMap" parameterType="string">
+	select 
+	id,role_name
+	from t_role
+	where 
+	id=#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</select>
+
+	<!-- 添加角色 -->
+	<insert id="insert" parameterType="com.litang.domain.Role">
+		<selectKey resultType="long" keyProperty="idRow">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into t_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="roleName != null">
+				role_name,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,typeHandler=com.litang.handler.IdTypeHandler},
+			</if>
+			<if test="roleName != null">
+				#{roleName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				#{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 删除操作（逻辑删除） -->
+	<update id="deleteById" parameterType="long">
+		update t_role set deleted
+		= 0 where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+	<select id="getOrdinaryUserRole" resultMap="RoleResultMap">
+	SELECT * FROM t_role
+	where role_name='普通用户'
+	</select>
+
+
+
+
+	<!-- 批量添加数据 (相中间表添加数据) -->
+	<insert id="insertRoleAuthority">
+		insert into t_role_authority(role_id,authority_id)
+		values
+		<foreach collection="authorityIds" item="authorityId"
+			separator=",">
+			(#{roleId,typeHandler=com.litang.handler.IdTypeHandler},
+			#{authorityId,typeHandler=com.litang.handler.IdTypeHandler}
+			)
+		</foreach>
+	</insert>
+
+	<!-- 根据角色id删除权限角色中间表数据 -->
+	<delete id="deleteRoleAuthorityByRoleId" parameterType="string">
+		delete
+		from t_role_authority where role_id =
+		#{roleId,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+
+	<!-- 根据角色id查询角色用户中间表 该角色是否被用户使用 -->
+	<select id="selectUserRoleByRoleId" resultType="int">
+		select count(id) from t_user_role
+		where role_id=#{roleId,typeHandler=com.litang.handler.IdTypeHandler}
+
+	</select>
+
+	<!-- 删除操作（真实删除） -->
+	<delete id="deleteByIdReal" parameterType="long">
+		delete from t_role
+		where id =
+		#{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</delete>
+
+	<!-- 根据id修改 -->
+	<update id="editById" parameterType="com.litang.domain.Role">
+		update t_role
+		<set>
+			<if test="roleName != null">
+				role_name = #{roleName,jdbcType=VARCHAR},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted,jdbcType=TINYINT},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,typeHandler=com.litang.handler.IdTypeHandler}
+	</update>
+
+	<!-- 分页查询数据 -->
+	<select id="selectPageData" resultMap="RoleResultMap">
+		${sql}
+	</select>
+	<!-- 查询数据总数 -->
+	<select id="selectTotalRecoreds" resultType="long">
+		${sql}
+	</select>
+	<!-- 根据条件查询数据 -->
+	<select id="queryData" resultMap="RoleResultMap">
+		${sql}
+	</select>
+</mapper>
